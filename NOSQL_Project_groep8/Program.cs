@@ -14,7 +14,8 @@ namespace NOSQL_Project_groep8
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Open IndexView
+            Application.Run(new Index());
         }
     }
 }
