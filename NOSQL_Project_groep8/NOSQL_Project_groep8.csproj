@@ -100,13 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\IndexController.cs" />
+    <Compile Include="Model\IncidentsModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
     <Compile Include="View\IndexView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\IndexView.Designer.cs">
       <DependentUpon>IndexView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\IndexModel.cs" />
+    <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\IndexView.resx">
@@ -134,6 +136,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />

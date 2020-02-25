@@ -20,15 +20,15 @@ namespace NOSQL_Project_groep8.Controller
             //Make Client
             MongoClient dbClient = new MongoClient(_connectionString);
             //Select database
-            var database = dbClient.GetDatabase("sample_analytics");
+            var database = dbClient.GetDatabase("GardenGroup");
             //Select collection
-            var collection = database.GetCollection<IndexModel>("accounts");
+            var collection = database.GetCollection<IncidentsModel>("Incidents");
             //Get results (select)
             var all = collection.Find(new BsonDocument());
 
             foreach (var i in all.ToEnumerable())
             {
-                s += i.account_id.ToString() + "\r\n";
+                s += i.IncidentId.ToString() + "\r\n";
             }
             return s;
         }
