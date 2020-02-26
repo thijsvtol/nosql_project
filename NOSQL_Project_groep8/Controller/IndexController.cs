@@ -14,6 +14,7 @@ namespace NOSQL_Project_groep8.Controller
     {
         private static string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
 
+        //VOORBEELD VAN HET VERKRIJGEN VAN DATA UIT DATABASE, SELECT QUERYS PLAATSEN IN DE MAP REPOSITORYS EN INSERT/UPDATE/DELETE IN DE MAP SERVICE
         public string GetSampleData()
         {
             string s = null;
