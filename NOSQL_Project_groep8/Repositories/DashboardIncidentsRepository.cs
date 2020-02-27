@@ -22,8 +22,7 @@ namespace NOSQL_Project_groep8.Repositories
             //Select collection
             var collection = database.GetCollection<IncidentsModel>("Incidents");
             //Count documents (select)
-            var all = collection.Find(new BsonDocument());
-            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.Status, "Open");
+            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.Status, "open");
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
@@ -35,8 +34,8 @@ namespace NOSQL_Project_groep8.Repositories
             //Select collection
             var collection = database.GetCollection<IncidentsModel>("Incidents");
             //Count documents (select)
-            var all = collection.Find(new BsonDocument());
-            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.Status, "closed") & Builders<IncidentsModel>.Filter.Gt(x => x.DateDeadline, new DateTime());
+            var builder = Builders<IncidentsModel>.Filter;
+            var filter = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, new DateTime());
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
@@ -48,8 +47,8 @@ namespace NOSQL_Project_groep8.Repositories
             //Select collection
             var collection = database.GetCollection<IncidentsModel>("Incidents");
             //Count documents (select)
-            var all = collection.Find(new BsonDocument());
-            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.DateDeadline, new DateTime());
+            var builder = Builders<IncidentsModel>.Filter;
+            var filter = builder.Lte(x => x.DateDeadline, new DateTime()) & builder.Eq(x => x.Status, "open");
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
