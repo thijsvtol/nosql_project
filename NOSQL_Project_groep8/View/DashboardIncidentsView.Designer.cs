@@ -239,6 +239,7 @@
             this.Controls.Add(this.lbDashboardHeader);
             this.Name = "DashboardIncidentsView";
             this.Size = new System.Drawing.Size(968, 523);
+            this.Load += new System.EventHandler(this.DashboardIncidentsView_Load);
             this.borderUnresolvedIncidents.ResumeLayout(false);
             this.boxUnresolvedIncidents.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

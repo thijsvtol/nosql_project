@@ -12,13 +12,12 @@ namespace NOSQL_Project_groep8.Controller
 {
     class IndexController
     {
-        //private static string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
+        private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
 
         //VOORBEELD VAN HET VERKRIJGEN VAN DATA UIT DATABASE, SELECT QUERYS PLAATSEN IN DE MAP REPOSITORYS EN INSERT/UPDATE/DELETE IN DE MAP SERVICE
         public string GetSampleData()
         {
-            string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
-            string s = null;
+            string s = "";
             //Make Client
             MongoClient dbClient = new MongoClient(_connectionString);
             //Select database
@@ -30,7 +29,7 @@ namespace NOSQL_Project_groep8.Controller
 
             foreach (var i in all.ToEnumerable())
             {
-                s += i.IncidentId.ToString() + "\r\n";
+                s += i.IncidentId + "\r\n";
             }
             return s;
         }
