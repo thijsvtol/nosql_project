@@ -16,5 +16,11 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+            parent.HideViews("");
+        }
     }
 }
