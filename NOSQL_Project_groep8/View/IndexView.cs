@@ -23,16 +23,25 @@ namespace NOSQL_Project_groep8
         }
 
         //Hide all panels exept the header
-        private void HidePanels()
+        public void HideViews(string uc)
         {
             foreach (var control in Controls)
             {
-                if (control is Panel && ((Panel)control).Name != "pnlHeader")
+                if (control is UserControl)
                 {
-                    ((Panel)control).Visible = false;
+                    if (((UserControl)control).Name == uc)
+                    {
+                        ((UserControl)control).Visible = true;
+                    }
+                    else
+                    {
+                        ((UserControl)control).Visible = false;
+                    }
                 }
+                
             }
         }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
@@ -40,38 +49,17 @@ namespace NOSQL_Project_groep8
 
         private void menuDashboard_Click(object sender, EventArgs e)
         {
-            HidePanels();
-            pnlDashboard.Visible = true;
+            HideViews("UCdashboardIncidentsView");
         }
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)
         {
-            HidePanels();
-            pnlIncidentManagement.Visible = true;
+            HideViews("UCincidentManagementView");
         }
 
         private void menuUserManagement_Click(object sender, EventArgs e)
         {
-            HidePanels();
-            pnlUserManagement.Visible = true;
-        }
-
-        private void btnAddNewUser_Click(object sender, EventArgs e)
-        {
-            HidePanels();
-            pnlAddUser.Visible = true;
-        }
-
-        private void btnCreateIncident_Click(object sender, EventArgs e)
-        {
-            HidePanels();
-            pnlCreateIncident.Visible = true;
-        }
-
-        private void btnShowListDashboard_Click(object sender, EventArgs e)
-        {
-            HidePanels();
-            pnlIncidentManagement.Visible = true;
+            HideViews("UCuserManagementView");
         }
     }
 }

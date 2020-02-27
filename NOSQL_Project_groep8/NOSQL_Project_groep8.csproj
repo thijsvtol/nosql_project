@@ -110,6 +110,24 @@
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Repositories\DashboardRepository.cs" />
     <Compile Include="Service\RegistrateUserService.cs" />
+    <Compile Include="View\AddUserView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AddUserView.Designer.cs">
+      <DependentUpon>AddUserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateIncidenetView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CreateIncidenetView.Designer.cs">
+      <DependentUpon>CreateIncidenetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashboardIncidentsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\DashboardIncidentsView.Designer.cs">
+      <DependentUpon>DashboardIncidentsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IndexView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +137,33 @@
     <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\LoginView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\IncidentManagementView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\IncidentManagementView.Designer.cs">
+      <DependentUpon>IncidentManagementView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManagementView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserManagementView.Designer.cs">
+      <DependentUpon>UserManagementView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\AddUserView.resx">
+      <DependentUpon>AddUserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CreateIncidenetView.resx">
+      <DependentUpon>CreateIncidenetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DashboardIncidentsView.resx">
+      <DependentUpon>DashboardIncidentsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\IndexView.resx">
       <DependentUpon>IndexView.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +177,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\IncidentManagementView.resx">
+      <DependentUpon>IncidentManagementView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserManagementView.resx">
+      <DependentUpon>UserManagementView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

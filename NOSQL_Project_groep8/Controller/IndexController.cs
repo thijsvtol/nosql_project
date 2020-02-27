@@ -17,6 +17,7 @@ namespace NOSQL_Project_groep8.Controller
         //VOORBEELD VAN HET VERKRIJGEN VAN DATA UIT DATABASE, SELECT QUERYS PLAATSEN IN DE MAP REPOSITORYS EN INSERT/UPDATE/DELETE IN DE MAP SERVICE
         public string GetSampleData()
         {
+            string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
             string s = null;
             //Make Client
             MongoClient dbClient = new MongoClient(_connectionString);
