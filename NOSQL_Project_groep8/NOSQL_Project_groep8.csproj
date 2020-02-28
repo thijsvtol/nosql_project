@@ -105,10 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DashboardIncidentsController.cs" />
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Model\IncidentsModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
-    <Compile Include="Repositories\DashboardRepository.cs" />
+    <Compile Include="ConfigDB.cs" />
+    <Compile Include="Repositories\DashboardIncidentsRepository.cs" />
     <Compile Include="Service\RegistrateUserService.cs" />
     <Compile Include="View\AddUserView.cs">
       <SubType>UserControl</SubType>

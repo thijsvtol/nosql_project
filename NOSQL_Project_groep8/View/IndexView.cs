@@ -18,8 +18,6 @@ namespace NOSQL_Project_groep8
         public Index()
         {
             InitializeComponent();
-            //get sample data to label (label placed in header)
-            lblSampleData.Text = indexController.GetSampleData();
         }
 
         //Hide all panels exept the header
@@ -38,10 +36,8 @@ namespace NOSQL_Project_groep8
                         ((UserControl)control).Visible = false;
                     }
                 }
-                
             }
         }
-
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
@@ -50,6 +46,7 @@ namespace NOSQL_Project_groep8
         private void menuDashboard_Click(object sender, EventArgs e)
         {
             HideViews("UCdashboardIncidentsView");
+            UCdashboardIncidentsView.UpdateCircleDiagrams();
         }
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)
