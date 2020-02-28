@@ -109,7 +109,6 @@
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Model\IncidentsModel.cs" />
-    <Compile Include="Model\LoginModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Repositories\DashboardIncidentsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
