@@ -109,6 +109,7 @@
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Model\IncidentsModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="ConfigDB.cs" />
     <Compile Include="Repositories\DashboardIncidentsRepository.cs" />
     <Compile Include="Service\RegistrateUserService.cs" />
     <Compile Include="View\AddUserView.cs">

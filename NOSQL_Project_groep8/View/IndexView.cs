@@ -18,8 +18,6 @@ namespace NOSQL_Project_groep8
         public Index()
         {
             InitializeComponent();
-            //get sample data to label (label placed in header)
-            lblSampleData.Text = indexController.GetSampleData();
         }
 
         //Hide all panels exept the header
