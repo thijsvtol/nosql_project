@@ -19,8 +19,21 @@ namespace NOSQL_Project_groep8.View
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Index parent = (Index)this.Parent;
-            parent.HideViews("");
+            String username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string testnaam = "test";
+            string testpass = "test";
+
+            
+            if (username == testnaam && testpass == password)
+            {
+                Index parent = (Index)this.Parent;
+                parent.HideViews("UCdashboardIncidentsView");
+            }
+            else
+            {
+                MessageBox.Show("Your password or username is wrong try again","Login failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }

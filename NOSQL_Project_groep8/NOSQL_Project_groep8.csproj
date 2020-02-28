@@ -200,7 +200,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\The_Garden_Group-LOGO.png" />
   </ItemGroup>
