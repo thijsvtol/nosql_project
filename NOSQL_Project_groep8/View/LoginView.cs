@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8.View
 {
@@ -19,8 +21,13 @@ namespace NOSQL_Project_groep8.View
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            LoginController loginController = new LoginController();
+
+
             String username = txtUsername.Text;
             string password = txtPassword.Text;
+
+            UsersModel userModel = loginController.GetByUsername(username);
             string testnaam = "test";
             string testpass = "test";
 
