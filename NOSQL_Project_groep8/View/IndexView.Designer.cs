@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblSampleData = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.menuUserManagement = new System.Windows.Forms.Button();
             this.lblHeader2 = new System.Windows.Forms.Label();
@@ -36,25 +35,15 @@
             this.menuDashboard = new System.Windows.Forms.Button();
             this.lblHeader1 = new System.Windows.Forms.Label();
             this.HeaderLogo = new System.Windows.Forms.PictureBox();
-            this.UCdashboardIncidentsView = new NOSQL_Project_groep8.View.DashboardIncidentsView();
             this.UCincidentManagementView = new NOSQL_Project_groep8.View.IncidentManagementView();
             this.UCcreateIncidenetView = new NOSQL_Project_groep8.View.CreateIncidenetView();
+            this.UCdashboardIncidentsView = new NOSQL_Project_groep8.View.DashboardIncidentsView();
             this.UCaddUserView = new NOSQL_Project_groep8.View.AddUserView();
             this.UCloginView = new NOSQL_Project_groep8.View.LoginView();
             this.UCuserManagementView = new NOSQL_Project_groep8.View.UserManagementView();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblSampleData
-            // 
-            this.lblSampleData.AutoSize = true;
-            this.lblSampleData.Location = new System.Drawing.Point(214, 24);
-            this.lblSampleData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSampleData.Name = "lblSampleData";
-            this.lblSampleData.Size = new System.Drawing.Size(73, 13);
-            this.lblSampleData.TabIndex = 0;
-            this.lblSampleData.Text = "lbSampleData";
             // 
             // pnlHeader
             // 
@@ -64,7 +53,6 @@
             this.pnlHeader.Controls.Add(this.menuIncidentManagement);
             this.pnlHeader.Controls.Add(this.menuDashboard);
             this.pnlHeader.Controls.Add(this.lblHeader1);
-            this.pnlHeader.Controls.Add(this.lblSampleData);
             this.pnlHeader.Controls.Add(this.HeaderLogo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
@@ -162,15 +150,6 @@
             this.HeaderLogo.TabIndex = 0;
             this.HeaderLogo.TabStop = false;
             // 
-            // UCdashboardIncidentsView
-            // 
-            this.UCdashboardIncidentsView.BackColor = System.Drawing.SystemColors.Window;
-            this.UCdashboardIncidentsView.Location = new System.Drawing.Point(-1, 117);
-            this.UCdashboardIncidentsView.Name = "UCdashboardIncidentsView";
-            this.UCdashboardIncidentsView.Size = new System.Drawing.Size(968, 523);
-            this.UCdashboardIncidentsView.TabIndex = 6;
-            this.UCdashboardIncidentsView.Visible = false;
-            // 
             // UCincidentManagementView
             // 
             this.UCincidentManagementView.BackColor = System.Drawing.SystemColors.Window;
@@ -188,6 +167,15 @@
             this.UCcreateIncidenetView.Size = new System.Drawing.Size(968, 523);
             this.UCcreateIncidenetView.TabIndex = 5;
             this.UCcreateIncidenetView.Visible = false;
+            // 
+            // UCdashboardIncidentsView
+            // 
+            this.UCdashboardIncidentsView.BackColor = System.Drawing.SystemColors.Window;
+            this.UCdashboardIncidentsView.Location = new System.Drawing.Point(-1, 118);
+            this.UCdashboardIncidentsView.Name = "UCdashboardIncidentsView";
+            this.UCdashboardIncidentsView.Size = new System.Drawing.Size(968, 523);
+            this.UCdashboardIncidentsView.TabIndex = 5;
+            this.UCdashboardIncidentsView.Visible = false;
             // 
             // UCaddUserView
             // 
@@ -222,9 +210,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(968, 641);
-            this.Controls.Add(this.UCdashboardIncidentsView);
             this.Controls.Add(this.UCincidentManagementView);
             this.Controls.Add(this.UCcreateIncidenetView);
+            this.Controls.Add(this.UCdashboardIncidentsView);
             this.Controls.Add(this.UCaddUserView);
             this.Controls.Add(this.UCloginView);
             this.Controls.Add(this.UCuserManagementView);
@@ -240,8 +228,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblSampleData;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.PictureBox HeaderLogo;
         private System.Windows.Forms.Label lblHeader1;
