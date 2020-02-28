@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8
 {
     public partial class Index : Form
     {
         IndexController indexController = new IndexController();
+
+        UsersModel CurrentUser;
 
         public Index()
         {
@@ -37,6 +40,11 @@ namespace NOSQL_Project_groep8
                     }
                 }
             }
+        }
+
+        public void SetCurrentUser(UsersModel user)
+        {
+            CurrentUser = user;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

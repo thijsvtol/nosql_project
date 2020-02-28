@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using NOSQL_Project_groep8.Model;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace NOSQL_Project_groep8.Repositories
             var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
             //Count documents (select)
             var filter = Builders<UsersModel>.Filter.Eq(x => x.Username, username);
+            var select = Builders<UsersModel>.Projection.Include(x => x.Password);
             UsersModel user = collection.Find(filter).FirstOrDefault();
+            
             return user;
         }
     }

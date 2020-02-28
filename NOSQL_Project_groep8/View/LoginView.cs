@@ -23,24 +23,10 @@ namespace NOSQL_Project_groep8.View
         {
             LoginController loginController = new LoginController();
 
-
-            String username = txtUsername.Text;
+            String username = txtUsername.Text.ToLower();
             string password = txtPassword.Text;
 
-            UsersModel userModel = loginController.GetByUsername(username);
-            string testnaam = "test";
-            string testpass = "test";
-
-            
-            if (username == testnaam && testpass == password)
-            {
-                Index parent = (Index)this.Parent;
-                parent.HideViews("UCdashboardIncidentsView");
-            }
-            else
-            {
-                MessageBox.Show("Your password or username is wrong try again","Login failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            loginController.CheckLogin((Index)this.Parent, username, password);
         }
     }
 }
