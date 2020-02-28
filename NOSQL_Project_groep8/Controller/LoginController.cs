@@ -27,6 +27,7 @@ namespace NOSQL_Project_groep8.Controller
             {
                 index.HideViews("UCdashboardIncidentsView");
                 index.SetCurrentUser(userModel);
+                index.EnableButtons();
             }
             else
             {

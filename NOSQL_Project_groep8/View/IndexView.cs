@@ -21,6 +21,9 @@ namespace NOSQL_Project_groep8
         public Index()
         {
             InitializeComponent();
+            menuDashboard.Enabled = false;
+            menuIncidentManagement.Enabled = false;
+            menuUserManagement.Enabled = false;
         }
 
         //Hide all panels exept the header
@@ -45,6 +48,13 @@ namespace NOSQL_Project_groep8
         public void SetCurrentUser(UsersModel user)
         {
             CurrentUser = user;
+        }
+
+        public void EnableButtons()
+        {
+            menuDashboard.Enabled = true;
+            menuIncidentManagement.Enabled = true;
+            menuUserManagement.Enabled = true;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
