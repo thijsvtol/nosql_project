@@ -17,6 +17,12 @@ namespace NOSQL_Project_groep8.View
         public LoginView()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.Username != string.Empty)
+            {
+                txtUsername.Text = Properties.Settings.Default.Username;
+                txtPassword.Text = Properties.Settings.Default.Password;
+                cbRememberMe.Checked = true;
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -25,6 +31,13 @@ namespace NOSQL_Project_groep8.View
 
             String username = txtUsername.Text.ToLower();
             string password = txtPassword.Text;
+
+            if (cbRememberMe.Checked)
+            {
+                Properties.Settings.Default.Username = txtUsername.Text;
+                Properties.Settings.Default.Password = txtPassword.Text;
+                Properties.Settings.Default.Save();
+            }
 
             loginController.CheckLogin((Index)this.Parent, username, password);
         }

@@ -25,6 +25,8 @@ namespace NOSQL_Project_groep8.Controller
 
             if (userModel != null && username == userModel.Username && userModel.Password == password)
             {
+                
+
                 index.HideViews("UCdashboardIncidentsView");
                 index.SetCurrentUser(userModel);
                 index.EnableButtons();
