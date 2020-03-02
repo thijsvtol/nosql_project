@@ -9,24 +9,22 @@ using System.Threading.Tasks;
 
 namespace NOSQL_Project_groep8.Repositories
 {
-    class UserRepository
+    class IncidentRepository
     {
         private ConfigDB ConfigDB;
-        public UserRepository()
+        public IncidentRepository()
         {
             ConfigDB = new ConfigDB();
         }
 
-        public UsersModel GetUserPasswordByName(String username)
+        public Boolean SetNewIncident(IncidentsModel incident)
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
-            //Count documents (select)
-            var filter = Builders<UsersModel>.Filter.Eq(x => x.Username, username);
-            var select = Builders<UsersModel>.Projection.Include(x => x.Password);
-            UsersModel user = collection.Find(filter).FirstOrDefault();
-            
-            return user;
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+
+            collection.InsertOne(incident);
+
+            return true;
         }
 
         public List<UsersModel> GetAllUsers()

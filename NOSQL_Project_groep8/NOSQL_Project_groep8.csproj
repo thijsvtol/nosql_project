@@ -105,12 +105,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CreateIncidentController.cs" />
     <Compile Include="Controller\DashboardIncidentsController.cs" />
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Model\IncidentsModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Repositories\DashboardIncidentsRepository.cs" />
+    <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service\RegistrateUserService.cs" />
     <Compile Include="View\AddUserView.cs">
