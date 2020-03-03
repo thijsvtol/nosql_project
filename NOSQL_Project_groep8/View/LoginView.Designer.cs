@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbRememberMe = new System.Windows.Forms.CheckBox();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnResetPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblLoginHeader
@@ -131,23 +131,24 @@
             this.lblInfo.TabIndex = 8;
             this.lblInfo.Text = "Please provide login credentials to login to NoDesk for The Garden Group";
             // 
-            // label3
+            // btnResetPassword
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(172, 306);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Forgot login Details?";
+            this.btnResetPassword.AutoSize = true;
+            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassword.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnResetPassword.Location = new System.Drawing.Point(172, 306);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(138, 17);
+            this.btnResetPassword.TabIndex = 9;
+            this.btnResetPassword.Text = "Forgot login Details?";
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.cbRememberMe);
             this.Controls.Add(this.label2);
@@ -173,6 +174,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbRememberMe;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label btnResetPassword;
     }
 }

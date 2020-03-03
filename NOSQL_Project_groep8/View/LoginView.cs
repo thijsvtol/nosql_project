@@ -41,5 +41,11 @@ namespace NOSQL_Project_groep8.View
 
             loginController.CheckLogin((Index)this.Parent, username, password);
         }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            var index = (Index)this.Parent;
+            index.HideViews("UCResetPasswordView");
+        }
     }
 }

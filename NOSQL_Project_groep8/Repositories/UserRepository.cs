@@ -28,5 +28,24 @@ namespace NOSQL_Project_groep8.Repositories
             
             return user;
         }
+
+        public UsersModel GetUserPasswordByEmail(String email)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
+            //Count documents (select)
+            var filter = Builders<UsersModel>.Filter.Eq(x => x.Email, email);
+            UsersModel user = collection.Find(filter).FirstOrDefault();
+
+            return user;
+        }
+
+        public void ChangePassword(UsersModel user)
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
+            var builder = Builders<UsersModel>.Filter;
+            var filter = builder.Eq(x => x.Email, user.Email);
+            collection.ReplaceOne(filter, user);
+        }
     }
 }
