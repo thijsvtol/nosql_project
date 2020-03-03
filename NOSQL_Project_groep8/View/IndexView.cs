@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8
 {
@@ -15,9 +16,14 @@ namespace NOSQL_Project_groep8
     {
         IndexController indexController = new IndexController();
 
+        UsersModel CurrentUser;
+
         public Index()
         {
             InitializeComponent();
+            menuDashboard.Enabled = false;
+            menuIncidentManagement.Enabled = false;
+            menuUserManagement.Enabled = false;
         }
 
         //Hide all panels exept the header
@@ -37,6 +43,18 @@ namespace NOSQL_Project_groep8
                     }
                 }
             }
+        }
+
+        public void SetCurrentUser(UsersModel user)
+        {
+            CurrentUser = user;
+        }
+
+        public void EnableButtons()
+        {
+            menuDashboard.Enabled = true;
+            menuIncidentManagement.Enabled = true;
+            menuUserManagement.Enabled = true;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
