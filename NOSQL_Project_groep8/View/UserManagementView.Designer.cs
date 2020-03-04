@@ -39,13 +39,14 @@
             this.btnAddNewUser.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnAddNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddNewUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewUser.Location = new System.Drawing.Point(770, 55);
+            this.btnAddNewUser.Location = new System.Drawing.Point(785, 55);
             this.btnAddNewUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(152, 46);
             this.btnAddNewUser.TabIndex = 4;
             this.btnAddNewUser.Text = "+ ADD NEW USER";
             this.btnAddNewUser.UseVisualStyleBackColor = false;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // lblUserManagementHeader
             // 

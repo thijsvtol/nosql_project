@@ -35,5 +35,39 @@ namespace NOSQL_Project_groep8.Repositories
 
             return users;
         }
+
+        public int CountOpenIncidents()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            //Count documents (select)
+            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.Status, "open");
+            double count = collection.CountDocuments(filter);
+            return Convert.ToInt32(count);
+        }
+
+        public int CountClosedIncidentsBeforeDealine()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            //Count documents (select)
+            var builder = Builders<IncidentsModel>.Filter;
+            DateTime dateTime = DateTime.Now;
+            var filter = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, dateTime);
+            double count = collection.CountDocuments(filter);
+            return Convert.ToInt32(count);
+        }
+
+        public int CountPastDeadlineIncidents()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            //Count documents (select)
+            var builder = Builders<IncidentsModel>.Filter;
+            DateTime dateTime = DateTime.Now;
+            var filter = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open");
+            double count = collection.CountDocuments(filter);
+            return Convert.ToInt32(count);
+        }
     }
 }

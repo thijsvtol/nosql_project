@@ -10,7 +10,7 @@ namespace NOSQL_Project_groep8.Controller
 {
     class DashboardIncidentsController
     {
-        private static DashboardIncidentsRepository repository = new DashboardIncidentsRepository();
+        private static IncidentRepository repository = new IncidentRepository();
         private int openIncidents = repository.CountOpenIncidents();
 
         public int CalculatePercentOpenIncidents()
