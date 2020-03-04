@@ -7,6 +7,7 @@ using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.Repositories;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace NOSQL_Project_groep8.Controller
 {
@@ -25,14 +26,22 @@ namespace NOSQL_Project_groep8.Controller
             }
             else
             {
-                try
+                if (IsValidPassword(user.Password))
                 {
-                    InsertUser(user, checkBox);
-                    return true;
+                    try
+                    {
+                        InsertUser(user, checkBox);
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Could not insert the user into the database:\r\n" + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    MessageBox.Show("Could not insert the user into the database:\r\n"+e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your password must contain:\r\n1. At least 1 upper case letter\r\n2. At least 1 number\r\n3. Password must be at least 8 characters long", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -68,6 +77,14 @@ namespace NOSQL_Project_groep8.Controller
         private void SendMail()
         {
 
+        }
+
+        private bool IsValidPassword(string plainText)
+        {
+            //At least a number, uppercase and minimum of 8 characters
+            Regex regex = new Regex(@"((?=.*\d)(?=.*[A-Z]).{8,50})");
+            Match match = regex.Match(plainText);
+            return match.Success;
         }
     }
 }
