@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NOSQL_Project_groep8.Service
 {
-    class RegistrateUserService
+    class UserService
     {
         //Hier komt de update/insert/delete methodes
     }
