@@ -7,7 +7,6 @@ using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.Repositories;
 using System.Windows.Forms;
-using NOSQL_Project_groep8.View;
 
 namespace NOSQL_Project_groep8.Controller
 {
@@ -28,16 +27,7 @@ namespace NOSQL_Project_groep8.Controller
             {
                 try
                 {
-                    //Add user by service
-                    user.UserId = repository.AutoIncredement();
-                    UserService.InsertUser(user);
-
-                    //Check checkbox
-                    if (checkBox)
-                    {
-                        //Send mail
-                        SendMail();
-                    }
+                    InsertUser(user, checkBox);
                     return true;
                 }
                 catch (Exception e)
@@ -45,6 +35,20 @@ namespace NOSQL_Project_groep8.Controller
                     MessageBox.Show("Could not insert the user into the database:\r\n"+e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+            }
+        }
+
+        private void InsertUser(UserModel user, bool sendEmail)
+        {
+            //Add user by service
+            user.UserId = repository.AutoIncredement();
+            UserService.InsertUser(user);
+
+            //Check checkbox
+            if (sendEmail)
+            {
+                //Send mail
+                SendMail();
             }
         }
 
