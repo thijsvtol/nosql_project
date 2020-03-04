@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace NOSQL_Project_groep8.Model
 {
-    public class IncidentsModel
+    public class IncidentModel
     {
         public ObjectId _id { get; set; }
 

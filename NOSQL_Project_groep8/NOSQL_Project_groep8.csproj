@@ -105,11 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AddUserController.cs" />
     <Compile Include="Controller\CreateIncidentController.cs" />
     <Compile Include="Controller\DashboardIncidentsController.cs" />
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Controller\LoginController.cs" />
-    <Compile Include="Model\IncidentsModel.cs" />
+    <Compile Include="Model\IncidentModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="View\IndexView.Designer.cs">
       <DependentUpon>IndexView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\LoginView.cs">
@@ -206,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\The_Garden_Group-LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />
