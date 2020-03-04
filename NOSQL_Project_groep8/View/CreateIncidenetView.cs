@@ -29,6 +29,18 @@ namespace NOSQL_Project_groep8.View
             dataSource.Add("close");
             cbStatus.DataSource = dataSource;
 
+            var type = new List<string>();
+            type.Add("Software");
+            type.Add("Hardware");
+            type.Add("Service");
+            cbType.DataSource = type;
+
+            var priority = new List<string>();
+            priority.Add("Low");
+            priority.Add("Normal");
+            priority.Add("High");
+            cbPriority.DataSource = priority;
+
         }
 
         private void btnAddIncident_Click(object sender, EventArgs e)
@@ -39,6 +51,9 @@ namespace NOSQL_Project_groep8.View
             incidentModel.DateDeadline = DateTime.Parse(dtpDeadlineDate.Text);
             incidentModel.DateCreated = DateTime.Now;
             incidentModel.Status = "open";
+            incidentModel.Type = cbType.SelectedItem.ToString();
+            incidentModel.Priority = cbPriority.SelectedItem.ToString();
+            incidentModel.Location = txtLocation.Text;
             Index parent = (Index)this.Parent;
 
             createIncidenetController.SaveIncident(parent,incidentModel);
