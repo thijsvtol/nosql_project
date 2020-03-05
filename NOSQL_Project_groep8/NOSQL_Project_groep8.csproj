@@ -113,7 +113,6 @@
     <Compile Include="Model\IncidentsModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Model\KeyModel.cs" />
-    <Compile Include="Repositories\DashboardIncidentsRepository.cs" />
     <Compile Include="Repositories\KeyRepository.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

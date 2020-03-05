@@ -16,12 +16,9 @@ namespace NOSQL_Project_groep8.View
 
         public void HidePanels(string panelName)
         {
-            pSendEmail.Hide();
             pCheckKey.Hide();
-            pResetKey.Hide();
             switch (panelName)
             {
-                case "pCheckKey": pCheckKey.Visible = true; break;
                 case "pResetKey": pResetKey.Visible = true; break;
             }
         }
@@ -38,7 +35,7 @@ namespace NOSQL_Project_groep8.View
 
         private void btnResetPassword_Click(object sender, EventArgs e)
         {
-            resetPasswordController.ChangePassword(txtPassword.Text);
+            resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text);
         }
     }
 }

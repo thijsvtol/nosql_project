@@ -47,6 +47,7 @@ namespace NOSQL_Project_groep8.Repositories
             var filter = builder.Eq(x => x.Email, user.Email);
             collection.ReplaceOne(filter, user);
 
+        }
         public List<UsersModel> GetAllUsers()
         {
             //Select collection

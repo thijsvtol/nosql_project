@@ -48,26 +48,24 @@ namespace NOSQL_Project_groep8.Controller
         {
             try
             {
+                //check email for existing;;
                 string key = GenerateKey();
-
                 KeyRepository.SetKey(key, email);
+
                 Email = email;
                 MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                SmtpClient SmtpServer = new SmtpClient("smtp.strato.com");
 
-                mail.From = new MailAddress("your_email_address@gmail.com");
+                mail.From = new MailAddress("test@speedskatingphotos.nl");
                 mail.To.Add(email);
                 mail.Subject = "ResetKey";
                 mail.Body = "Your reset key is: " + key;
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("test@speedskatingphotos.nl", "Welkom01!1");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
-                MessageBox.Show("mail Send");
-
-                UC.HidePanels("pCheckKey");
             }
             catch (Exception ex)
             {
@@ -89,14 +87,18 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
-        public void ChangePassword(string password)
+        public void ChangePassword(string password, string rePassword)
         {
-            UsersModel user = UserRepository.GetUserPasswordByEmail(Email);
+            if (rePassword == password)
+            {
 
-            user.Password = password;
-            UserRepository.ChangePassword(user);
+                UsersModel user = UserRepository.GetUserPasswordByEmail(Email);
 
-            KeyRepository.DeleteKey(Key);
+                user.Password = password;
+                UserRepository.ChangePassword(user);
+
+                KeyRepository.DeleteKey(Key);
+            }
         }
     }
 }
