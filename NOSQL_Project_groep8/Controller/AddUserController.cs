@@ -89,16 +89,18 @@ namespace NOSQL_Project_groep8.Controller
 
         private bool ValidateInputFields(UserModel user)
         {
-            if (
-                user.FirstName == ""
-                || user.LastName == ""
-                || user.Email == ""
-                || user.Phonenumber == ""
-                || user.Username == ""
-                || user.Password == "")
-                return true;
-            else
+            List<bool> ls = new List<bool>();
+            ls.Add(string.IsNullOrEmpty(user.FirstName));
+            ls.Add(string.IsNullOrEmpty(user.LastName));
+            ls.Add(string.IsNullOrEmpty(user.Email));
+            ls.Add(string.IsNullOrEmpty(user.Phonenumber));
+            ls.Add(string.IsNullOrEmpty(user.Username));
+            ls.Add(string.IsNullOrEmpty(user.Password));
+
+            if (ls.Any(a => a.Equals(true)))
                 return false;
+            else
+                return true;
         }
     }
 }
