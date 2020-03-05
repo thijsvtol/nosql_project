@@ -19,7 +19,7 @@ namespace NOSQL_Project_groep8.Controller
         public bool AddUser(bool checkBox, UserModel user)
         {
             //Check if all fiels are not empty
-            if (!ValidateInputFields(user))
+            if (ValidateInputFields(user))
             {
                 MessageBox.Show("Please fill in all fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -97,10 +97,7 @@ namespace NOSQL_Project_groep8.Controller
             ls.Add(string.IsNullOrEmpty(user.Username));
             ls.Add(string.IsNullOrEmpty(user.Password));
 
-            if (ls.Any(a => a.Equals(true)))
-                return false;
-            else
-                return true;
+            return ls.Any(a => a.Equals(true));
         }
     }
 }
