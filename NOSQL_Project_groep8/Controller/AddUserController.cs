@@ -19,7 +19,7 @@ namespace NOSQL_Project_groep8.Controller
         public bool AddUser(bool checkBox, UserModel user)
         {
             //Check if all fiels are not empty
-            if (user.FirstName == "" || user.LastName == "" || user.Email == "" || user.Phonenumber == "" || user.Username == "" || user.Password == "")
+            if (ValidateInputFields(user))
             {
                 MessageBox.Show("Please fill in all fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -85,6 +85,20 @@ namespace NOSQL_Project_groep8.Controller
             Regex regex = new Regex(@"((?=.*\d)(?=.*[A-Z]).{8,50})");
             Match match = regex.Match(plainText);
             return match.Success;
+        }
+
+        private bool ValidateInputFields(UserModel user)
+        {
+            if (
+                user.FirstName == ""
+                || user.LastName == ""
+                || user.Email == ""
+                || user.Phonenumber == ""
+                || user.Username == ""
+                || user.Password == "")
+                return true;
+            else
+                return false;
         }
     }
 }
