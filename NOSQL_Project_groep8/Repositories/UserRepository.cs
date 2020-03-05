@@ -46,6 +46,14 @@ namespace NOSQL_Project_groep8.Repositories
             var builder = Builders<UsersModel>.Filter;
             var filter = builder.Eq(x => x.Email, user.Email);
             collection.ReplaceOne(filter, user);
+
+        public List<UsersModel> GetAllUsers()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
+            List<UsersModel> users = collection.Find(Builders<UsersModel>.Filter.Empty).ToList();
+
+            return users;
         }
     }
 }
