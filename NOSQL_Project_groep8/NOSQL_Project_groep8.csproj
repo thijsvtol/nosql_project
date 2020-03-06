@@ -108,12 +108,18 @@
     <Compile Include="Controller\AddUserController.cs" />
     <Compile Include="Controller\CreateIncidentController.cs" />
     <Compile Include="Controller\DashboardIncidentsController.cs" />
+    <Compile Include="Controller\EmailController.cs" />
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\ResetPasswordController.cs" />
     <Compile Include="Model\IncidentModel.cs" />
     <Compile Include="ConfigDB.cs" />
+    <Compile Include="Model\KeyModel.cs" />
+    <Compile Include="Repositories\KeyRepository.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Service\IncidentService.cs" />
+    <Compile Include="Service\KeyService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="View\AddUserView.cs">
       <SubType>UserControl</SubType>
@@ -154,6 +160,12 @@
     <Compile Include="View\IncidentManagementView.Designer.cs">
       <DependentUpon>IncidentManagementView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ResetPasswordView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ResetPasswordView.Designer.cs">
+      <DependentUpon>ResetPasswordView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserManagementView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -187,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\IncidentManagementView.resx">
       <DependentUpon>IncidentManagementView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ResetPasswordView.resx">
+      <DependentUpon>ResetPasswordView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserManagementView.resx">
       <DependentUpon>UserManagementView.cs</DependentUpon>

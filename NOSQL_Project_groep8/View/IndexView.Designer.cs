@@ -38,6 +38,7 @@
             this.UCincidentManagementView = new NOSQL_Project_groep8.View.IncidentManagementView();
             this.UCcreateIncidenetView = new NOSQL_Project_groep8.View.CreateIncidenetView();
             this.UCdashboardIncidentsView = new NOSQL_Project_groep8.View.DashboardIncidentsView();
+            this.UCResetPasswordView = new NOSQL_Project_groep8.View.ResetPasswordView();
             this.UCaddUserView = new NOSQL_Project_groep8.View.AddUserView();
             this.UCloginView = new NOSQL_Project_groep8.View.LoginView();
             this.UCuserManagementView = new NOSQL_Project_groep8.View.UserManagementView();
@@ -204,6 +205,15 @@
             this.UCuserManagementView.TabIndex = 2;
             this.UCuserManagementView.Visible = false;
             // 
+            // UCResetPasswordView
+            // 
+            this.UCResetPasswordView.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.UCResetPasswordView.Location = new System.Drawing.Point(308, 176);
+            this.UCResetPasswordView.Name = "UCResetPasswordView";
+            this.UCResetPasswordView.Size = new System.Drawing.Size(327, 437);
+            this.UCResetPasswordView.TabIndex = 3;
+            this.UCResetPasswordView.Visible = false;
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +223,7 @@
             this.Controls.Add(this.UCincidentManagementView);
             this.Controls.Add(this.UCcreateIncidenetView);
             this.Controls.Add(this.UCdashboardIncidentsView);
+            this.Controls.Add(this.UCResetPasswordView);
             this.Controls.Add(this.UCaddUserView);
             this.Controls.Add(this.UCloginView);
             this.Controls.Add(this.UCuserManagementView);
@@ -241,6 +252,8 @@
         private View.CreateIncidenetView UCcreateIncidenetView;
         private View.DashboardIncidentsView UCdashboardIncidentsView;
         private View.IncidentManagementView UCincidentManagementView;
+        private View.ResetPasswordView UCResetPasswordView;
+
     }
 }
 

@@ -15,7 +15,7 @@ namespace NOSQL_Project_groep8.View
     public partial class CreateIncidenetView : UserControl
     {
         CreateIncidentController createIncidenetController = new CreateIncidentController();
-        UserModel User;
+        
         public CreateIncidenetView()
         {
             InitializeComponent();

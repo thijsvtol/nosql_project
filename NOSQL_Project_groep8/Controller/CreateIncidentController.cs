@@ -1,5 +1,6 @@
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
+using NOSQL_Project_groep8.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,9 @@ namespace NOSQL_Project_groep8.Controller
 {
     public class CreateIncidentController
     {
-        private static UserRepository repository = new UserRepository();
+        private static UserRepository UserRepository = new UserRepository();
         private static IncidentRepository IncidentRepository = new IncidentRepository();
+        private static IncidentService IncidentService = new IncidentService();
 
         public List<UserModel> GetUsers()
         {
@@ -21,7 +23,7 @@ namespace NOSQL_Project_groep8.Controller
 
         public void SaveIncident(Index index, IncidentModel incident)
         {
-            IncidentRepository.SetNewIncident(incident);
+            IncidentService.SetNewIncident(incident);
             index.HideViews("UCincidentManagementView");
         }
     }
