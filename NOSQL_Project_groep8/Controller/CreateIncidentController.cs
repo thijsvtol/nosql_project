@@ -17,7 +17,7 @@ namespace NOSQL_Project_groep8.Controller
 
         public List<UserModel> GetUsers()
         {
-                List<UserModel> users = repository.GetAllUsers();
+                List<UserModel> users = UserRepository.GetAllUsers();
                 return users;
         }
 

@@ -17,7 +17,7 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
-        public List<UsersModel> GetAllUsers()
+        public List<UserModel> GetAllUsers()
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
