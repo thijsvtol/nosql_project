@@ -108,7 +108,7 @@ namespace NOSQL_Project_groep8.Controller
             if (rePassword == password)
             {
 
-                UsersModel user = UserRepository.GetUserPasswordByEmail(email);
+                UserModel user = UserRepository.GetUserPasswordByEmail(email);
 
                 user.Password = password;
                 UserRepository.ChangePassword(user);

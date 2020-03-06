@@ -16,10 +16,10 @@ namespace NOSQL_Project_groep8.Service
             ConfigDB = new ConfigDB();
         }
 
-        public Boolean SetNewIncident(IncidentsModel incident)
+        public Boolean SetNewIncident(IncidentModel incident)
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
 
             collection.InsertOne(incident);
 
