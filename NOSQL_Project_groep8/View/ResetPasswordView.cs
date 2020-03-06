@@ -17,15 +17,25 @@ namespace NOSQL_Project_groep8.View
         public void HidePanels(string panelName)
         {
             pCheckKey.Hide();
+            pResetKey.Hide();
             switch (panelName)
             {
                 case "pResetKey": pResetKey.Visible = true; break;
+                case "pCheckKey": pCheckKey.Visible = true; break;
             }
+        }
+
+        public void GoToLogin()
+        {
+            var index = (Index)this.Parent;
+            index.HideViews("UCloginView");
         }
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
             resetPasswordController.SentMail(txtEmail.Text);
+            HidePanels("pCheckKey");
+            txtResetKey.Text = string.Empty;
         }
 
         private void btnCheckKey_Click(object sender, EventArgs e)
@@ -35,7 +45,17 @@ namespace NOSQL_Project_groep8.View
 
         private void btnResetPassword_Click(object sender, EventArgs e)
         {
-            resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text);
+            resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text, txtResetEmail.Text);
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            txtResetEmail.Text = txtEmail.Text;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GoToLogin();
         }
     }
 }

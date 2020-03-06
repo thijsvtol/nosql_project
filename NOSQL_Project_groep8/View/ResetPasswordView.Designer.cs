@@ -42,6 +42,9 @@
             this.txtReEnterPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtResetEmail = new System.Windows.Forms.TextBox();
             this.pSendEmail.SuspendLayout();
             this.pCheckKey.SuspendLayout();
             this.pResetKey.SuspendLayout();
@@ -49,18 +52,17 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(107, 45);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Location = new System.Drawing.Point(80, 37);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(132, 22);
+            this.txtEmail.Size = new System.Drawing.Size(166, 20);
             this.txtEmail.TabIndex = 0;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtResetKey
             // 
-            this.txtResetKey.Location = new System.Drawing.Point(107, 33);
-            this.txtResetKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResetKey.Location = new System.Drawing.Point(80, 52);
             this.txtResetKey.Name = "txtResetKey";
-            this.txtResetKey.Size = new System.Drawing.Size(132, 22);
+            this.txtResetKey.Size = new System.Drawing.Size(166, 20);
             this.txtResetKey.TabIndex = 1;
             // 
             // pSendEmail
@@ -68,30 +70,31 @@
             this.pSendEmail.Controls.Add(this.btnSendEmail);
             this.pSendEmail.Controls.Add(this.label1);
             this.pSendEmail.Controls.Add(this.txtEmail);
-            this.pSendEmail.Location = new System.Drawing.Point(37, 51);
-            this.pSendEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pSendEmail.Location = new System.Drawing.Point(0, 54);
             this.pSendEmail.Name = "pSendEmail";
-            this.pSendEmail.Size = new System.Drawing.Size(421, 162);
+            this.pSendEmail.Size = new System.Drawing.Size(316, 132);
             this.pSendEmail.TabIndex = 2;
             // 
             // btnSendEmail
             // 
-            this.btnSendEmail.Location = new System.Drawing.Point(256, 100);
-            this.btnSendEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSendEmail.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnSendEmail.FlatAppearance.BorderSize = 0;
+            this.btnSendEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendEmail.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSendEmail.Location = new System.Drawing.Point(165, 73);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(100, 28);
+            this.btnSendEmail.Size = new System.Drawing.Size(133, 47);
             this.btnSendEmail.TabIndex = 2;
             this.btnSendEmail.Text = "Send Email";
-            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.UseVisualStyleBackColor = false;
             this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 48);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(22, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Email:";
             // 
@@ -100,104 +103,131 @@
             this.pCheckKey.Controls.Add(this.btnCheckKey);
             this.pCheckKey.Controls.Add(this.label2);
             this.pCheckKey.Controls.Add(this.txtResetKey);
-            this.pCheckKey.Location = new System.Drawing.Point(37, 279);
-            this.pCheckKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pCheckKey.Location = new System.Drawing.Point(0, 233);
             this.pCheckKey.Name = "pCheckKey";
-            this.pCheckKey.Size = new System.Drawing.Size(421, 197);
-            this.pCheckKey.TabIndex = 3;
+            this.pCheckKey.Size = new System.Drawing.Size(316, 241);
+            this.pCheckKey.TabIndex = 2;
             // 
             // btnCheckKey
             // 
-            this.btnCheckKey.Location = new System.Drawing.Point(256, 132);
-            this.btnCheckKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckKey.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnCheckKey.FlatAppearance.BorderSize = 0;
+            this.btnCheckKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckKey.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCheckKey.Location = new System.Drawing.Point(165, 107);
             this.btnCheckKey.Name = "btnCheckKey";
-            this.btnCheckKey.Size = new System.Drawing.Size(141, 28);
+            this.btnCheckKey.Size = new System.Drawing.Size(133, 49);
             this.btnCheckKey.TabIndex = 3;
             this.btnCheckKey.Text = "Check ResetKey";
-            this.btnCheckKey.UseVisualStyleBackColor = true;
+            this.btnCheckKey.UseVisualStyleBackColor = false;
             this.btnCheckKey.Click += new System.EventHandler(this.btnCheckKey_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(19, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Resetkey:";
             // 
             // pResetKey
             // 
+            this.pResetKey.Controls.Add(this.label5);
             this.pResetKey.Controls.Add(this.btnResetPassword);
             this.pResetKey.Controls.Add(this.label4);
             this.pResetKey.Controls.Add(this.txtReEnterPassword);
+            this.pResetKey.Controls.Add(this.txtResetEmail);
             this.pResetKey.Controls.Add(this.label3);
             this.pResetKey.Controls.Add(this.txtPassword);
-            this.pResetKey.Location = new System.Drawing.Point(35, 278);
-            this.pResetKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pResetKey.Location = new System.Drawing.Point(1, 233);
             this.pResetKey.Name = "pResetKey";
-            this.pResetKey.Size = new System.Drawing.Size(421, 197);
-            this.pResetKey.TabIndex = 4;
+            this.pResetKey.Size = new System.Drawing.Size(315, 211);
+            this.pResetKey.TabIndex = 1;
             this.pResetKey.Visible = false;
             // 
             // btnResetPassword
             // 
-            this.btnResetPassword.Location = new System.Drawing.Point(227, 129);
-            this.btnResetPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetPassword.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnResetPassword.FlatAppearance.BorderSize = 0;
+            this.btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnResetPassword.Location = new System.Drawing.Point(164, 132);
             this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(141, 28);
+            this.btnResetPassword.Size = new System.Drawing.Size(133, 46);
             this.btnResetPassword.TabIndex = 4;
             this.btnResetPassword.Text = "Change Password";
-            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.UseVisualStyleBackColor = false;
             this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 97);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(19, 109);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 17);
+            this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "reenter Password";
             // 
             // txtReEnterPassword
             // 
-            this.txtReEnterPassword.Location = new System.Drawing.Point(152, 94);
-            this.txtReEnterPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReEnterPassword.Location = new System.Drawing.Point(114, 106);
             this.txtReEnterPassword.Name = "txtReEnterPassword";
-            this.txtReEnterPassword.Size = new System.Drawing.Size(132, 22);
+            this.txtReEnterPassword.Size = new System.Drawing.Size(131, 20);
             this.txtReEnterPassword.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 48);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(19, 69);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 17);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "new Password";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(152, 44);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Location = new System.Drawing.Point(114, 66);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(132, 22);
+            this.txtPassword.Size = new System.Drawing.Size(131, 20);
             this.txtPassword.TabIndex = 1;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(3, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Email:";
+            // 
+            // txtResetEmail
+            // 
+            this.txtResetEmail.Location = new System.Drawing.Point(79, 40);
+            this.txtResetEmail.Name = "txtResetEmail";
+            this.txtResetEmail.Size = new System.Drawing.Size(166, 20);
+            this.txtResetEmail.TabIndex = 4;
             // 
             // ResetPasswordView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pSendEmail);
             this.Controls.Add(this.pResetKey);
             this.Controls.Add(this.pCheckKey);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ResetPasswordView";
-            this.Size = new System.Drawing.Size(719, 587);
+            this.Size = new System.Drawing.Size(539, 477);
             this.pSendEmail.ResumeLayout(false);
             this.pSendEmail.PerformLayout();
             this.pCheckKey.ResumeLayout(false);
@@ -224,5 +254,8 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnCheckKey;
         private System.Windows.Forms.Button btnResetPassword;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtResetEmail;
     }
 }

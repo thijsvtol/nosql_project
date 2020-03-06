@@ -15,15 +15,7 @@ namespace NOSQL_Project_groep8.Repositories
         {
             ConfigDB = new ConfigDB();
         }
-
-        public void SetKey(string key, string email)
-        {
-            KeyModel keyModel = new KeyModel(){ Email = email, Key = key };
-            var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
-
-            collection.InsertOne(keyModel);
-        }
-
+        
         public KeyModel GetKey(string key)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
@@ -32,12 +24,12 @@ namespace NOSQL_Project_groep8.Repositories
             return collection.Find(filter).FirstOrDefault();
         }
 
-        public void DeleteKey(string key)
+        public KeyModel GetKeyByEmail(string email)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
             var builder = Builders<KeyModel>.Filter;
-            var filter = builder.Eq(x => x.Key, key);
-            collection.DeleteOne(filter);
+            var filter = builder.Eq(x => x.Email, email);
+            return collection.Find(filter).FirstOrDefault();
         }
     }
 }

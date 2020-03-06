@@ -1,5 +1,6 @@
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
+using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.View;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace NOSQL_Project_groep8.Controller
     class ResetPasswordController
     {
         private static KeyRepository KeyRepository = new KeyRepository();
+        private static KeyService keyService = new KeyService();
         private static UserRepository UserRepository = new UserRepository();
-        string Email;
         string Key;
         ResetPasswordView UC;
 
@@ -48,29 +49,44 @@ namespace NOSQL_Project_groep8.Controller
         {
             try
             {
-                //check email for existing;;
-                string key = GenerateKey();
-                KeyRepository.SetKey(key, email);
+                if (validdate(email))
+                {
+                    string key = GenerateKey();
+                    //check email for existing;;
+                    var keymodel = KeyRepository.GetKeyByEmail(email);
+                    if (keymodel != null)
+                    {
+                        keymodel.Key = key;
+                        keyService.UpdateKey(keymodel);
+                    }
+                    else
+                    {
+                        keyService.SetKey(key, email);
+                    }
+                    EmailController emailController = new EmailController();
+                    emailController.SendMail("ResetKey", email, "Your reset key is: " + key);
 
-                Email = email;
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.strato.com");
-
-                mail.From = new MailAddress("test@speedskatingphotos.nl");
-                mail.To.Add(email);
-                mail.Subject = "ResetKey";
-                mail.Body = "Your reset key is: " + key;
-
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("test@speedskatingphotos.nl", "Welkom01!1");
-                SmtpServer.EnableSsl = true;
-
-                SmtpServer.Send(mail);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public bool validdate(string email)
+        {
+            if (!email.Contains('@'))
+            {
+                MessageBox.Show("'" + email + "' is not an valid Email address");
+                return false;
+            }
+            else if (UserRepository.GetUserPasswordByEmail(email) == null)
+            {
+                MessageBox.Show("'" + email + "' was not found in our database \nno email was send");
+                return false;
+            }
+            return true;
         }
 
         public void CheckKey(string key)
@@ -87,17 +103,19 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
-        public void ChangePassword(string password, string rePassword)
+        public void ChangePassword(string password, string rePassword, string email)
         {
             if (rePassword == password)
             {
 
-                UsersModel user = UserRepository.GetUserPasswordByEmail(Email);
+                UsersModel user = UserRepository.GetUserPasswordByEmail(email);
 
                 user.Password = password;
                 UserRepository.ChangePassword(user);
 
-                KeyRepository.DeleteKey(Key);
+                keyService.DeleteKey(Key);
+                UC.HidePanels("pCheckKey");
+                UC.GoToLogin();
             }
         }
     }
