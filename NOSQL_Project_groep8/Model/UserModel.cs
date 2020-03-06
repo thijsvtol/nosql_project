@@ -2,7 +2,7 @@
 
 namespace NOSQL_Project_groep8.Model
 {
-    public class UsersModel
+    public class UserModel
     {
         public ObjectId _id { get; set; }
 

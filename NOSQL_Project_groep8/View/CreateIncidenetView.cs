@@ -15,6 +15,7 @@ namespace NOSQL_Project_groep8.View
     public partial class CreateIncidenetView : UserControl
     {
         CreateIncidentController createIncidenetController = new CreateIncidentController();
+        
         public CreateIncidenetView()
         {
             InitializeComponent();
@@ -44,8 +45,8 @@ namespace NOSQL_Project_groep8.View
 
         private void btnAddIncident_Click(object sender, EventArgs e)
         {
-            IncidentsModel incidentModel = new IncidentsModel();
-            incidentModel.User = ((UsersModel)cbUsers.SelectedItem).UserId;
+            IncidentModel incidentModel = new IncidentModel();
+            incidentModel.User = ((UserModel)cbUsers.SelectedItem).UserId;
             incidentModel.Subject = txtSubject.Text;
             incidentModel.DateDeadline = DateTime.Parse(dtpDeadlineDate.Text);
             incidentModel.DateCreated = DateTime.Now;
@@ -59,7 +60,7 @@ namespace NOSQL_Project_groep8.View
 
         }
 
-        private List<UsersModel> GetUsers()
+        private List<UserModel> GetUsers()
         {
 
             return createIncidenetController.GetUsers();

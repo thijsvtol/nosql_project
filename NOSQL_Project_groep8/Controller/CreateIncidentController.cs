@@ -15,13 +15,13 @@ namespace NOSQL_Project_groep8.Controller
         private static IncidentRepository IncidentRepository = new IncidentRepository();
         private static IncidentService IncidentService = new IncidentService();
 
-        public List<UsersModel> GetUsers()
+        public List<UserModel> GetUsers()
         {
-                List<UsersModel> users = UserRepository.GetAllUsers();
+                List<UserModel> users = repository.GetAllUsers();
                 return users;
         }
 
-        public void SaveIncident(Index index, IncidentsModel incident)
+        public void SaveIncident(Index index, IncidentModel incident)
         {
             IncidentService.SetNewIncident(incident);
             index.HideViews("UCincidentManagementView");

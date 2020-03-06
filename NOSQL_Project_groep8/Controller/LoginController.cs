@@ -13,15 +13,15 @@ namespace NOSQL_Project_groep8.Controller
     {
         private static UserRepository repository = new UserRepository();
 
-        public UsersModel GetByUsername(string username)
+        public UserModel GetByUsername(string username)
         {
-            UsersModel user = repository.GetUserPasswordByName(username);
+            UserModel user = repository.GetUserPasswordByName(username);
             return user;
         }
 
         public void CheckLogin(Index index,string username, string password)
         {
-            UsersModel userModel = GetByUsername(username);
+            UserModel userModel = GetByUsername(username);
 
             if (userModel != null && username == userModel.Username && userModel.Password == password)
             {

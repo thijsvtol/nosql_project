@@ -53,6 +53,7 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,6 +143,7 @@
             this.btnResetPassword.TabIndex = 9;
             this.btnResetPassword.Text = "Forgot login Details?";
             this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+
             // 
             // LoginView
             // 

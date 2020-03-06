@@ -16,7 +16,7 @@ namespace NOSQL_Project_groep8
     {
         IndexController indexController = new IndexController();
 
-        UsersModel CurrentUser;
+        UserModel CurrentUser;
 
         public Index()
         {
@@ -45,7 +45,7 @@ namespace NOSQL_Project_groep8
             }
         }
 
-        public void SetCurrentUser(UsersModel user)
+        public void SetCurrentUser(UserModel user)
         {
             CurrentUser = user;
         }

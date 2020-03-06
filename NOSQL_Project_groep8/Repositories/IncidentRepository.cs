@@ -20,8 +20,8 @@ namespace NOSQL_Project_groep8.Repositories
         public List<UsersModel> GetAllUsers()
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
-            List<UsersModel> users = collection.Find(Builders<UsersModel>.Filter.Empty).ToList();
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            List<UserModel> users = collection.Find(Builders<UserModel>.Filter.Empty).ToList();
 
             return users;
         }
@@ -29,9 +29,9 @@ namespace NOSQL_Project_groep8.Repositories
         public int CountOpenIncidents()
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var filter = Builders<IncidentsModel>.Filter.Eq(x => x.Status, "open");
+            var filter = Builders<IncidentModel>.Filter.Eq(x => x.Status, "open");
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
@@ -39,9 +39,9 @@ namespace NOSQL_Project_groep8.Repositories
         public int CountClosedIncidentsBeforeDealine()
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var builder = Builders<IncidentsModel>.Filter;
+            var builder = Builders<IncidentModel>.Filter;
             DateTime dateTime = DateTime.Now;
             var filter = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, dateTime);
             double count = collection.CountDocuments(filter);
@@ -51,9 +51,9 @@ namespace NOSQL_Project_groep8.Repositories
         public int CountPastDeadlineIncidents()
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<IncidentsModel>("Incidents");
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var builder = Builders<IncidentsModel>.Filter;
+            var builder = Builders<IncidentModel>.Filter;
             DateTime dateTime = DateTime.Now;
             var filter = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open");
             double count = collection.CountDocuments(filter);

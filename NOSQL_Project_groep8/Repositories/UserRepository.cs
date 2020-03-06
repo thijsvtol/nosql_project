@@ -17,14 +17,14 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
-        public UsersModel GetUserPasswordByName(String username)
+        public UserModel GetUserPasswordByName(String username)
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             //Count documents (select)
-            var filter = Builders<UsersModel>.Filter.Eq(x => x.Username, username);
-            var select = Builders<UsersModel>.Projection.Include(x => x.Password);
-            UsersModel user = collection.Find(filter).FirstOrDefault();
+            var filter = Builders<UserModel>.Filter.Eq(x => x.Username, username);
+            var select = Builders<UserModel>.Projection.Include(x => x.Password);
+            UserModel user = collection.Find(filter).FirstOrDefault();
             
             return user;
         }
@@ -48,13 +48,22 @@ namespace NOSQL_Project_groep8.Repositories
             collection.ReplaceOne(filter, user);
 
         }
-        public List<UsersModel> GetAllUsers()
+        public List<UserModel> GetAllUsers()
         {
             //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<UsersModel>("Users");
-            List<UsersModel> users = collection.Find(Builders<UsersModel>.Filter.Empty).ToList();
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            List<UserModel> users = collection.Find(Builders<UserModel>.Filter.Empty).ToList();
 
             return users;
+        }
+
+        public int AutoIncredement()
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            var sort = Builders<UserModel>.Sort.Descending(x => x.UserId);
+            var filter = Builders<UserModel>.Filter.Empty;
+            UserModel user = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
+            return user.UserId + 1;
         }
     }
 }
