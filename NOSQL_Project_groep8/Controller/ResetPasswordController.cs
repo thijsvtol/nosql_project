@@ -65,6 +65,7 @@ namespace NOSQL_Project_groep8.Controller
                     }
                     EmailController emailController = new EmailController();
                     emailController.SendMail("ResetKey", email, "Your reset key is: " + key);
+                    MessageBox.Show("Email send");
 
                 }
             }
