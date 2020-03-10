@@ -112,6 +112,7 @@
     <Compile Include="Controller\IndexController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ResetPasswordController.cs" />
+    <Compile Include="Controller\UserManagementController.cs" />
     <Compile Include="Model\IncidentModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Model\KeyModel.cs" />

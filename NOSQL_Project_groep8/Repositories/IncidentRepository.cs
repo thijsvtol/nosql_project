@@ -16,7 +16,7 @@ namespace NOSQL_Project_groep8.Repositories
         {
             ConfigDB = new ConfigDB();
         }
-
+        
         public int CountOpenIncidents()
         {
             //Select collection
@@ -49,6 +49,16 @@ namespace NOSQL_Project_groep8.Repositories
             var filter = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open");
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
+        }
+
+
+        public List<IncidentModel> GetAllIncidents()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            List<IncidentModel> incidents = collection.Find(Builders<IncidentModel>.Filter.Empty).ToList();
+
+            return incidents;
         }
     }
 }

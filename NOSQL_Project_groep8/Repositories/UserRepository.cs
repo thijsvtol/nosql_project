@@ -65,5 +65,6 @@ namespace NOSQL_Project_groep8.Repositories
             UserModel user = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
             return user.UserId + 1;
         }
+
     }
 }
