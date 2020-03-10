@@ -23,5 +23,8 @@ namespace NOSQL_Project_groep8.Model
         public string TypeOfUser { get; set; }
 
         public string Location { get; set; }
+
+        public int NumberOfTickets { get; set; }
+
     }
 }
