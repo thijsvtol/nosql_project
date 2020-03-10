@@ -66,5 +66,14 @@ namespace NOSQL_Project_groep8.Repositories
             return user.UserId + 1;
         }
 
+        public int CountExcistingUsers(string username, string email)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            //Count documents (select)
+            var filter = Builders<UserModel>.Filter.Eq(x => x.Username, username) | Builders<UserModel>.Filter.Eq(x => x.Email, email);
+            double count = collection.CountDocuments(filter);
+            return Convert.ToInt32(count);
+        }
     }
 }
