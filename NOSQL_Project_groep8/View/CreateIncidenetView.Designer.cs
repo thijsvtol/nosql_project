@@ -561,6 +561,9 @@
         private System.Windows.Forms.Label Lbl_subjectIcident;
         private System.Windows.Forms.Label Lbl_dateTime;
         private System.Windows.Forms.ComboBox cb_deadlineFollowUp;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

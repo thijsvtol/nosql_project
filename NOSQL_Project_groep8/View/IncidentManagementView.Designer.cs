@@ -255,6 +255,9 @@
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.TextBox txt_filterTickets;
         private System.Windows.Forms.ColumnHeader Email;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

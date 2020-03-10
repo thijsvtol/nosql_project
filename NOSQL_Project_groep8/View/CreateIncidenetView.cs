@@ -55,6 +55,22 @@ namespace NOSQL_Project_groep8.View
 /*        public CreateIncidenetView(IncidentModel incident)
         {
             InitializeComponent();
+<<<<<<< Updated upstream
+
+            MessageBox.Show(incident.DateCreated+ incident.Subject+ incident.Type+ incident.Username+incident.Priority+ incident.DateDeadline, incident.Location+ incident.Status+ incident.Description );
+            this.incident = incident;
+            dateTimePicker1.Value = incident.DateCreated;
+            txtSubject.Text = incident.Subject;
+            cbType.Text = incident.Type;
+            cbUsers.Text = incident.Username;
+            cbPriority.Text = incident.Priority;
+            cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
+            txtLocation.Text = incident.Location;
+            cbStatus.Text = incident.Status;
+            txt_description.Text = incident.Description;
+
+>>>>>>> Stashed changes
+=======
 
             MessageBox.Show(incident.DateCreated+ incident.Subject+ incident.Type+ incident.Username+incident.Priority+ incident.DateDeadline, incident.Location+ incident.Status+ incident.Description );
             this.incident = incident;
@@ -85,6 +101,7 @@ namespace NOSQL_Project_groep8.View
             cbUsers.SelectedIndex = -1;
             txtSubject.Text = "";
             cb_deadlineFollowUp.SelectedIndex = -1;
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         }
 
@@ -145,6 +162,8 @@ namespace NOSQL_Project_groep8.View
             parent.HideViews("UCincidentManagementView");
         }
 =======
+=======
+>>>>>>> Stashed changes
         }
 
         private void btnAddIncident_Click_1(object sender, EventArgs e)

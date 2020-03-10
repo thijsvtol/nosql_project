@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;
@@ -26,6 +27,8 @@ namespace NOSQL_Project_groep8.Controller
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;
@@ -66,4 +69,7 @@ namespace NOSQL_Project_groep8.Controller
         }
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

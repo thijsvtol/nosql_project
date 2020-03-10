@@ -15,10 +15,13 @@ namespace NOSQL_Project_groep8.View
     public partial class IncidentManagementView : UserControl
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
 
        
 =======
+=======
+>>>>>>> Stashed changes
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
 
         //class voor het sorteren van de listview
@@ -26,6 +29,9 @@ namespace NOSQL_Project_groep8.View
 
         List<IncidentModel> incidents = new List<IncidentModel>();
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         private List<IncidentModel> GetAllIncidents()
         {
@@ -36,15 +42,19 @@ namespace NOSQL_Project_groep8.View
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         public IncidentManagementView()
         {
             InitializeComponent();
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             List<IncidentModel> incidents = GetAllIncidents();
             foreach (IncidentModel incident in incidents)
@@ -77,6 +87,8 @@ namespace NOSQL_Project_groep8.View
 
         
 =======
+=======
+>>>>>>> Stashed changes
             lvwColumnSorter = new ListViewColumnSorter();
             this.lv_incidents.ListViewItemSorter = lvwColumnSorter;
 
