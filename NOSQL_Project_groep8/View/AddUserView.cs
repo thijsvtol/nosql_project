@@ -20,6 +20,8 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
             tbPassword.PasswordChar = '\u25CF';
+            cbTypeEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         
         private void ShowParentUserController()
@@ -55,7 +57,6 @@ namespace NOSQL_Project_groep8.View
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            //Check comboboxes
             if (Controller.CheckComboboxes(cbTypeEmployee, cbLocation))
             {
                 //Fill model
@@ -74,7 +75,6 @@ namespace NOSQL_Project_groep8.View
                 //Add user in DB
                 if (Controller.AddUser(checkBoxAccept.Checked, user))
                 {
-                    MessageBox.Show("User added to the database!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowParentUserController();
                     ClearFields();
                 }

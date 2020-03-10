@@ -8,6 +8,7 @@ using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.Repositories;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace NOSQL_Project_groep8.Controller
 {
@@ -15,35 +16,55 @@ namespace NOSQL_Project_groep8.Controller
     {
         private UserService UserService = new UserService();
         private UserRepository repository = new UserRepository();
+        private List<string> ErrorList = new List<string>();
 
         public bool AddUser(bool checkBox, UserModel user)
         {
-            //Check if all fiels are not empty
-            if (ValidateInputFields(user))
+            ValidateInput(user);
+            if (ErrorList.Count == 0)
             {
-                MessageBox.Show("Please fill in all fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                try
+                {
+                    InsertUser(user, checkBox);
+                }
+                catch (Exception e)
+                {
+                    ErrorList.Add("Could not insert the user into the database:\r\n" + e.Message);
+                }
+            }
+
+            if (ErrorList.Count == 0)
+            {
+                MessageBox.Show("User added to the database!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
             }
             else
             {
-                if (IsValidPassword(user.Password))
-                {
-                    try
-                    {
-                        InsertUser(user, checkBox);
-                        return true;
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show("Could not insert the user into the database:\r\n" + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Your password must contain:\r\n1. At least 1 upper case letter\r\n2. At least 1 number\r\n3. Password must be at least 8 characters long", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                DisplayErrors();
+                return false;
+            }
+        }
+
+        private void ValidateInput(UserModel user)
+        {
+            //Clear list
+            ErrorList.Clear();
+            //Check if all fiels are not empty
+            if (ValidateInputFields(user))
+            {
+                ErrorList.Add("Please fill in all fields.\r\n");
+            }
+            if (repository.CountExcistingUsers(user.Username, user.Email) != 0)
+            {
+                ErrorList.Add("Email or Username allready exists!");
+            }
+            if (!IsValidPassword(user.Password))
+            {
+                ErrorList.Add("Your password must contain:\r\n1. At least 1 upper case letter\r\n2. At least 1 number\r\n3. Password must be at least 8 characters long");
+            }
+            if (!new EmailAddressAttribute().IsValid(user.Email))
+            {
+                ErrorList.Add("Emailaddress has an invalid input.");
             }
         }
 
@@ -65,17 +86,14 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
-        public bool CheckComboboxes(ComboBox type, ComboBox location)
+        private void DisplayErrors()
         {
-            if(type.SelectedItem == null || location.SelectedItem == null)
+            string errorOutput = "";
+            foreach (string item in ErrorList)
             {
-                MessageBox.Show("Please select an item in all the comboboxes!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                errorOutput += "• " + item + "\r\n";
             }
-            else
-            {
-                return true;
-            }
+            MessageBox.Show(errorOutput, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private bool IsValidPassword(string plainText)
@@ -97,6 +115,20 @@ namespace NOSQL_Project_groep8.Controller
             ls.Add(string.IsNullOrEmpty(user.Password));
 
             return ls.Any(a => a.Equals(true));
+        }
+
+        public bool CheckComboboxes(ComboBox type, ComboBox location)
+        {
+            if (type.SelectedItem == null || location.SelectedItem == null)
+            {
+                ErrorList.Add("Please select an item in all comboboxes.\r\n");
+                DisplayErrors();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

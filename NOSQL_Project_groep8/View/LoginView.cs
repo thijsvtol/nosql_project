@@ -29,7 +29,7 @@ namespace NOSQL_Project_groep8.View
         {
             LoginController loginController = new LoginController();
 
-            String username = txtUsername.Text.ToLower();
+            String username = txtUsername.Text;
             string password = txtPassword.Text;
 
             if (cbRememberMe.Checked)
