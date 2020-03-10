@@ -18,8 +18,6 @@ namespace NOSQL_Project_groep8
         IndexController indexController = new IndexController();
         UserManagementView user = new UserManagementView();
 
-        public UserModel CurrentUser;
-
         public Index()
         {
             InitializeComponent();
@@ -49,7 +47,12 @@ namespace NOSQL_Project_groep8
 
         public void SetCurrentUser(UserModel user)
         {
-            CurrentUser = user;
+            indexController.CurrentUser = user;
+        }
+
+        public UserModel GetCurrentUser()
+        {
+            return indexController.CurrentUser;
         }
 
         public void EnableButtons()
