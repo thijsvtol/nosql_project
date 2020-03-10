@@ -57,7 +57,11 @@ namespace NOSQL_Project_groep8.Controller
             if (sendEmail)
             {
                 //Send mail
-                SendMail();
+                EmailController email = new EmailController();
+                string subject = "Your account has been added to NoDesk: TGG";
+                string toMail = user.Email;
+                string body = "Dear " + user.FirstName + ",\r\n\r\nYour username is: " + user.Username + "\r\nYour password: "+user.Password + "\r\n\r\nYours sincerly,\r\n\r\nNoDesk";
+                email.SendMail(subject,toMail,body);
             }
         }
 
@@ -72,11 +76,6 @@ namespace NOSQL_Project_groep8.Controller
             {
                 return true;
             }
-        }
-
-        private void SendMail()
-        {
-
         }
 
         private bool IsValidPassword(string plainText)
