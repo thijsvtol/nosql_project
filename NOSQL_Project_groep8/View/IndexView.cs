@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.View;
 using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8
@@ -15,8 +16,9 @@ namespace NOSQL_Project_groep8
     public partial class Index : Form
     {
         IndexController indexController = new IndexController();
+        UserManagementView user = new UserManagementView();
 
-        UserModel CurrentUser;
+        public UserModel CurrentUser;
 
         public Index()
         {

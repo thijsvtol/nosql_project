@@ -24,21 +24,22 @@ namespace NOSQL_Project_groep8.View
 
         }
 
-        private void FillListView()
+
+        public void FillListView()
         {
             listViewUser.Items.Clear();
-            List<UserModel> users = GetAllUsers();
-            foreach (UserModel user in users)
-            {
-                ListViewItem item = new ListViewItem(user.UserId.ToString());
-                item.SubItems.Add(user.Email);
-                item.SubItems.Add(user.FirstName);
-                item.SubItems.Add(user.LastName);
-                item.SubItems.Add(user.NumberOfTickets.ToString());
-                listViewUser.Items.Add(item);
-            }
-
+                List<UserModel> users = GetAllUsers();
+                foreach (UserModel user in users)
+                {
+                    ListViewItem item = new ListViewItem(user.UserId.ToString());
+                    item.SubItems.Add(user.Email);
+                    item.SubItems.Add(user.FirstName);
+                    item.SubItems.Add(user.LastName);
+                    item.SubItems.Add(user.NumberOfTickets.ToString());
+                    listViewUser.Items.Add(item);
+                }
         }
+
         public UserManagementView()
         {
             InitializeComponent();
@@ -54,7 +55,8 @@ namespace NOSQL_Project_groep8.View
 
         private void txtFilterEmail_TextChanged(object sender, EventArgs e)
         {
-            if(txtFilterEmail.Text == "")
+            Index parent = (Index)this.Parent;
+            if (txtFilterEmail.Text == "")
             {
                 FillListView();
             }
@@ -69,6 +71,24 @@ namespace NOSQL_Project_groep8.View
                 }
             }
 
+        }
+
+        private void UserManagementView_Load(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+
+            if (parent.CurrentUser.TypeOfUser == "Employee")
+            {
+                btnAddNewUser.Hide();
+                txtFilterEmail.Hide();
+                foreach (ListViewItem item in listViewUser.Items)
+                {
+                    if (item.SubItems[0].Text.ToString() != parent.CurrentUser.UserId.ToString())
+                    {
+                        listViewUser.Items.Remove(item);
+                    }
+                }
+            }
         }
     }
 }
