@@ -77,13 +77,13 @@ namespace NOSQL_Project_groep8.View
         {
             Index parent = (Index)this.Parent;
 
-            if (parent.CurrentUser.TypeOfUser == "Employee")
+            if (parent.GetCurrentUser().TypeOfUser == "Employee")
             {
                 btnAddNewUser.Hide();
                 txtFilterEmail.Hide();
                 foreach (ListViewItem item in listViewUser.Items)
                 {
-                    if (item.SubItems[0].Text.ToString() != parent.CurrentUser.UserId.ToString())
+                    if (item.SubItems[0].Text.ToString() != parent.GetCurrentUser().UserId.ToString())
                     {
                         listViewUser.Items.Remove(item);
                     }
