@@ -16,5 +16,6 @@ namespace NOSQL_Project_groep8.Model
         public string Type { get; set; }
         public string Priority { get; set; }
         public string Location { get; set; }
+        public string Description { get; set; }
     }
 }

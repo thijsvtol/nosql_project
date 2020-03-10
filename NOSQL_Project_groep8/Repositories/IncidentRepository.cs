@@ -17,15 +17,6 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
-        public List<UserModel> GetAllUsers()
-        {
-            //Select collection
-            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
-            List<UserModel> users = collection.Find(Builders<UserModel>.Filter.Empty).ToList();
-
-            return users;
-        }
-
         public int CountOpenIncidents()
         {
             //Select collection
