@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
 using NOSQL_Project_groep8.Model;
+using NOSQL_Project_groep8.View;
 
 namespace NOSQL_Project_groep8
 {
     public partial class Index : Form
     {
         IndexController indexController = new IndexController();
+        IncidentManagementView managementView = new IncidentManagementView();
 
         UserModel CurrentUser;
 
@@ -69,6 +71,7 @@ namespace NOSQL_Project_groep8
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)
         {
+            managementView.listViewLoad();
             HideViews("UCincidentManagementView");
         }
 

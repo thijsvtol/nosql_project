@@ -61,5 +61,6 @@ namespace NOSQL_Project_groep8.Repositories
 
             return incidents;
         }
+
     }
 }
