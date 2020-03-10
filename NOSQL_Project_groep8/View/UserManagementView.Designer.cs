@@ -128,6 +128,7 @@
             this.Controls.Add(this.lblUserManagementHeader);
             this.Name = "UserManagementView";
             this.Size = new System.Drawing.Size(968, 523);
+            this.Load += new System.EventHandler(this.UserManagementView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
