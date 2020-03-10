@@ -16,8 +16,7 @@ namespace NOSQL_Project_groep8.Repositories
         {
             ConfigDB = new ConfigDB();
         }
-
-
+        
         public int CountOpenIncidents()
         {
             //Select collection
