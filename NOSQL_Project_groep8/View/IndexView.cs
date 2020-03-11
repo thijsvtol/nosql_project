@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.View;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.View;
 
@@ -49,7 +50,12 @@ namespace NOSQL_Project_groep8
 
         public void SetCurrentUser(UserModel user)
         {
-            CurrentUser = user;
+            indexController.CurrentUser = user;
+        }
+
+        public UserModel GetCurrentUser()
+        {
+            return indexController.CurrentUser;
         }
 
         public void EnableButtons()
