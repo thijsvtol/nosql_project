@@ -10,21 +10,24 @@ namespace NOSQL_Project_groep8.Controller
 {
     class DashboardIncidentsController
     {
-        private static DashboardIncidentsRepository repository = new DashboardIncidentsRepository();
-        public int openIncidents = repository.CountOpenIncidents();
+        private static IncidentRepository repository = new IncidentRepository();
+        private int openIncidents = repository.CountOpenIncidents();
 
         public int CalculatePercentOpenIncidents()
         {
-            int percents = 0;
-            int openIncidents = repository.CountOpenIncidents();
-            int closedIncidents = repository.CountClosedIncidentsBeforeDealine();
-            percents = GetTotal() / openIncidents * 100;
-            return percents;
+            int total = GetTotal();
+            double percents = (double)openIncidents / total * 100;
+            return Convert.ToInt32(percents);
         }
 
-        public string GetTextForCircle()
+        public string GetTextForCircle1()
         {
-            return GetTotal().ToString() + "/" + openIncidents.ToString();
+            return openIncidents.ToString() +"/"+ GetTotal().ToString();
+        }
+
+        public int GetPastDeadlineIncidents()
+        {
+            return repository.CountPastDeadlineIncidents();
         }
 
         private int GetTotal()

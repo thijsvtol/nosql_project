@@ -119,9 +119,8 @@
             this.circleDiagramUnresolvedIncidents.SuperscriptMargin = new System.Windows.Forms.Padding(10, 40, 0, 0);
             this.circleDiagramUnresolvedIncidents.SuperscriptText = "";
             this.circleDiagramUnresolvedIncidents.TabIndex = 0;
-            this.circleDiagramUnresolvedIncidents.Text = "1/2";
+            this.circleDiagramUnresolvedIncidents.Text = "0/0";
             this.circleDiagramUnresolvedIncidents.TextMargin = new System.Windows.Forms.Padding(0);
-            this.circleDiagramUnresolvedIncidents.Value = 68;
             // 
             // panel1
             // 
@@ -198,7 +197,6 @@
             this.circleDiagramPastIncidents.TabIndex = 1;
             this.circleDiagramPastIncidents.Text = "0";
             this.circleDiagramPastIncidents.TextMargin = new System.Windows.Forms.Padding(0);
-            this.circleDiagramPastIncidents.Value = 68;
             // 
             // btnShowListDashboard
             // 

@@ -8,18 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.View;
+using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8
 {
     public partial class Index : Form
     {
         IndexController indexController = new IndexController();
+        UserManagementView user = new UserManagementView();
 
         public Index()
         {
             InitializeComponent();
-            //get sample data to label (label placed in header)
-            lblSampleData.Text = indexController.GetSampleData();
+            menuDashboard.Enabled = false;
+            menuIncidentManagement.Enabled = false;
+            menuUserManagement.Enabled = false;
         }
 
         //Hide all panels exept the header
@@ -41,6 +45,22 @@ namespace NOSQL_Project_groep8
             }
         }
 
+        public void SetCurrentUser(UserModel user)
+        {
+            indexController.CurrentUser = user;
+        }
+
+        public UserModel GetCurrentUser()
+        {
+            return indexController.CurrentUser;
+        }
+
+        public void EnableButtons()
+        {
+            menuDashboard.Enabled = true;
+            menuIncidentManagement.Enabled = true;
+            menuUserManagement.Enabled = true;
+        }
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///

@@ -13,7 +13,7 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class DashboardIncidentsView : UserControl
     {
-        DashboardIncidentsController controller = new DashboardIncidentsController();
+        private DashboardIncidentsController controller = new DashboardIncidentsController();
 
         public DashboardIncidentsView()
         {
@@ -29,11 +29,12 @@ namespace NOSQL_Project_groep8.View
         {
             //Circle1
             circleDiagramUnresolvedIncidents.Value = controller.CalculatePercentOpenIncidents();
-            circleDiagramUnresolvedIncidents.Text = controller.GetTextForCircle();
+            circleDiagramUnresolvedIncidents.Text = controller.GetTextForCircle1();
             circleDiagramUnresolvedIncidents.Update();
 
             //Circle2
-            circleDiagramPastIncidents.Value = 0;
+            circleDiagramPastIncidents.Value = controller.GetPastDeadlineIncidents()*20;
+            circleDiagramPastIncidents.Text = controller.GetPastDeadlineIncidents().ToString();
             circleDiagramPastIncidents.Update();
         }
 
@@ -43,9 +44,8 @@ namespace NOSQL_Project_groep8.View
         
         private void btnShowListDashboard_Click(object sender, EventArgs e)
         {
-            //Werkt niet --> clickable van UC naar form
-            Index index = new Index();
-            index.HideViews("UCincidentManagementView");
+            Index parent = (Index)this.Parent;
+            parent.HideViews("UCincidentManagementView");
         }
     }
 }
