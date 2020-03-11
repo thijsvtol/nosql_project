@@ -17,8 +17,6 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
-
-
         public int CountOpenIncidents()
         {
             //Select collection
@@ -62,5 +60,15 @@ namespace NOSQL_Project_groep8.Repositories
             return incidents;
         }
 
+
+
+        public List<IncidentModel> GetAllIncidents()
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            List<IncidentModel> incidents = collection.Find(Builders<IncidentModel>.Filter.Empty).ToList();
+
+            return incidents;
+        }
     }
 }
