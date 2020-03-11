@@ -30,20 +30,25 @@
         {
             this.lblCreateIncidentHeader = new System.Windows.Forms.Label();
             this.cbUsers = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAddIncident = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.Deadline = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpDeadlineDate = new System.Windows.Forms.DateTimePicker();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbPriority = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
+            this.btnAddIncident = new System.Windows.Forms.Button();
+            this.Btn_cancelCreationIncident = new System.Windows.Forms.Button();
+            this.txt_description = new System.Windows.Forms.RichTextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Lbl_description = new System.Windows.Forms.Label();
+            this.Lbl_deadlineFollowup = new System.Windows.Forms.Label();
+            this.Lbl_priority = new System.Windows.Forms.Label();
+            this.Lbl_reportedByUser = new System.Windows.Forms.Label();
+            this.Lbl_typeOfIncident = new System.Windows.Forms.Label();
+            this.Lbl_subjectIcident = new System.Windows.Forms.Label();
+            this.Lbl_dateTime = new System.Windows.Forms.Label();
+            this.cb_deadlineFollowUp = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCreateIncidentHeader
@@ -60,117 +65,55 @@
             // cbUsers
             // 
             this.cbUsers.FormattingEnabled = true;
-            this.cbUsers.Location = new System.Drawing.Point(188, 86);
+            this.cbUsers.Location = new System.Drawing.Point(208, 173);
             this.cbUsers.Name = "cbUsers";
-            this.cbUsers.Size = new System.Drawing.Size(145, 21);
+            this.cbUsers.Size = new System.Drawing.Size(200, 21);
             this.cbUsers.TabIndex = 22;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "User";
-            // 
-            // btnAddIncident
-            // 
-            this.btnAddIncident.Location = new System.Drawing.Point(113, 349);
-            this.btnAddIncident.Name = "btnAddIncident";
-            this.btnAddIncident.Size = new System.Drawing.Size(75, 23);
-            this.btnAddIncident.TabIndex = 20;
-            this.btnAddIncident.Text = "Save Incident";
-            this.btnAddIncident.UseVisualStyleBackColor = true;
-            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 168);
+            this.label3.Location = new System.Drawing.Point(564, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Status";
             // 
-            // Deadline
-            // 
-            this.Deadline.AutoSize = true;
-            this.Deadline.Location = new System.Drawing.Point(76, 145);
-            this.Deadline.Name = "Deadline";
-            this.Deadline.Size = new System.Drawing.Size(49, 13);
-            this.Deadline.TabIndex = 18;
-            this.Deadline.Text = "Deadline";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Subject";
-            // 
-            // dtpDeadlineDate
-            // 
-            this.dtpDeadlineDate.Location = new System.Drawing.Point(188, 139);
-            this.dtpDeadlineDate.Name = "dtpDeadlineDate";
-            this.dtpDeadlineDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpDeadlineDate.TabIndex = 15;
-            // 
             // txtSubject
             // 
-            this.txtSubject.Location = new System.Drawing.Point(188, 113);
+            this.txtSubject.Location = new System.Drawing.Point(208, 101);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(145, 20);
+            this.txtSubject.Size = new System.Drawing.Size(200, 20);
             this.txtSubject.TabIndex = 14;
             // 
             // cbStatus
             // 
             this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(188, 165);
+            this.cbStatus.Location = new System.Drawing.Point(633, 101);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(145, 21);
+            this.cbStatus.Size = new System.Drawing.Size(200, 21);
             this.cbStatus.TabIndex = 23;
             // 
             // cbPriority
             // 
             this.cbPriority.FormattingEnabled = true;
-            this.cbPriority.Location = new System.Drawing.Point(188, 219);
+            this.cbPriority.Location = new System.Drawing.Point(208, 204);
             this.cbPriority.Name = "cbPriority";
-            this.cbPriority.Size = new System.Drawing.Size(145, 21);
+            this.cbPriority.Size = new System.Drawing.Size(200, 21);
             this.cbPriority.TabIndex = 25;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 222);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Priority";
             // 
             // cbType
             // 
             this.cbType.FormattingEnabled = true;
-            this.cbType.Location = new System.Drawing.Point(188, 192);
+            this.cbType.Location = new System.Drawing.Point(208, 136);
             this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(145, 21);
+            this.cbType.Size = new System.Drawing.Size(200, 21);
             this.cbType.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(76, 195);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Type";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(76, 249);
+            this.label6.Location = new System.Drawing.Point(564, 76);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 29;
@@ -178,30 +121,151 @@
             // 
             // txtLocation
             // 
-            this.txtLocation.Location = new System.Drawing.Point(188, 246);
+            this.txtLocation.Location = new System.Drawing.Point(633, 73);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(145, 20);
+            this.txtLocation.Size = new System.Drawing.Size(200, 20);
             this.txtLocation.TabIndex = 28;
+            // 
+            // btnAddIncident
+            // 
+            this.btnAddIncident.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAddIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddIncident.ForeColor = System.Drawing.Color.White;
+            this.btnAddIncident.Location = new System.Drawing.Point(507, 432);
+            this.btnAddIncident.Name = "btnAddIncident";
+            this.btnAddIncident.Size = new System.Drawing.Size(137, 41);
+            this.btnAddIncident.TabIndex = 45;
+            this.btnAddIncident.Text = "SUBMIT TICKET";
+            this.btnAddIncident.UseVisualStyleBackColor = false;
+            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click_1);
+            // 
+            // Btn_cancelCreationIncident
+            // 
+            this.Btn_cancelCreationIncident.BackColor = System.Drawing.Color.White;
+            this.Btn_cancelCreationIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_cancelCreationIncident.Location = new System.Drawing.Point(347, 432);
+            this.Btn_cancelCreationIncident.Name = "Btn_cancelCreationIncident";
+            this.Btn_cancelCreationIncident.Size = new System.Drawing.Size(137, 41);
+            this.Btn_cancelCreationIncident.TabIndex = 44;
+            this.Btn_cancelCreationIncident.Text = "CANCEL";
+            this.Btn_cancelCreationIncident.UseVisualStyleBackColor = false;
+            this.Btn_cancelCreationIncident.Click += new System.EventHandler(this.Btn_cancelCreationIncident_Click);
+            // 
+            // txt_description
+            // 
+            this.txt_description.Location = new System.Drawing.Point(633, 136);
+            this.txt_description.Name = "txt_description";
+            this.txt_description.Size = new System.Drawing.Size(292, 178);
+            this.txt_description.TabIndex = 43;
+            this.txt_description.Text = "";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(208, 70);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 37;
+            // 
+            // Lbl_description
+            // 
+            this.Lbl_description.AutoSize = true;
+            this.Lbl_description.Location = new System.Drawing.Point(564, 139);
+            this.Lbl_description.Name = "Lbl_description";
+            this.Lbl_description.Size = new System.Drawing.Size(63, 13);
+            this.Lbl_description.TabIndex = 36;
+            this.Lbl_description.Text = "Description:";
+            // 
+            // Lbl_deadlineFollowup
+            // 
+            this.Lbl_deadlineFollowup.AutoSize = true;
+            this.Lbl_deadlineFollowup.Location = new System.Drawing.Point(20, 238);
+            this.Lbl_deadlineFollowup.Name = "Lbl_deadlineFollowup";
+            this.Lbl_deadlineFollowup.Size = new System.Drawing.Size(102, 13);
+            this.Lbl_deadlineFollowup.TabIndex = 35;
+            this.Lbl_deadlineFollowup.Text = "Deadline/Follow up:";
+            // 
+            // Lbl_priority
+            // 
+            this.Lbl_priority.AutoSize = true;
+            this.Lbl_priority.Location = new System.Drawing.Point(20, 207);
+            this.Lbl_priority.Name = "Lbl_priority";
+            this.Lbl_priority.Size = new System.Drawing.Size(41, 13);
+            this.Lbl_priority.TabIndex = 34;
+            this.Lbl_priority.Text = "Priority:";
+            // 
+            // Lbl_reportedByUser
+            // 
+            this.Lbl_reportedByUser.AutoSize = true;
+            this.Lbl_reportedByUser.Location = new System.Drawing.Point(20, 173);
+            this.Lbl_reportedByUser.Name = "Lbl_reportedByUser";
+            this.Lbl_reportedByUser.Size = new System.Drawing.Size(91, 13);
+            this.Lbl_reportedByUser.TabIndex = 33;
+            this.Lbl_reportedByUser.Text = "Reported by user:";
+            // 
+            // Lbl_typeOfIncident
+            // 
+            this.Lbl_typeOfIncident.AutoSize = true;
+            this.Lbl_typeOfIncident.Location = new System.Drawing.Point(20, 139);
+            this.Lbl_typeOfIncident.Name = "Lbl_typeOfIncident";
+            this.Lbl_typeOfIncident.Size = new System.Drawing.Size(86, 13);
+            this.Lbl_typeOfIncident.TabIndex = 32;
+            this.Lbl_typeOfIncident.Text = "Type of incident:";
+            // 
+            // Lbl_subjectIcident
+            // 
+            this.Lbl_subjectIcident.AutoSize = true;
+            this.Lbl_subjectIcident.Location = new System.Drawing.Point(20, 108);
+            this.Lbl_subjectIcident.Name = "Lbl_subjectIcident";
+            this.Lbl_subjectIcident.Size = new System.Drawing.Size(95, 13);
+            this.Lbl_subjectIcident.TabIndex = 31;
+            this.Lbl_subjectIcident.Text = "Subject of incident";
+            // 
+            // Lbl_dateTime
+            // 
+            this.Lbl_dateTime.AutoSize = true;
+            this.Lbl_dateTime.Location = new System.Drawing.Point(19, 76);
+            this.Lbl_dateTime.Name = "Lbl_dateTime";
+            this.Lbl_dateTime.Size = new System.Drawing.Size(103, 13);
+            this.Lbl_dateTime.TabIndex = 30;
+            this.Lbl_dateTime.Text = "Date/Time reported:";
+            // 
+            // cb_deadlineFollowUp
+            // 
+            this.cb_deadlineFollowUp.FormattingEnabled = true;
+            this.cb_deadlineFollowUp.Items.AddRange(new object[] {
+            "7 days",
+            "14 days",
+            "28 days",
+            "6 months"});
+            this.cb_deadlineFollowUp.Location = new System.Drawing.Point(208, 238);
+            this.cb_deadlineFollowUp.Name = "cb_deadlineFollowUp";
+            this.cb_deadlineFollowUp.Size = new System.Drawing.Size(200, 21);
+            this.cb_deadlineFollowUp.TabIndex = 46;
             // 
             // CreateIncidenetView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.cb_deadlineFollowUp);
+            this.Controls.Add(this.btnAddIncident);
+            this.Controls.Add(this.Btn_cancelCreationIncident);
+            this.Controls.Add(this.txt_description);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.Lbl_description);
+            this.Controls.Add(this.Lbl_deadlineFollowup);
+            this.Controls.Add(this.Lbl_priority);
+            this.Controls.Add(this.Lbl_reportedByUser);
+            this.Controls.Add(this.Lbl_typeOfIncident);
+            this.Controls.Add(this.Lbl_subjectIcident);
+            this.Controls.Add(this.Lbl_dateTime);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtLocation);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.cbPriority);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.cbUsers);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnAddIncident);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Deadline);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpDeadlineDate);
             this.Controls.Add(this.txtSubject);
             this.Controls.Add(this.lblCreateIncidentHeader);
             this.Name = "CreateIncidenetView";
@@ -215,19 +279,24 @@
 
         private System.Windows.Forms.Label lblCreateIncidentHeader;
         private System.Windows.Forms.ComboBox cbUsers;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAddIncident;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label Deadline;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpDeadlineDate;
         private System.Windows.Forms.TextBox txtSubject;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ComboBox cbPriority;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbType;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Button btnAddIncident;
+        private System.Windows.Forms.Button Btn_cancelCreationIncident;
+        private System.Windows.Forms.RichTextBox txt_description;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label Lbl_description;
+        private System.Windows.Forms.Label Lbl_deadlineFollowup;
+        private System.Windows.Forms.Label Lbl_priority;
+        private System.Windows.Forms.Label Lbl_reportedByUser;
+        private System.Windows.Forms.Label Lbl_typeOfIncident;
+        private System.Windows.Forms.Label Lbl_subjectIcident;
+        private System.Windows.Forms.Label Lbl_dateTime;
+        private System.Windows.Forms.ComboBox cb_deadlineFollowUp;
     }
 }

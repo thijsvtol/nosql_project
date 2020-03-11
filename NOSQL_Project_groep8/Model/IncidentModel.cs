@@ -17,5 +17,7 @@ namespace NOSQL_Project_groep8.Model
         public string Priority { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
+        public string UserEmail { get; set; }
+        public string Username { get; set; }
     }
 }
