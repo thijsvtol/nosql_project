@@ -52,59 +52,22 @@ namespace NOSQL_Project_groep8.View
         }
 
 
-        /*        public CreateIncidenetView(IncidentModel incident)
-                {
-                    InitializeComponent();
-        <<<<<<< Updated upstream
-        <<<<<<< Updated upstream
+        public CreateIncidenetView(IncidentModel incident)
+        {
+            InitializeComponent();
 
-                    MessageBox.Show(incident.DateCreated+ incident.Subject+ incident.Type+ incident.Username+incident.Priority+ incident.DateDeadline, incident.Location+ incident.Status+ incident.Description );
-                    this.incident = incident;
-                    dateTimePicker1.Value = incident.DateCreated;
-                    txtSubject.Text = incident.Subject;
-                    cbType.Text = incident.Type;
-                    cbUsers.Text = incident.Username;
-                    cbPriority.Text = incident.Priority;
-                    cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
-                    txtLocation.Text = incident.Location;
-                    cbStatus.Text = incident.Status;
-                    txt_description.Text = incident.Description;
-
-        >>>>>>> Stashed changes
-        =======
-
-                    MessageBox.Show(incident.DateCreated+ incident.Subject+ incident.Type+ incident.Username+incident.Priority+ incident.DateDeadline, incident.Location+ incident.Status+ incident.Description );
-                    this.incident = incident;
-                    dateTimePicker1.Value = incident.DateCreated;
-                    txtSubject.Text = incident.Subject;
-                    cbType.Text = incident.Type;
-                    cbUsers.Text = incident.Username;
-                    cbPriority.Text = incident.Priority;
-                    cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
-                    txtLocation.Text = incident.Location;
-                    cbStatus.Text = incident.Status;
-                    txt_description.Text = incident.Description;
-
-        >>>>>>> Stashed changes
-
-        =======
-
-                    MessageBox.Show(incident.DateCreated+ incident.Subject+ incident.Type+ incident.Username+incident.Priority+ incident.DateDeadline, incident.Location+ incident.Status+ incident.Description );
-                    this.incident = incident;
-                    dateTimePicker1.Value = incident.DateCreated;
-                    txtSubject.Text = incident.Subject;
-                    cbType.Text = incident.Type;
-                    cbUsers.Text = incident.Username;
-                    cbPriority.Text = incident.Priority;
-                    cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
-                    txtLocation.Text = incident.Location;
-                    cbStatus.Text = incident.Status;
-                    txt_description.Text = incident.Description;
-
-
-        >>>>>>> Stashed changes
-
-                }*/
+            MessageBox.Show(incident.DateCreated + incident.Subject + incident.Type + incident.Username + incident.Priority + incident.DateDeadline, incident.Location + incident.Status + incident.Description);
+            this.incident = incident;
+            dateTimePicker1.Value = incident.DateCreated;
+            txtSubject.Text = incident.Subject;
+            cbType.Text = incident.Type;
+            cbUsers.Text = incident.Username;
+            cbPriority.Text = incident.Priority;
+            cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
+            txtLocation.Text = incident.Location;
+            cbStatus.Text = incident.Status;
+            txt_description.Text = incident.Description;
+        }
 
         private List<UserModel> GetUsers()
         {
