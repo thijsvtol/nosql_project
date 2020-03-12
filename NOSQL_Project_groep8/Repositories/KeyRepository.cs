@@ -16,11 +16,11 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
         
-        public KeyModel GetKey(string key)
+        public KeyModel GetKey(string key, string email)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
             var builder = Builders<KeyModel>.Filter;
-            var filter = builder.Eq(x => x.Key, key);
+            var filter = builder.Eq(x => x.Key, key) & builder.Eq(x => x.Email, email);
             return collection.Find(filter).FirstOrDefault();
         }
 
