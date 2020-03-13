@@ -25,7 +25,7 @@ namespace NOSQL_Project_groep8.Controller
             {
                 foreach (var user in users)
                 {
-                    if(user.UserId == incident.User)
+                    if(user.UserId == incident.UserId)
                     {
                         user.NumberOfTickets++;
                     }
