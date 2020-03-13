@@ -36,7 +36,6 @@
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtLocation = new System.Windows.Forms.TextBox();
             this.btnAddIncident = new System.Windows.Forms.Button();
             this.Btn_cancelCreationIncident = new System.Windows.Forms.Button();
             this.txt_description = new System.Windows.Forms.RichTextBox();
@@ -49,6 +48,7 @@
             this.Lbl_subjectIcident = new System.Windows.Forms.Label();
             this.Lbl_dateTime = new System.Windows.Forms.Label();
             this.cb_deadlineFollowUp = new System.Windows.Forms.ComboBox();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCreateIncidentHeader
@@ -118,13 +118,6 @@
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 29;
             this.label6.Text = "Location";
-            // 
-            // txtLocation
-            // 
-            this.txtLocation.Location = new System.Drawing.Point(633, 73);
-            this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(200, 20);
-            this.txtLocation.TabIndex = 28;
             // 
             // btnAddIncident
             // 
@@ -242,11 +235,20 @@
             this.cb_deadlineFollowUp.Size = new System.Drawing.Size(200, 21);
             this.cb_deadlineFollowUp.TabIndex = 46;
             // 
+            // cbLocation
+            // 
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Location = new System.Drawing.Point(633, 73);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(200, 21);
+            this.cbLocation.TabIndex = 47;
+            // 
             // CreateIncidenetView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.cbLocation);
             this.Controls.Add(this.cb_deadlineFollowUp);
             this.Controls.Add(this.btnAddIncident);
             this.Controls.Add(this.Btn_cancelCreationIncident);
@@ -260,7 +262,6 @@
             this.Controls.Add(this.Lbl_subjectIcident);
             this.Controls.Add(this.Lbl_dateTime);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtLocation);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.cbPriority);
             this.Controls.Add(this.cbStatus);
@@ -285,7 +286,6 @@
         private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Button btnAddIncident;
         private System.Windows.Forms.Button Btn_cancelCreationIncident;
         private System.Windows.Forms.RichTextBox txt_description;
@@ -298,5 +298,6 @@
         private System.Windows.Forms.Label Lbl_subjectIcident;
         private System.Windows.Forms.Label Lbl_dateTime;
         private System.Windows.Forms.ComboBox cb_deadlineFollowUp;
+        private System.Windows.Forms.ComboBox cbLocation;
     }
 }

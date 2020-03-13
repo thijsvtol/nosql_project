@@ -120,8 +120,10 @@
     <Compile Include="Model\IncidentModel.cs" />
     <Compile Include="ConfigDB.cs" />
     <Compile Include="Model\KeyModel.cs" />
+    <Compile Include="Model\LocationModel.cs" />
     <Compile Include="Repositories\KeyRepository.cs" />
     <Compile Include="Repositories\IncidentRepository.cs" />
+    <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Service\IncidentService.cs" />
     <Compile Include="Service\KeyService.cs" />

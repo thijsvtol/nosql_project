@@ -97,9 +97,8 @@ namespace NOSQL_Project_groep8.View
             foreach (IncidentModel incident in incidents)
             {
                 ListViewItem item = new ListViewItem(incident.IncidentId.ToString());
-                item.SubItems.Add(incident.UserEmail);
+                item.SubItems.Add(incident.CreatedUserId.ToString());
                 item.SubItems.Add(incident.Subject);
-                item.SubItems.Add(incident.Username);
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
