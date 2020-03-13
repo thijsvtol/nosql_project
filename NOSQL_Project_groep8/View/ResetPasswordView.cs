@@ -33,24 +33,24 @@ namespace NOSQL_Project_groep8.View
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
-            resetPasswordController.SentMail(txtEmail.Text);
+            resetPasswordController.CheckUserinfo(txtEmail.Text, txtFavColor.Text);
             HidePanels("pCheckKey");
             txtResetKey.Text = string.Empty;
         }
 
         private void btnCheckKey_Click(object sender, EventArgs e)
         {
-            resetPasswordController.CheckKey(txtResetKey.Text);
+            resetPasswordController.CheckKey(txtResetKey.Text, txtKeyEmail.Text);
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
         {
-            resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text, txtResetEmail.Text);
+            resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text, txtKeyEmail.Text);
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            txtResetEmail.Text = txtEmail.Text;
+            txtKeyEmail.Text = txtEmail.Text;
         }
 
         private void btnBack_Click(object sender, EventArgs e)

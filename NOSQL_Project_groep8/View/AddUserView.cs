@@ -69,7 +69,8 @@ namespace NOSQL_Project_groep8.View
                     Phonenumber = tbPhonenumber.Text,
                     Location = cbLocation.SelectedItem.ToString(),
                     Username = tbUsername.Text,
-                    Password = tbPassword.Text
+                    Password = tbPassword.Text,
+                    FavColor = txtFavColor.Text
                 };
 
                 //Add user in DB

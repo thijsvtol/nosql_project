@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,10 @@ namespace NOSQL_Project_groep8.Controller
             UC = uc;
         }
 
+        /// <summary>
+        /// generate key when user is authorized
+        /// </summary>
+        /// <returns></returns>
         public string GenerateKey()
         {
             int length = 24;
@@ -45,11 +50,16 @@ namespace NOSQL_Project_groep8.Controller
             return str_build.ToString();
         }
 
-        public void SentMail(string email)
+        /// <summary>
+        /// check if all info was correct and send mail to the email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="favColor"></param>
+        public void CheckUserinfo(string email,string favColor)
         {
             try
             {
-                if (validdate(email))
+                if (validdate(email, favColor))
                 {
                     string key = GenerateKey();
                     //check email for existing;;
@@ -75,7 +85,13 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
-        public bool validdate(string email)
+        /// <summary>
+        /// checks if the email and favorite color are correct
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="favColor"></param>
+        /// <returns></returns>
+        public bool validdate(string email, string favColor)
         {
             if (!email.Contains('@'))
             {
@@ -87,12 +103,21 @@ namespace NOSQL_Project_groep8.Controller
                 MessageBox.Show("'" + email + "' was not found in our database \nno email was send");
                 return false;
             }
+            else if(!UserRepository.CheckFavColor(favColor, email))
+            {
+                MessageBox.Show("'" + favColor + "' was not your favorite color\nno email was send");
+                return false;
+            }
             return true;
         }
 
-        public void CheckKey(string key)
+        /// <summary>
+        /// checks if key is correct
+        /// </summary>
+        /// <param name="key"></param>
+        public void CheckKey(string key, string email)
         {
-            KeyModel keyModel = KeyRepository.GetKey(key);
+            KeyModel keyModel = KeyRepository.GetKey(key, email);
             if (keyModel != null)
             {
                 Key = key;
@@ -104,9 +129,15 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
+        /// <summary>
+        /// change passord
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="rePassword"></param>
+        /// <param name="email"></param>
         public void ChangePassword(string password, string rePassword, string email)
         {
-            if (rePassword == password)
+            if (rePassword == password && IsValidPassword(password))
             {
 
                 UserModel user = UserRepository.GetUserPasswordByEmail(email);
@@ -118,6 +149,14 @@ namespace NOSQL_Project_groep8.Controller
                 UC.HidePanels("pCheckKey");
                 UC.GoToLogin();
             }
+        }
+
+        private bool IsValidPassword(string plainText)
+        {
+            //At least a number, uppercase and minimum of 8 characters
+            Regex regex = new Regex(@"((?=.*\d)(?=.*[A-Z]).{8,50})");
+            Match match = regex.Match(plainText);
+            return match.Success;
         }
     }
 }
