@@ -50,6 +50,8 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFavColor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblAddUserHeader
@@ -66,7 +68,7 @@
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(378, 71);
+            this.tbFirstName.Location = new System.Drawing.Point(378, 54);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(277, 25);
             this.tbFirstName.TabIndex = 2;
@@ -74,7 +76,7 @@
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(378, 111);
+            this.tbLastName.Location = new System.Drawing.Point(378, 94);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(277, 25);
             this.tbLastName.TabIndex = 3;
@@ -86,7 +88,7 @@
             this.cbTypeEmployee.Items.AddRange(new object[] {
             "Employee",
             "Service desk employee"});
-            this.cbTypeEmployee.Location = new System.Drawing.Point(378, 151);
+            this.cbTypeEmployee.Location = new System.Drawing.Point(378, 134);
             this.cbTypeEmployee.Name = "cbTypeEmployee";
             this.cbTypeEmployee.Size = new System.Drawing.Size(277, 28);
             this.cbTypeEmployee.TabIndex = 4;
@@ -94,7 +96,7 @@
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(378, 191);
+            this.tbEmail.Location = new System.Drawing.Point(378, 174);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(277, 25);
             this.tbEmail.TabIndex = 5;
@@ -102,7 +104,7 @@
             // tbPhonenumber
             // 
             this.tbPhonenumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhonenumber.Location = new System.Drawing.Point(378, 231);
+            this.tbPhonenumber.Location = new System.Drawing.Point(378, 214);
             this.tbPhonenumber.Name = "tbPhonenumber";
             this.tbPhonenumber.Size = new System.Drawing.Size(277, 25);
             this.tbPhonenumber.TabIndex = 6;
@@ -116,7 +118,7 @@
             "Amsterdam",
             "Knuppeldam",
             "Headquarters (HQ)"});
-            this.cbLocation.Location = new System.Drawing.Point(378, 271);
+            this.cbLocation.Location = new System.Drawing.Point(378, 254);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(277, 28);
             this.cbLocation.TabIndex = 7;
@@ -135,7 +137,7 @@
             // lblName
             // 
             this.lblName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(226, 74);
+            this.lblName.Location = new System.Drawing.Point(226, 57);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(146, 17);
             this.lblName.TabIndex = 9;
@@ -144,7 +146,7 @@
             // lblLastName
             // 
             this.lblLastName.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(226, 114);
+            this.lblLastName.Location = new System.Drawing.Point(226, 97);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(146, 17);
             this.lblLastName.TabIndex = 10;
@@ -153,7 +155,7 @@
             // lblEmployee
             // 
             this.lblEmployee.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployee.Location = new System.Drawing.Point(226, 154);
+            this.lblEmployee.Location = new System.Drawing.Point(226, 137);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(146, 18);
             this.lblEmployee.TabIndex = 11;
@@ -162,7 +164,7 @@
             // lblEmail
             // 
             this.lblEmail.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(226, 194);
+            this.lblEmail.Location = new System.Drawing.Point(226, 177);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(146, 17);
             this.lblEmail.TabIndex = 12;
@@ -171,7 +173,7 @@
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(226, 234);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(226, 217);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(146, 17);
             this.lblPhoneNumber.TabIndex = 13;
@@ -180,7 +182,7 @@
             // lblLocation
             // 
             this.lblLocation.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocation.Location = new System.Drawing.Point(226, 274);
+            this.lblLocation.Location = new System.Drawing.Point(226, 257);
             this.lblLocation.Name = "lblLocation";
             this.lblLocation.Size = new System.Drawing.Size(146, 18);
             this.lblLocation.TabIndex = 14;
@@ -227,7 +229,7 @@
             // lblPassword
             // 
             this.lblPassword.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(226, 370);
+            this.lblPassword.Location = new System.Drawing.Point(226, 353);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(146, 17);
             this.lblPassword.TabIndex = 21;
@@ -236,7 +238,7 @@
             // lblUsername
             // 
             this.lblUsername.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(226, 330);
+            this.lblUsername.Location = new System.Drawing.Point(226, 313);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(146, 17);
             this.lblUsername.TabIndex = 20;
@@ -245,7 +247,7 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(378, 367);
+            this.tbPassword.Location = new System.Drawing.Point(378, 350);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(277, 25);
@@ -254,7 +256,7 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(378, 327);
+            this.tbUsername.Location = new System.Drawing.Point(378, 310);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(277, 25);
             this.tbUsername.TabIndex = 18;
@@ -262,16 +264,36 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(230, 312);
+            this.panel1.Location = new System.Drawing.Point(230, 295);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(425, 2);
             this.panel1.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(226, 384);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 17);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Favorite color:";
+            // 
+            // txtFavColor
+            // 
+            this.txtFavColor.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFavColor.Location = new System.Drawing.Point(378, 381);
+            this.txtFavColor.Name = "txtFavColor";
+            this.txtFavColor.PasswordChar = '*';
+            this.txtFavColor.Size = new System.Drawing.Size(277, 25);
+            this.txtFavColor.TabIndex = 23;
             // 
             // AddUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtFavColor);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
@@ -325,5 +347,7 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFavColor;
     }
 }

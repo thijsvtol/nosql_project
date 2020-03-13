@@ -75,5 +75,17 @@ namespace NOSQL_Project_groep8.Repositories
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
+
+        public bool CheckFavColor(string favColor, string email)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            //Count documents (select)
+            var filter = Builders<UserModel>.Filter.Eq(x => x.FavColor, favColor) & Builders<UserModel>.Filter.Eq(x => x.Email, email);
+            UserModel user = collection.Find(filter).FirstOrDefault();
+
+            if (user != null) return true;
+            return false;
+        }
     }
 }
