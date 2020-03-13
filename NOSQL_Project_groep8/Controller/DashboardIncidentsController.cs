@@ -15,14 +15,18 @@ namespace NOSQL_Project_groep8.Controller
 
         public int CalculatePercentOpenIncidents()
         {
-            int total = GetTotal();
-            double percents = (double)openIncidents / total * 100;
-            return Convert.ToInt32(percents);
+            if (openIncidents > 0)
+            {
+                int total = GetTotal();
+                double percents = (double)openIncidents / total * 100;
+                return Convert.ToInt32(percents);
+            }
+            return 0;
         }
 
         public string GetTextForCircle1()
         {
-            return openIncidents.ToString() +"/"+ GetTotal().ToString();
+            return openIncidents.ToString() + "/" + GetTotal().ToString();
         }
 
         public int GetPastDeadlineIncidents()
