@@ -47,9 +47,13 @@ namespace NOSQL_Project_groep8.View
 
             listViewLoad();
 
-            lv_incidents.Items[0].Focused = true;
-            lv_incidents.Items[0].Selected = true;
-            lv_incidents.FullRowSelect = true;
+            if (lv_incidents.Items.Count > 0)
+            {
+
+                lv_incidents.Items[0].Focused = true;
+                lv_incidents.Items[0].Selected = true;
+                lv_incidents.FullRowSelect = true;
+            }
 
 
 
@@ -76,7 +80,7 @@ namespace NOSQL_Project_groep8.View
 
 
 
- 
+
 
 
 
