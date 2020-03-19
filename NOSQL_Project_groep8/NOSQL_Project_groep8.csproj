@@ -146,6 +146,12 @@
     <Compile Include="View\DashboardIncidentsView.Designer.cs">
       <DependentUpon>DashboardIncidentsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ImportView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ImportView.Designer.cs">
+      <DependentUpon>ImportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IndexView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\DashboardIncidentsView.resx">
       <DependentUpon>DashboardIncidentsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ImportView.resx">
+      <DependentUpon>ImportView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\IndexView.resx">
       <DependentUpon>IndexView.cs</DependentUpon>
