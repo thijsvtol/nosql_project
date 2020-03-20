@@ -18,22 +18,9 @@ namespace NOSQL_Project_groep8.Controller
 
 
         public List<IncidentModel> GetIncidents()
-        {
-            List<UserModel> users = UserRepository.GetAllUsers();
+        {           
             List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();
-
-            foreach (var incident in incidents)
-            {
-                foreach (var user in users)
-                {
-                    if (incident.User == user.UserId)
-                    {
-                        incident.UserEmail = user.Email;
-                        incident.Username = user.FirstName + " " + user.LastName;
-                    }
-                }
-            }
-
+                       
             return incidents;
         }
     }

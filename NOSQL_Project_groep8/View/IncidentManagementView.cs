@@ -16,6 +16,7 @@ namespace NOSQL_Project_groep8.View
     {
 
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
+        UserManagementController UserController = new UserManagementController();
 
 
 
@@ -23,12 +24,20 @@ namespace NOSQL_Project_groep8.View
         private ListViewColumnSorter lvwColumnSorter;
 
         List<IncidentModel> incidents = new List<IncidentModel>();
+        List<UserModel> users = new List<UserModel>();
 
 
         private List<IncidentModel> GetAllIncidents()
         {
 
             return IncidentOverview.GetIncidents();
+
+        }
+
+        private List<UserModel> GetAllUsers()
+        {
+
+            return UserController.GetAllUsers();
 
         }
 
@@ -42,76 +51,62 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
 
-
-
-
             listViewLoad();
 
             lv_incidents.Items[0].Focused = true;
             lv_incidents.Items[0].Selected = true;
             lv_incidents.FullRowSelect = true;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
-            parent.HideViews("UCcreateIncidenetView");
+            parent.HideViews("UCcreateIncidenetView");            
         }
 
 
-
-
- 
-
-
-
-
-
         public void listViewLoad()
-        {
+        {            
 
             lvwColumnSorter = new ListViewColumnSorter();
             this.lv_incidents.ListViewItemSorter = lvwColumnSorter;
 
             incidents.Clear();
+            users.Clear();
 
             lv_incidents.Items.Clear();
+            lv_incidents.Refresh();
 
             incidents = GetAllIncidents();
+            users = GetAllUsers();
 
             foreach (IncidentModel incident in incidents)
             {
                 ListViewItem item = new ListViewItem(incident.IncidentId.ToString());
-                item.SubItems.Add(incident.UserEmail);
+                
                 item.SubItems.Add(incident.Subject);
-                item.SubItems.Add(incident.Username);
+                foreach (UserModel user in users)
+                {
+                    if (incident.UserId == user.UserId)
+                    {
+                        item.SubItems.Add(user.Email);
+                        item.SubItems.Add(user.FirstName + " " +user.LastName);
+                        break;
+                    }
+                    
+                }
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
-
+                lv_incidents.Refresh();
             }
 
             foreach (ColumnHeader ch in this.lv_incidents.Columns)
             {
                 ch.Width = -2;
             }
-
-
+            
         }
 
         private void txt_filterTickets_TextChanged(object sender, EventArgs e)
@@ -134,19 +129,20 @@ namespace NOSQL_Project_groep8.View
 
         private void lv_incidents_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            /*foreach (var incident in incidents)
+            foreach (var incident in incidents)
             {
                 if (lv_incidents.SelectedItems[0].SubItems[0].Text == incident.IncidentId.ToString())
                 {
+                    CreateIncidenetView changeIncident = new CreateIncidenetView();
+                    changeIncident.changeIncident(incident);
 
-
-                    CreateIncidenetView changeIncident = new CreateIncidenetView(incident);
                     Index parent = (Index)this.Parent;
-                    parent.HideViews("UCchangeIncidenetView");
+                    parent.HideViews("UCcreateIncidenetView");
+
                     break;
                 }
 
-            }*/
+            }
 
         }
 
@@ -175,5 +171,31 @@ namespace NOSQL_Project_groep8.View
             // sorteer...
             this.lv_incidents.Sort();
         }
+
+
+        private void IncidentManagementView_Load(object sender, EventArgs e)
+        {
+
+            Index parent = (Index)this.Parent;
+
+            if (parent.GetCurrentUser().TypeOfUser == "Employee")
+            {
+                btnCreateIncident.Hide();
+                txt_filterTickets.Hide();
+                foreach (ListViewItem item in lv_incidents.Items)
+                {
+                    if (item.SubItems[0].Text.ToString() != parent.GetCurrentUser().UserId.ToString())
+                    {
+                        lv_incidents.Items.Remove(item);
+                    }
+                }
+            }
+        }
+        public void refreshingLv()
+        {
+            listViewLoad();
+        }
+
+
     }
 }

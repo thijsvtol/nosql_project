@@ -8,7 +8,7 @@ namespace NOSQL_Project_groep8.Model
         public ObjectId _id { get; set; }
         public int IncidentId { get; set; } 
         public string Subject { get; set; }
-        public int User { get; set; }
+        public int UserId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateDeadline { get; set; }
         public DateTime DateSolved { get; set; }
@@ -17,7 +17,7 @@ namespace NOSQL_Project_groep8.Model
         public string Priority { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
-        public string UserEmail { get; set; }
-        public string Username { get; set; }
+        public int CreatedUserId { get; set; }
+
     }
 }

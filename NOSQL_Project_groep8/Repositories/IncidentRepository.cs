@@ -60,5 +60,13 @@ namespace NOSQL_Project_groep8.Repositories
 
             return incidents;
         }
+        public int AutoIncredement()
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            var sort = Builders<IncidentModel>.Sort.Descending(x => x.IncidentId);
+            var filter = Builders<IncidentModel>.Filter.Empty;
+            IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
+            return incident.IncidentId + 1;
+        }
     }
 }

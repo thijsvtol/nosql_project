@@ -11,9 +11,9 @@ namespace NOSQL_Project_groep8.Controller
 {
     public class CreateIncidentController
     {
-        private static UserRepository UserRepository = new UserRepository();
-        private static IncidentRepository IncidentRepository = new IncidentRepository();
-        private static IncidentService IncidentService = new IncidentService();
+        private UserRepository UserRepository = new UserRepository();
+        private IncidentService IncidentService = new IncidentService();
+        private IncidentRepository IncidentRepository = new IncidentRepository();
 
         public List<UserModel> GetUsers()
         {
@@ -23,8 +23,13 @@ namespace NOSQL_Project_groep8.Controller
 
         public void SaveIncident(Index index, IncidentModel incident)
         {
+            incident.IncidentId = IncidentRepository.AutoIncredement();
             IncidentService.SetNewIncident(incident);
-            index.HideViews("UCincidentManagementView");
+            index.refreshLv("UCincidentManagementView");
+        }
+        public void CancelIncident(Index index)
+        {
+            index.refreshLv("UCincidentManagementView");
         }
     }
 }
