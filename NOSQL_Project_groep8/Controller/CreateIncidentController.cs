@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NOSQL_Project_groep8.Controller
 {
@@ -16,19 +17,42 @@ namespace NOSQL_Project_groep8.Controller
         private static IncidentService IncidentService = new IncidentService();
         private static LocationRepository LocationRepository = new LocationRepository();
 
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns></returns>
         public List<UserModel> GetUsers()
         {
-            List<UserModel> users = UserRepository.GetAllUsers();
-            return users;
+            return UserRepository.GetAllUsers();
         }
 
-        public void SaveIncident(Index index, IncidentModel incident)
+        /// <summary>
+        /// Saves the incident
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="incident"></param>
+        public bool SaveIncident(Index index, IncidentModel incident)
         {
-            incident.IncidentId = IncidentRepository.AutoIncredement();
-            IncidentService.SetNewIncident(incident);
-            index.HideViews("UCincidentManagementView");
+            //checks if the required fields are filled in
+            if (string.IsNullOrEmpty(incident.Subject) || string.IsNullOrEmpty(incident.DateDeadline.ToString()) || string.IsNullOrEmpty(incident.Location) || string.IsNullOrEmpty(incident.Description))
+            {
+                MessageBox.Show("Please fill in all the details!", "Fill Forum Details!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+            {
+                incident.IncidentId = IncidentRepository.AutoIncredement();
+                IncidentService.SetNewIncident(incident);
+                index.HideViews("UCincidentManagementView");
+                MessageBox.Show("Incident was saved! You are being redirected to the overview.");
+                return true;
+            }
         }
 
+        /// <summary>
+        /// Get the status
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetStatus()
         {
             var dataSource = new List<string>();
@@ -37,6 +61,10 @@ namespace NOSQL_Project_groep8.Controller
             return dataSource;
         }
 
+        /// <summary>
+        /// Get the Types
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetType()
         {
             var type = new List<string>();
@@ -46,6 +74,10 @@ namespace NOSQL_Project_groep8.Controller
             return type;
         }
 
+        /// <summary>
+        /// Get the priorities
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetPriority()
         {
             var priority = new List<string>();
@@ -55,6 +87,10 @@ namespace NOSQL_Project_groep8.Controller
             return priority;
         }
 
+        /// <summary>
+        /// Get the Dealine Dates
+        /// </summary>
+        /// <returns></returns>
         public List<ComboboxItem> GetDeadlineDates()
         {
             var deadlineDays = new List<ComboboxItem>();
@@ -65,6 +101,10 @@ namespace NOSQL_Project_groep8.Controller
             return deadlineDays;
         }
 
+        /// <summary>
+        /// Get the locations
+        /// </summary>
+        /// <returns></returns>
         public List<LocationModel> GetLocation()
         {
             return LocationRepository.GetAllLocations();
