@@ -17,7 +17,12 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
-        public UserModel GetUserPasswordByName(String username)
+        /// <summary>
+        /// Get user by Username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public UserModel GetUser(string username)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
@@ -25,10 +30,36 @@ namespace NOSQL_Project_groep8.Repositories
             var filter = Builders<UserModel>.Filter.Eq(x => x.Username, username);
             var select = Builders<UserModel>.Projection.Include(x => x.Password);
             UserModel user = collection.Find(filter).FirstOrDefault();
-            
+           
             return user;
         }
 
+        /// <summary>
+        /// Checks if user exists with the right username and password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public bool CheckUser(string username, string password)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            //Count documents (select)
+            var filter = Builders<UserModel>.Filter.Eq(x => x.Username, username) & Builders<UserModel>.Filter.Eq(x => x.Password, password);
+            var select = Builders<UserModel>.Projection.Include(x => x.Password);
+            UserModel user = collection.Find(filter).FirstOrDefault();
+            if(user != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Get user by an Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public UserModel GetUserPasswordByEmail(String email)
         {
             //Select collection
@@ -39,15 +70,11 @@ namespace NOSQL_Project_groep8.Repositories
 
             return user;
         }
-
-        public void ChangePassword(UserModel user)
-        {
-            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
-            var builder = Builders<UserModel>.Filter;
-            var filter = builder.Eq(x => x.Email, user.Email);
-            collection.ReplaceOne(filter, user);
-
-        }
+        
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns></returns>
         public List<UserModel> GetAllUsers()
         {
             //Select collection
@@ -57,6 +84,10 @@ namespace NOSQL_Project_groep8.Repositories
             return users;
         }
 
+        /// <summary>
+        /// Gets the last Id of the Userlist
+        /// </summary>
+        /// <returns></returns>
         public int AutoIncredement()
         {
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
@@ -66,6 +97,12 @@ namespace NOSQL_Project_groep8.Repositories
             return user.UserId + 1;
         }
 
+        /// <summary>
+        /// Get the count of al the users in the DB
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public int CountExcistingUsers(string username, string email)
         {
             //Select collection
@@ -76,6 +113,12 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
+        /// Checks if a user exists with the email and favorite Color
+        /// </summary>
+        /// <param name="favColor"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public bool CheckFavColor(string favColor, string email)
         {
             //Select collection

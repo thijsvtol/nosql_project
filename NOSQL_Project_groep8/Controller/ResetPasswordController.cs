@@ -17,9 +17,10 @@ namespace NOSQL_Project_groep8.Controller
     {
         private static KeyRepository KeyRepository = new KeyRepository();
         private static KeyService keyService = new KeyService();
+        private static UserService UserService = new UserService();
         private static UserRepository UserRepository = new UserRepository();
-        string Key;
-        ResetPasswordView UC;
+        private string Key;
+        private ResetPasswordView UC;
 
         public ResetPasswordController(ResetPasswordView uc)
         {
@@ -63,7 +64,7 @@ namespace NOSQL_Project_groep8.Controller
                 {
                     string key = GenerateKey();
                     //check email for existing;;
-                    var keymodel = KeyRepository.GetKeyByEmail(email);
+                    var keymodel = KeyRepository.CheckKeyExistByEmail(email);
                     if (keymodel != null)
                     {
                         keymodel.Key = key;
@@ -139,18 +140,25 @@ namespace NOSQL_Project_groep8.Controller
         {
             if (rePassword == password && IsValidPassword(password))
             {
-
                 UserModel user = UserRepository.GetUserPasswordByEmail(email);
-
                 user.Password = password;
-                UserRepository.ChangePassword(user);
+                UserService.ChangePassword(user);
 
                 keyService.DeleteKey(Key);
                 UC.HidePanels("pCheckKey");
                 UC.GoToLogin();
             }
+            else
+            {
+                MessageBox.Show("password dit not have at least a number, uppercase and a minumum of 8 characters");
+            }
         }
 
+        /// <summary>
+        /// validate the password
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
         private bool IsValidPassword(string plainText)
         {
             //At least a number, uppercase and minimum of 8 characters

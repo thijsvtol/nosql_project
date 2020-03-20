@@ -130,7 +130,7 @@
             this.btnAddIncident.TabIndex = 45;
             this.btnAddIncident.Text = "SUBMIT TICKET";
             this.btnAddIncident.UseVisualStyleBackColor = false;
-            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click_1);
+            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
             // 
             // Btn_cancelCreationIncident
             // 
