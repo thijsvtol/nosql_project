@@ -61,9 +61,9 @@ namespace NOSQL_Project_groep8.View
         /// </summary>
         public void CleanForm()
         {
-            cbUsers.SelectedIndex = -1;
+            cbUsers.SelectedIndex = 0;
             txtSubject.Text = "";
-            cb_deadlineFollowUp.SelectedIndex = -1;
+            cb_deadlineFollowUp.SelectedIndex = 0;
         }
 
         private void btnAddIncident_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace NOSQL_Project_groep8.View
             MessageBox.Show("The incident was NOT saved! \nYou are being redirected to the overview.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Index parent = (Index)this.Parent;
             CreateIncidentController.CancelIncident(parent);
-            //parent hideview
+            parent.HideViews("UCincidentManagementView");
             CleanForm();            
         }
     }

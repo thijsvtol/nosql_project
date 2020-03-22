@@ -53,7 +53,6 @@ namespace NOSQL_Project_groep8.View
             listViewLoad();
             if (lv_incidents.Items.Count > 0)
             {
-
                 lv_incidents.Items[0].Focused = true;
                 lv_incidents.Items[0].Selected = true;
                 lv_incidents.FullRowSelect = true;
@@ -94,8 +93,6 @@ namespace NOSQL_Project_groep8.View
                         break;
                     }                    
                 }
-                item.SubItems.Add(incident.CreatedUserId.ToString());
-                item.SubItems.Add(incident.Subject);
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
@@ -111,6 +108,7 @@ namespace NOSQL_Project_groep8.View
 
         private void txt_filterTickets_TextChanged(object sender, EventArgs e)
         {
+            Index parent = (Index)this.Parent;
             if (txt_filterTickets.Text == "")
             {
                 listViewLoad();
@@ -119,7 +117,7 @@ namespace NOSQL_Project_groep8.View
             {
                 foreach (ListViewItem item in lv_incidents.Items)
                 {
-                    if (!item.SubItems[1].ToString().ToLower().Contains(txt_filterTickets.Text.ToLower()))
+                    if (!item.SubItems[2].ToString().ToLower().Contains(txt_filterTickets.Text.ToLower()))
                     {
                         lv_incidents.Items.Remove(item);
                     }

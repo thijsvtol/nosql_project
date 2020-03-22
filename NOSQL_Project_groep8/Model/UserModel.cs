@@ -25,7 +25,6 @@ namespace NOSQL_Project_groep8.Model
         public string Location { get; set; }
 
         public int NumberOfTickets { get; set; }
-        public string FavColor { get; set; }
 
         // this is for the resetpassword to know if the user is realy the user
         public string FavColor { get; set; }

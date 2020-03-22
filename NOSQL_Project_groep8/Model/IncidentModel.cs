@@ -6,7 +6,7 @@ namespace NOSQL_Project_groep8.Model
     public class IncidentModel
     {
         public ObjectId _id { get; set; }
-        public int IncidentId { get; set; } 
+        public int IncidentId { get; set; }
         public string Subject { get; set; }
         public int UserId { get; set; }
         public DateTime DateCreated { get; set; }
@@ -19,3 +19,4 @@ namespace NOSQL_Project_groep8.Model
         public string Description { get; set; }
         public int CreatedUserId { get; set; }
     }
+}
