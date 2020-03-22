@@ -17,6 +17,10 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
         
+        /// <summary>
+        /// Count the open incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountOpenIncidents()
         {
             //Select collection
@@ -27,6 +31,10 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
+        /// Count the closed incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountClosedIncidentsBeforeDealine()
         {
             //Select collection
@@ -39,6 +47,10 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
+        /// Count the past deadline incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountPastDeadlineIncidents()
         {
             //Select collection
@@ -51,7 +63,10 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
-
+        /// <summary>
+        /// Get all incidents
+        /// </summary>
+        /// <returns></returns>
         public List<IncidentModel> GetAllIncidents()
         {
             //Select collection
@@ -60,13 +75,18 @@ namespace NOSQL_Project_groep8.Repositories
 
             return incidents;
         }
+
+        /// <summary>
+        /// Gets the last incidents Id for the next Incident
+        /// </summary>
+        /// <returns></returns>
         public int AutoIncredement()
         {
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             var sort = Builders<IncidentModel>.Sort.Descending(x => x.IncidentId);
             var filter = Builders<IncidentModel>.Filter.Empty;
             IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
-            return incident.IncidentId + 1;
+            return (incident != null)? incident.IncidentId + 1: 1;
         }
     }
 }

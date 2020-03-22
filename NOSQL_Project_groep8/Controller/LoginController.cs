@@ -11,24 +11,21 @@ namespace NOSQL_Project_groep8.Controller
 {
     class LoginController
     {
-        private static UserRepository repository = new UserRepository();
+        private static UserRepository UserRepository = new UserRepository();
 
-        public UserModel GetByUsername(string username)
-        {
-            UserModel user = repository.GetUserPasswordByName(username);
-            return user;
-        }
-
+        /// <summary>
+        /// Check if the user is the right user
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
         public void CheckLogin(Index index,string username, string password)
         {
-            UserModel userModel = GetByUsername(username);
-
-            if (userModel != null && username == userModel.Username && userModel.Password == password)
+            if (UserRepository.CheckUser(username, password))
             {
-                
-
+                UserModel user = UserRepository.GetUser(username);
                 index.HideViews("UCdashboardIncidentsView");
-                index.SetCurrentUser(userModel);
+                index.SetCurrentUser(user);
                 index.EnableButtons();
             }
             else

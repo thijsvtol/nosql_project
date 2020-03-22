@@ -50,13 +50,14 @@ namespace NOSQL_Project_groep8.View
         public IncidentManagementView()
         {
             InitializeComponent();
-
             listViewLoad();
+            if (lv_incidents.Items.Count > 0)
+            {
 
-            lv_incidents.Items[0].Focused = true;
-            lv_incidents.Items[0].Selected = true;
-            lv_incidents.FullRowSelect = true;
-
+                lv_incidents.Items[0].Focused = true;
+                lv_incidents.Items[0].Selected = true;
+                lv_incidents.FullRowSelect = true;
+            }
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
@@ -65,10 +66,8 @@ namespace NOSQL_Project_groep8.View
             parent.HideViews("UCcreateIncidenetView");            
         }
 
-
         public void listViewLoad()
         {            
-
             lvwColumnSorter = new ListViewColumnSorter();
             this.lv_incidents.ListViewItemSorter = lvwColumnSorter;
 
@@ -93,9 +92,10 @@ namespace NOSQL_Project_groep8.View
                         item.SubItems.Add(user.Email);
                         item.SubItems.Add(user.FirstName + " " +user.LastName);
                         break;
-                    }
-                    
+                    }                    
                 }
+                item.SubItems.Add(incident.CreatedUserId.ToString());
+                item.SubItems.Add(incident.Subject);
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);

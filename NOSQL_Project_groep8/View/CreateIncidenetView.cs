@@ -14,50 +14,30 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class CreateIncidenetView : UserControl
     {
-        CreateIncidentController createCancelIncidenetController = new CreateIncidentController();
+        /*IncidentModel incident;*/
 
-        IncidentModel incident;
+        CreateIncidentController CreateIncidentController = new CreateIncidentController();
+
 
         public CreateIncidenetView()
         {
             InitializeComponent();
-/*
-            cbUsers.DataSource = GetUsers();
+            // set all dropdowns with rows
+            cbUsers.DataSource = CreateIncidentController.GetUsers();
             cbUsers.ValueMember = "UserId";
             cbUsers.DisplayMember = "FirstName";
 
-            var dataSource = new List<string>();
-            dataSource.Add("open");
-            dataSource.Add("close");
-            cbStatus.DataSource = dataSource;
-
-            var type = new List<string>();
-            type.Add("Software");
-            type.Add("Hardware");
-            type.Add("Service");
-            cbType.DataSource = type;
-
-            var priority = new List<string>();
-            priority.Add("Low");
-            priority.Add("Normal");
-            priority.Add("High");
-            cbPriority.DataSource = priority;
-
-            var deadline = new List<string>();
-            deadline.Add("7 days");
-            deadline.Add("14 days");
-            deadline.Add("28 days");
-            deadline.Add("6 months");
-            cb_deadlineFollowUp.DataSource = deadline;*/
-
-
-
+            cbLocation.DataSource = CreateIncidentController.GetLocation();
+            cbLocation.DisplayMember = "Location";
+            cbStatus.DataSource = CreateIncidentController.GetStatus();
+            cbType.DataSource = CreateIncidentController.GetType();
+            cbPriority.DataSource = CreateIncidentController.GetPriority();
+            cb_deadlineFollowUp.DataSource = CreateIncidentController.GetDeadlineDates();
         }
-
 
         public void changeIncident(IncidentModel incident)
         {
-            InitializeComponent();
+           /* InitializeComponent();
             this.incident = incident;
             MessageBox.Show(incident.DateCreated + incident.Subject + incident.Type + incident.Priority + incident.DateDeadline + incident.Location + incident.Status + incident.Description);
 
@@ -65,72 +45,60 @@ namespace NOSQL_Project_groep8.View
             txtSubject.Text = incident.Subject;
             cbType.Text = incident.Type;
             cbPriority.Text = incident.Priority;
-/*            cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();*/
+           cb_deadlineFollowUp.Text = incident.DateDeadline.ToString();
             txtLocation.Text = incident.Location;
             cbStatus.Text = incident.Status;
-            txt_description.Text = incident.Description;
+            txt_description.Text = incident.Description;*/
         }
 
         private List<UserModel> GetUsers()
         {
-            return createCancelIncidenetController.GetUsers();
+            return CreateIncidentController.GetUsers();
         }
 
+        /// <summary>
+        /// reset all fields
+        /// </summary>
         public void CleanForm()
         {
             cbUsers.SelectedIndex = -1;
             txtSubject.Text = "";
             cb_deadlineFollowUp.SelectedIndex = -1;
-            
-
         }
 
         private void btnAddIncident_Click(object sender, EventArgs e)
         {
-            if (txtSubject.Text == "" || string.IsNullOrEmpty(cb_deadlineFollowUp.Text) || txtLocation.Text == "" || txt_description.Text == "")
+            Index parent = (Index)this.Parent;
+            var dateDeadline = new DateTime();
+            //checks for if it is a day or month 
+            var deadLineDate = (ComboboxItem)cb_deadlineFollowUp.SelectedValue;
+            if (deadLineDate.Type == "day")
             {
-                MessageBox.Show("Please fill in all the details!", "Fill Forum Details!",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateDeadline = DateTime.Today.AddDays((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
             }
-            else
+            else if ((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Type == "month")
             {
-                IncidentModel incidentModel = new IncidentModel();
-                incidentModel.UserId = ((UserModel)cbUsers.SelectedItem).UserId;
-                incidentModel.Subject = txtSubject.Text;
-                incidentModel.DateCreated = DateTime.Now;
-                incidentModel.Status = "open";
-                incidentModel.Type = cbType.SelectedItem.ToString();
-                incidentModel.Priority = cbPriority.SelectedItem.ToString();
-                incidentModel.Location = txtLocation.Text;
-                incidentModel.Description = txt_description.Text;
+                dateDeadline = DateTime.Today.AddMonths((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
+            }
 
-                if (cb_deadlineFollowUp.Text == "7 days")
-                {
-                    DateTime dateDeadline = DateTime.Today.AddDays(7);
-                    incidentModel.DateDeadline = dateDeadline;
-                }
-                else if (cb_deadlineFollowUp.Text == "14 days")
-                {
-                    DateTime dateDeadline = DateTime.Today.AddDays(14);
-                    incidentModel.DateDeadline = dateDeadline;
-                }
-                else if (cb_deadlineFollowUp.Text == "28 days")
-                {
-                    DateTime dateDeadline = DateTime.Today.AddDays(28);
-                    incidentModel.DateDeadline = dateDeadline;
-                }
-                else if (cb_deadlineFollowUp.Text == "6 months")
-                {
-                    DateTime dateDeadline = DateTime.Today.AddMonths(6);
-                    incidentModel.DateDeadline = dateDeadline;
-                }
-                
-                MessageBox.Show("Incident was saved!\n You are being redirected to the overview.");
+            //fills the model with all the info from the form
+            IncidentModel incident = new IncidentModel()
+            {
+                UserId = ((UserModel)cbUsers.SelectedItem).UserId,
+                Subject = txtSubject.Text,
+                DateCreated = DateTime.Now,
+                Status = cbStatus.SelectedItem.ToString(),
+                Type = cbType.SelectedItem.ToString(),
+                Priority = cbPriority.SelectedItem.ToString(),
+                Location = (cbLocation.SelectedItem as LocationModel).Location,
+                Description = txt_description.Text,
+                DateDeadline = dateDeadline,
+                CreatedUserId = parent.GetCurrentUser().UserId
+            };
 
-
-                Index parent = (Index)this.Parent;
-                createCancelIncidenetController.SaveIncident(parent, incidentModel);
-
+            // if added clear form
+            if(CreateIncidentController.SaveIncident(parent, incident))
+            {
                 CleanForm();
                 
             }
@@ -139,14 +107,10 @@ namespace NOSQL_Project_groep8.View
         private void Btn_cancelCreationIncident_Click(object sender, EventArgs e)
         {
             MessageBox.Show("The incident was NOT saved! \nYou are being redirected to the overview.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             Index parent = (Index)this.Parent;
-            createCancelIncidenetController.CancelIncident(parent);
-
-            CleanForm();
-
-            
+            CreateIncidentController.CancelIncident(parent);
+            //parent hideview
+            CleanForm();            
         }
     }
 }
-

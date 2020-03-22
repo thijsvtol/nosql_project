@@ -18,6 +18,4 @@ namespace NOSQL_Project_groep8.Model
         public string Location { get; set; }
         public string Description { get; set; }
         public int CreatedUserId { get; set; }
-
     }
-}
