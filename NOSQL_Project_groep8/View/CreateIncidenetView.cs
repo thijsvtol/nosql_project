@@ -20,10 +20,11 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
 
+            // set all dropdowns with rows
             cbUsers.DataSource = CreateIncidentController.GetUsers();
             cbUsers.ValueMember = "UserId";
             cbUsers.DisplayMember = "FirstName";
-            
+
             cbLocation.DataSource = CreateIncidentController.GetLocation();
             cbLocation.DisplayMember = "Location";
             cbStatus.DataSource = CreateIncidentController.GetStatus();
@@ -32,6 +33,9 @@ namespace NOSQL_Project_groep8.View
             cb_deadlineFollowUp.DataSource = CreateIncidentController.GetDeadlineDates();
         }
 
+        /// <summary>
+        /// reset all fields
+        /// </summary>
         public void CleanForm()
         {
             cbUsers.SelectedIndex = -1;
@@ -39,43 +43,40 @@ namespace NOSQL_Project_groep8.View
             cb_deadlineFollowUp.SelectedIndex = -1;
         }
 
-        private void btnAddIncident_Click_1(object sender, EventArgs e)
+        private void btnAddIncident_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSubject.Text)||string.IsNullOrEmpty(cb_deadlineFollowUp.Text)||string.IsNullOrEmpty(cbLocation.Text)||string.IsNullOrEmpty(txt_description.Text))
-                MessageBox.Show("Please fill in all the details!", "Fill Forum Details!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
+            Index parent = (Index)this.Parent;
+            var dateDeadline = new DateTime();
+            //checks for if it is a day or month 
+            var deadLineDate = (ComboboxItem)cb_deadlineFollowUp.SelectedValue;
+            if (deadLineDate.Type == "day")
             {
-                var dateDeadline = new DateTime();
-                Index parent = (Index)this.Parent;
+                dateDeadline = DateTime.Today.AddDays((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
+            }
+            else if ((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Type == "month")
+            {
+                dateDeadline = DateTime.Today.AddMonths((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
+            }
 
-                //checks for if it is a day or month 
-                var deadLineDate = (ComboboxItem)cb_deadlineFollowUp.SelectedValue;
-                if (deadLineDate.Type == "day")
-                {
-                    dateDeadline = DateTime.Today.AddDays((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
-                }
-                else if ((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Type == "month")
-                {
-                    dateDeadline = DateTime.Today.AddMonths((cb_deadlineFollowUp.SelectedItem as ComboboxItem).Value);
-                }
-                //fills the model with all the info from the form
-                IncidentModel incident = new IncidentModel()
-                {
-                    UserId = ((UserModel)cbUsers.SelectedItem).UserId,
-                    Subject = txtSubject.Text,
-                    DateCreated = DateTime.Now,
-                    Status = cbStatus.SelectedItem.ToString(),
-                    Type = cbType.SelectedItem.ToString(),
-                    Priority = cbPriority.SelectedItem.ToString(),
-                    Location = (cbLocation.SelectedItem as LocationModel).Location,
-                    Description = txt_description.Text,
-                    DateDeadline = dateDeadline,
-                    CreatedUserId = parent.GetCurrentUser().UserId
-                };
+            //fills the model with all the info from the form
+            IncidentModel incident = new IncidentModel()
+            {
+                UserId = ((UserModel)cbUsers.SelectedItem).UserId,
+                Subject = txtSubject.Text,
+                DateCreated = DateTime.Now,
+                Status = cbStatus.SelectedItem.ToString(),
+                Type = cbType.SelectedItem.ToString(),
+                Priority = cbPriority.SelectedItem.ToString(),
+                Location = (cbLocation.SelectedItem as LocationModel).Location,
+                Description = txt_description.Text,
+                DateDeadline = dateDeadline,
+                CreatedUserId = parent.GetCurrentUser().UserId
+            };
 
-                CreateIncidentController.SaveIncident(parent, incident);
+            // if added clear form
+            if(CreateIncidentController.SaveIncident(parent, incident))
+            {
                 CleanForm();
-                MessageBox.Show("Incident was saved! You are being redirected to the overview.");
             }
         }
 

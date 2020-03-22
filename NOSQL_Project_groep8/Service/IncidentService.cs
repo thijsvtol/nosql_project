@@ -16,6 +16,11 @@ namespace NOSQL_Project_groep8.Service
             ConfigDB = new ConfigDB();
         }
 
+        /// <summary>
+        /// Creates new incident
+        /// </summary>
+        /// <param name="incident"></param>
+        /// <returns></returns>
         public Boolean SetNewIncident(IncidentModel incident)
         {
             //Select collection

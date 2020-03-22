@@ -17,6 +17,10 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
+        /// <summary>
+        /// Get all locations that exist in the DB
+        /// </summary>
+        /// <returns></returns>
         public List<LocationModel> GetAllLocations()
         {
             //Select collection
