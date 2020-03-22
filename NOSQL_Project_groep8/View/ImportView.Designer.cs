@@ -36,11 +36,11 @@
             this.btnSelectFile = new System.Windows.Forms.Button();
             this.lblSelectFile = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
+            this.lblSelectedFile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // fdImport
             // 
-            this.fdImport.FileName = "file";
             this.fdImport.Filter = "CSV Files (*.csv)|*.csv";
             // 
             // lblImport
@@ -91,12 +91,17 @@
             // 
             // btnSelectFile
             // 
+            this.btnSelectFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnSelectFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelectFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectFile.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectFile.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSelectFile.Location = new System.Drawing.Point(104, 196);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(114, 31);
             this.btnSelectFile.TabIndex = 25;
             this.btnSelectFile.Text = "Select CSV file";
-            this.btnSelectFile.UseVisualStyleBackColor = true;
+            this.btnSelectFile.UseVisualStyleBackColor = false;
             this.btnSelectFile.Click += new System.EventHandler(this.btnSelectFile_Click);
             // 
             // lblSelectFile
@@ -112,18 +117,34 @@
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(22, 267);
+            this.btnUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpload.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnUpload.Location = new System.Drawing.Point(22, 280);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.Size = new System.Drawing.Size(322, 56);
             this.btnUpload.TabIndex = 27;
             this.btnUpload.Text = "Upload File";
-            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // lblSelectedFile
+            // 
+            this.lblSelectedFile.AutoSize = true;
+            this.lblSelectedFile.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedFile.Location = new System.Drawing.Point(19, 233);
+            this.lblSelectedFile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSelectedFile.Name = "lblSelectedFile";
+            this.lblSelectedFile.Size = new System.Drawing.Size(0, 20);
+            this.lblSelectedFile.TabIndex = 28;
             // 
             // ImportView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.lblSelectedFile);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lblSelectFile);
             this.Controls.Add(this.btnSelectFile);
@@ -148,5 +169,6 @@
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.Label lblSelectFile;
         private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.Label lblSelectedFile;
     }
 }

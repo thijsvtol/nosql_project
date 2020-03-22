@@ -16,12 +16,18 @@ namespace NOSQL_Project_groep8.Service
         {
             ConfigDB = new ConfigDB();
         }
-        //Hier komt de update/insert/delete methodes
 
         public void InsertUser(UserModel user)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             collection.InsertOne(user);
+        }
+
+        public void InsertMany(List<UserModel> list)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            collection.InsertMany(list);
         }
     }
 }

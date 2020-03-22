@@ -20,6 +20,7 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
             tbPassword.PasswordChar = '\u25CF';
+            tbFavColor.PasswordChar = '\u25CF';
             cbTypeEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -70,7 +71,7 @@ namespace NOSQL_Project_groep8.View
                     Location = cbLocation.SelectedItem.ToString(),
                     Username = tbUsername.Text,
                     Password = tbPassword.Text,
-                    FavColor = txtFavColor.Text
+                    FavColor = tbFavColor.Text
                 };
 
                 //Add user in DB
