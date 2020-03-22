@@ -23,6 +23,7 @@ namespace NOSQL_Project_groep8.View
             tbFavColor.PasswordChar = '\u25CF';
             cbTypeEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            FillLocationCB();
         }
         
         private void ShowParentUserController()
@@ -44,11 +45,21 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
+        private void FillLocationCB()
+        {
+            List<LocationModel> locations = Controller.GetLocations();
+            foreach (var item in locations)
+            {
+                cbLocation.Items.Add(item.Location);
+            }
+
+        }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
         //////////////////////////////////////////////////////////////////////////////////////////
-        
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

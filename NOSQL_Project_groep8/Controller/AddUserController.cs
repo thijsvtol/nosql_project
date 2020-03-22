@@ -15,7 +15,8 @@ namespace NOSQL_Project_groep8.Controller
     class AddUserController
     {
         private UserService UserService = new UserService();
-        private UserRepository repository = new UserRepository();
+        private UserRepository userRepository = new UserRepository();
+        private LocationRepository locationRepository = new LocationRepository();
         private List<string> ErrorList = new List<string>();
 
         public bool AddUser(bool checkBox, UserModel user)
@@ -54,7 +55,7 @@ namespace NOSQL_Project_groep8.Controller
             {
                 ErrorList.Add("Please fill in all fields.\r\n");
             }
-            if (repository.CountExcistingUsers(user.Username, user.Email) != 0)
+            if (userRepository.CountExcistingUsers(user.Username, user.Email) != 0)
             {
                 ErrorList.Add("Email or Username allready exists!");
             }
@@ -71,7 +72,7 @@ namespace NOSQL_Project_groep8.Controller
         private void InsertUser(UserModel user, bool sendEmail)
         {
             //Add user by service
-            user.UserId = repository.AutoIncredement();
+            user.UserId = userRepository.AutoIncredement();
             UserService.InsertUser(user);
 
             //Check checkbox
@@ -129,6 +130,11 @@ namespace NOSQL_Project_groep8.Controller
             {
                 return true;
             }
+        }
+
+        public List<LocationModel> GetLocations()
+        {
+            return locationRepository.GetAllLocations();
         }
     }
 }
