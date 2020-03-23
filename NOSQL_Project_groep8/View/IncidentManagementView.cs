@@ -14,37 +14,19 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class IncidentManagementView : UserControl
     {
-
-        IncidentOverviewController IncidentOverview = new IncidentOverviewController();
-
-
-
         //class voor het sorteren van de listview
         private ListViewColumnSorter lvwColumnSorter;
-
+        IncidentOverviewController IncidentOverview = new IncidentOverviewController();
         List<IncidentModel> incidents = new List<IncidentModel>();
-
 
         private List<IncidentModel> GetAllIncidents()
         {
-
             return IncidentOverview.GetIncidents();
-
         }
-
-
-
-
-
-
 
         public IncidentManagementView()
         {
             InitializeComponent();
-
-
-
-
             listViewLoad();
 
             if (lv_incidents.Items.Count > 0)
@@ -54,21 +36,6 @@ namespace NOSQL_Project_groep8.View
                 lv_incidents.Items[0].Selected = true;
                 lv_incidents.FullRowSelect = true;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
@@ -76,15 +43,6 @@ namespace NOSQL_Project_groep8.View
             Index parent = (Index)this.Parent;
             parent.HideViews("UCcreateIncidenetView");
         }
-
-
-
-
-
-
-
-
-
 
         public void listViewLoad()
         {
@@ -113,8 +71,6 @@ namespace NOSQL_Project_groep8.View
             {
                 ch.Width = -2;
             }
-
-
         }
 
         private void txt_filterTickets_TextChanged(object sender, EventArgs e)
@@ -150,7 +106,6 @@ namespace NOSQL_Project_groep8.View
                 }
 
             }*/
-
         }
 
         private void lv_incidents_ColumnClick(object sender, ColumnClickEventArgs e)
