@@ -99,8 +99,7 @@ namespace NOSQL_Project_groep8.View
             // if added clear form
             if(CreateIncidentController.SaveIncident(parent, incident))
             {
-                CleanForm();
-                
+                CleanForm();                
             }
         }
 
@@ -108,7 +107,6 @@ namespace NOSQL_Project_groep8.View
         {
             MessageBox.Show("The incident was NOT saved! \nYou are being redirected to the overview.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Index parent = (Index)this.Parent;
-            CreateIncidentController.CancelIncident(parent);
             parent.HideViews("UCincidentManagementView");
             CleanForm();            
         }

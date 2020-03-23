@@ -35,9 +35,10 @@
             this.Subject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UserID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txt_filterTickets = new System.Windows.Forms.TextBox();
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnCreateIncident
@@ -75,6 +76,7 @@
             this.Subject,
             this.Email,
             this.User,
+            this.UserID,
             this.Date,
             this.Status});
             this.lv_incidents.HideSelection = false;
@@ -105,13 +107,13 @@
             // 
             this.User.Text = "User";
             // 
+            // UserID
+            // 
+            this.UserID.Text = "User ID";
+            // 
             // Date
             // 
             this.Date.Text = "Date";
-            // 
-            // Status
-            // 
-            this.Status.Text = "Status";
             // 
             // txt_filterTickets
             // 
@@ -121,6 +123,10 @@
             this.txt_filterTickets.Size = new System.Drawing.Size(238, 46);
             this.txt_filterTickets.TabIndex = 24;
             this.txt_filterTickets.TextChanged += new System.EventHandler(this.txt_filterTickets_TextChanged);
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
             // 
             // IncidentManagementView
             // 
@@ -147,9 +153,10 @@
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Email;
         private System.Windows.Forms.ColumnHeader User;
+        private System.Windows.Forms.ColumnHeader UserID;
         private System.Windows.Forms.ColumnHeader Date;
-        private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.TextBox txt_filterTickets;
         private System.Windows.Forms.ColumnHeader Subject;
+        private System.Windows.Forms.ColumnHeader Status;
     }
 }

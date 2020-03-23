@@ -14,49 +14,34 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class IncidentManagementView : UserControl
     {
-
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
         UserManagementController UserController = new UserManagementController();
-
-
-
+        UserModel currentUser;
         //class voor het sorteren van de listview
         private ListViewColumnSorter lvwColumnSorter;
-
         List<IncidentModel> incidents = new List<IncidentModel>();
         List<UserModel> users = new List<UserModel>();
-
-
         private List<IncidentModel> GetAllIncidents()
         {
-
             return IncidentOverview.GetIncidents();
-
         }
 
         private List<UserModel> GetAllUsers()
         {
-
             return UserController.GetAllUsers();
-
         }
-
-
-
-
-
-
 
         public IncidentManagementView()
         {
             InitializeComponent();
+            lv_incidents.Hide();
             listViewLoad();
             if (lv_incidents.Items.Count > 0)
             {
                 lv_incidents.Items[0].Focused = true;
                 lv_incidents.Items[0].Selected = true;
                 lv_incidents.FullRowSelect = true;
-            }
+            }            
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
@@ -77,7 +62,7 @@ namespace NOSQL_Project_groep8.View
             lv_incidents.Refresh();
 
             incidents = GetAllIncidents();
-            users = GetAllUsers();
+            users = GetAllUsers();            
 
             foreach (IncidentModel incident in incidents)
             {
@@ -90,6 +75,7 @@ namespace NOSQL_Project_groep8.View
                     {
                         item.SubItems.Add(user.Email);
                         item.SubItems.Add(user.FirstName + " " +user.LastName);
+                        item.SubItems.Add(user.UserId.ToString());
                         break;
                     }                    
                 }
@@ -97,13 +83,11 @@ namespace NOSQL_Project_groep8.View
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
                 lv_incidents.Refresh();
-            }
-
+            }            
             foreach (ColumnHeader ch in this.lv_incidents.Columns)
             {
                 ch.Width = -2;
-            }
-            
+            }            
         }
 
         private void txt_filterTickets_TextChanged(object sender, EventArgs e)
@@ -139,9 +123,7 @@ namespace NOSQL_Project_groep8.View
 
                     break;
                 }
-
             }
-
         }
 
         private void lv_incidents_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -165,26 +147,29 @@ namespace NOSQL_Project_groep8.View
                 lvwColumnSorter.SortColumn = e.Column;
                 lvwColumnSorter.Order = SortOrder.Ascending;
             }
-
             // sorteer...
             this.lv_incidents.Sort();
         }
 
-
         private void IncidentManagementView_Load(object sender, EventArgs e)
         {
+            Index parent = (Index)this.Parent;            
+            currentUser = parent.GetCurrentUser();
+        }
 
-            Index parent = (Index)this.Parent;
-
-            if (parent.GetCurrentUser().TypeOfUser == "Employee")
+        private void EmployeeOrService()
+        {            
+            if (currentUser.TypeOfUser == "Employee")
             {
                 btnCreateIncident.Hide();
                 txt_filterTickets.Hide();
                 foreach (ListViewItem item in lv_incidents.Items)
                 {
-                    if (item.SubItems[0].Text.ToString() != parent.GetCurrentUser().UserId.ToString())
+                    if (item.SubItems[4].Text.ToString() != currentUser.UserId.ToString())
                     {
                         lv_incidents.Items.Remove(item);
+                        lv_incidents.Update();
+                        lv_incidents.Refresh();
                     }
                 }
             }
@@ -192,8 +177,8 @@ namespace NOSQL_Project_groep8.View
         public void refreshingLv()
         {
             listViewLoad();
+            EmployeeOrService();
+            lv_incidents.Show();
         }
-
-
     }
 }

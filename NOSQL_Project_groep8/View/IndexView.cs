@@ -62,6 +62,19 @@ namespace NOSQL_Project_groep8
             menuUserManagement.Enabled = true;
         }
 
+        public void refreshLv(string whichView)
+        {
+            HideViews(whichView);
+            if (whichView == "UCincidentManagementView")
+            {
+                UCincidentManagementView.refreshingLv();
+            }
+            else if (whichView == "UCuserManagementView")
+            {
+                //update iets
+            }
+        }
+
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -81,20 +94,6 @@ namespace NOSQL_Project_groep8
         private void menuUserManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCuserManagementView");
-        }
-
-        public void refreshLv(string whichView)
-        {
-            HideViews(whichView);
-            if(whichView == "UCincidentManagementView")
-            {
-                UCincidentManagementView.refreshingLv();
-            }
-            else if(whichView == "UCuserManagementView")
-            {
-                //update iets
-            }
-            
         }
     }
 }

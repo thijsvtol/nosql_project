@@ -32,8 +32,7 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="index"></param>
         /// <param name="incident"></param>
         public bool SaveIncident(Index index, IncidentModel incident)
-        {
-              
+        {              
             //checks if the required fields are filled in
             if (string.IsNullOrEmpty(incident.Subject) || string.IsNullOrEmpty(incident.DateDeadline.ToString()) || string.IsNullOrEmpty(incident.Location) || string.IsNullOrEmpty(incident.Description))
             {
@@ -50,16 +49,7 @@ namespace NOSQL_Project_groep8.Controller
                 return true;
             }
         }
-        public void CancelIncident(Index index)
-        {
-//
-        }
-        
-
-        /// <summary>
-        /// Get the status
-        /// </summary>
-        /// <returns></returns>
+       
         public List<string> GetStatus()
         {
             var dataSource = new List<string>();
