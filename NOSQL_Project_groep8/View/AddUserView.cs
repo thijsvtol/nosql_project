@@ -20,8 +20,10 @@ namespace NOSQL_Project_groep8.View
         {
             InitializeComponent();
             tbPassword.PasswordChar = '\u25CF';
+            tbFavColor.PasswordChar = '\u25CF';
             cbTypeEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            FillLocationCB();
         }
         
         private void ShowParentUserController()
@@ -43,11 +45,21 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
+        private void FillLocationCB()
+        {
+            List<LocationModel> locations = Controller.GetLocations();
+            foreach (var item in locations)
+            {
+                cbLocation.Items.Add(item.Location);
+            }
+
+        }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
         //////////////////////////////////////////////////////////////////////////////////////////
-        
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -70,7 +82,7 @@ namespace NOSQL_Project_groep8.View
                     Location = cbLocation.SelectedItem.ToString(),
                     Username = tbUsername.Text,
                     Password = tbPassword.Text,
-                    FavColor = txtFavColor.Text
+                    FavColor = tbFavColor.Text
                 };
 
                 //Add user in DB

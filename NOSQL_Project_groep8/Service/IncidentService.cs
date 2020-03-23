@@ -25,10 +25,15 @@ namespace NOSQL_Project_groep8.Service
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
-
             collection.InsertOne(incident);
-
             return true;
+        }
+
+        public void InsertIncidentModelList(List<IncidentModel> list)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            collection.InsertMany(list);
         }
     }
 }

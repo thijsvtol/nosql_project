@@ -24,6 +24,7 @@ namespace NOSQL_Project_groep8
             menuDashboard.Enabled = false;
             menuIncidentManagement.Enabled = false;
             menuUserManagement.Enabled = false;
+            menuImport.Enabled = false;
         }
 
         //Hide all panels exept the header
@@ -60,6 +61,7 @@ namespace NOSQL_Project_groep8
             menuDashboard.Enabled = true;
             menuIncidentManagement.Enabled = true;
             menuUserManagement.Enabled = true;
+            menuImport.Enabled = true;
         }
 
         public void refreshLv(string whichView)
@@ -94,6 +96,11 @@ namespace NOSQL_Project_groep8
         private void menuUserManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCuserManagementView");
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            HideViews("UCimportView");
         }
     }
 }
