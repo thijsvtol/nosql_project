@@ -24,7 +24,7 @@ namespace NOSQL_Project_groep8.Service
             collection.InsertOne(user);
         }
 
-        public void InsertMany(List<UserModel> list)
+        public void InsertUserModelList(List<UserModel> list)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
@@ -37,7 +37,6 @@ namespace NOSQL_Project_groep8.Service
             var builder = Builders<UserModel>.Filter;
             var filter = builder.Eq(x => x.Email, user.Email);
             collection.ReplaceOne(filter, user);
-
         }
     }
 }

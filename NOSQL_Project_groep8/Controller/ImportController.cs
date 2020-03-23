@@ -29,16 +29,16 @@ namespace NOSQL_Project_groep8.Controller
             List<UserModel> users = new List<UserModel>();
             try
             {
-                int ai = userRepository.AutoIncredement();
+                int maxValueOfId = userRepository.AutoIncredement();
                 while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
                     string[] split = line.Split(',',';');
-                    UserModel user = FillUser(ai, split);
+                    UserModel user = FillUser(maxValueOfId, split);
                     users.Add(user);
-                    ai++;
+                    maxValueOfId++;
                 }
-                userService.InsertMany(users);
+                userService.InsertUserModelList(users);
                 MessageBox.Show("inserted: " + users.Count + " rows succesfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception e)
@@ -52,16 +52,16 @@ namespace NOSQL_Project_groep8.Controller
             List<IncidentModel> incidents = new List<IncidentModel>();
             try
             {
-                int ai = incidentRepository.AutoIncredement();
+                int maxValueOfId = incidentRepository.AutoIncredement();
                 while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
                     string[] split = line.Split(',', ';');
-                    IncidentModel incident = FillIncident(ai, split);
+                    IncidentModel incident = FillIncident(maxValueOfId, split);
                     incidents.Add(incident);
-                    ai++;
+                    maxValueOfId++;
                 }
-                incidentService.InsertMany(incidents);
+                incidentService.InsertIncidentModelList(incidents);
                 MessageBox.Show("inserted: " + incidents.Count + " rows succesfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -75,11 +75,11 @@ namespace NOSQL_Project_groep8.Controller
             MessageBox.Show("An Error has shown up: " + e.Message + "\r\nStack and trace:\r\n" + e.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private UserModel FillUser(int ai, string[] split)
+        private UserModel FillUser(int userId, string[] split)
         {
             return new UserModel()
             {
-                UserId = ai,
+                UserId = userId,
                 Email = split[0],
                 Username = split[1],
                 Password = split[2],
@@ -92,11 +92,11 @@ namespace NOSQL_Project_groep8.Controller
             };
         }
 
-        private IncidentModel FillIncident(int ai, string[] split)
+        private IncidentModel FillIncident(int incidentId, string[] split)
         {
             return new IncidentModel()
             {
-                IncidentId = ai,
+                IncidentId = incidentId,
                 Subject = split[0],
                 UserId = int.Parse(split[1]),
                 DateCreated = DateTime.Parse(split[2]),
