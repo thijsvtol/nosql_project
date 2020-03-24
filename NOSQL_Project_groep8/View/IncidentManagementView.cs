@@ -41,7 +41,8 @@ namespace NOSQL_Project_groep8.View
                 lv_incidents.Items[0].Focused = true;
                 lv_incidents.Items[0].Selected = true;
                 lv_incidents.FullRowSelect = true;
-            }            
+            }
+            lv_incidents.Show();
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
@@ -178,7 +179,6 @@ namespace NOSQL_Project_groep8.View
         {
             listViewLoad();
             EmployeeOrService();
-            lv_incidents.Show();
         }
     }
 }
