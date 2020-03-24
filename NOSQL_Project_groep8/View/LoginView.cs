@@ -39,7 +39,7 @@ namespace NOSQL_Project_groep8.View
                 Properties.Settings.Default.Save();
             }
             var index = (Index)this.Parent;
-            loginController.CheckLogin(index, index.UCdashboardIncidentsView, username, password);
+            loginController.CheckLogin(index, index.GetDashboard(), username, password);
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)

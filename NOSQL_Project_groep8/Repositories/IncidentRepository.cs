@@ -12,7 +12,7 @@ namespace NOSQL_Project_groep8.Repositories
     class IncidentRepository
     {
         private ConfigDB ConfigDB;
-        private FilterDefinitionBuilder<IncidentModel> builder = Builders<IncidentModel>.Filter;
+        private FilterDefinitionBuilder<IncidentModel> Builder = Builders<IncidentModel>.Filter;
 
         public IncidentRepository()
         {
@@ -28,8 +28,8 @@ namespace NOSQL_Project_groep8.Repositories
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var filter1 = builder.Eq(x => x.Status, "open");
-            var filter2 = builder.Eq(x => x.Status, "open") & builder.Eq(x => x.UserId, userId);
+            var filter1 = Builder.Eq(x => x.Status, "open");
+            var filter2 = Builder.Eq(x => x.Status, "open") & Builder.Eq(x => x.UserId, userId);
             double count;
             if (adminRights)
                 count = collection.CountDocuments(filter1);
@@ -48,8 +48,8 @@ namespace NOSQL_Project_groep8.Repositories
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
             DateTime dateTime = DateTime.Now;
-            var filter1 = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, dateTime);
-            var filter2 = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.UserId, userId);
+            var filter1 = Builder.Eq(x => x.Status, "closed") & Builder.Gte(x => x.DateDeadline, dateTime);
+            var filter2 = Builder.Eq(x => x.Status, "closed") & Builder.Gte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.UserId, userId);
             double count;
             if (adminRights)
                 count = collection.CountDocuments(filter1);
@@ -68,8 +68,8 @@ namespace NOSQL_Project_groep8.Repositories
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
             DateTime dateTime = DateTime.Now;
-            var filter1 = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open");
-            var filter2 = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open") & builder.Eq(x => x.UserId, userId);
+            var filter1 = Builder.Lte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.Status, "open");
+            var filter2 = Builder.Lte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.Status, "open") & Builder.Eq(x => x.UserId, userId);
             double count;
             if (adminRights)
                 count = collection.CountDocuments(filter1);

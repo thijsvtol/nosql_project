@@ -14,7 +14,7 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class DashboardIncidentsView : UserControl
     {
-        private DashboardIncidentsController dashboardController = new DashboardIncidentsController();
+        private DashboardIncidentsController DashboardController = new DashboardIncidentsController();
         private UserModel User;
 
         public DashboardIncidentsView()
@@ -26,7 +26,7 @@ namespace NOSQL_Project_groep8.View
         public void LoadDashboard(UserModel user)
         {
             User = user;
-            dashboardController.SetCurrentUser(User);
+            DashboardController.SetCurrentUser(User);
             PrepareDashboard();
             UpdateCircleDiagrams();
         }
@@ -40,13 +40,13 @@ namespace NOSQL_Project_groep8.View
         public void UpdateCircleDiagrams()
         {
             //Circle1
-            circleDiagramUnresolvedIncidents.Value = dashboardController.CalculatePercentOpenIncidents();
-            circleDiagramUnresolvedIncidents.Text = dashboardController.GetTextForCircle1();
+            circleDiagramUnresolvedIncidents.Value = DashboardController.CalculatePercentOpenIncidents();
+            circleDiagramUnresolvedIncidents.Text = DashboardController.GetTextForCircle1();
             circleDiagramUnresolvedIncidents.Update();
 
             //Circle2
-            circleDiagramPastIncidents.Value = dashboardController.GetPastDeadlineIncidents()*20;
-            circleDiagramPastIncidents.Text = dashboardController.GetPastDeadlineIncidents().ToString();
+            circleDiagramPastIncidents.Value = DashboardController.GetPastDeadlineIncidents()*20;
+            circleDiagramPastIncidents.Text = DashboardController.GetPastDeadlineIncidents().ToString();
             circleDiagramPastIncidents.Update();
         }
 
