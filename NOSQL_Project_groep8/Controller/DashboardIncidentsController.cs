@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 
 
@@ -12,6 +13,7 @@ namespace NOSQL_Project_groep8.Controller
     {
         private static IncidentRepository repository = new IncidentRepository();
         private int openIncidents = repository.CountOpenIncidents();
+        public UserModel User;
 
         public int CalculatePercentOpenIncidents()
         {

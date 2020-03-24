@@ -8,34 +8,57 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
+using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8.View
 {
     public partial class DashboardIncidentsView : UserControl
     {
-        private DashboardIncidentsController controller = new DashboardIncidentsController();
+        private DashboardIncidentsController dashboardController = new DashboardIncidentsController();
+        private UserModel User;
 
         public DashboardIncidentsView()
         {
             InitializeComponent();
         }
 
-        private void DashboardIncidentsView_Load(object sender, EventArgs e)
+        public void LoadDashboard(UserModel user)
         {
+            SetCurrentUser(user);
             UpdateCircleDiagrams();
+            PrepareDashboard();
+        }
+
+        private void SetCurrentUser(UserModel user)
+        {
+            User = user;
         }
 
         public void UpdateCircleDiagrams()
         {
             //Circle1
-            circleDiagramUnresolvedIncidents.Value = controller.CalculatePercentOpenIncidents();
-            circleDiagramUnresolvedIncidents.Text = controller.GetTextForCircle1();
+            circleDiagramUnresolvedIncidents.Value = dashboardController.CalculatePercentOpenIncidents();
+            circleDiagramUnresolvedIncidents.Text = dashboardController.GetTextForCircle1();
             circleDiagramUnresolvedIncidents.Update();
 
             //Circle2
-            circleDiagramPastIncidents.Value = controller.GetPastDeadlineIncidents()*20;
-            circleDiagramPastIncidents.Text = controller.GetPastDeadlineIncidents().ToString();
+            circleDiagramPastIncidents.Value = dashboardController.GetPastDeadlineIncidents()*20;
+            circleDiagramPastIncidents.Text = dashboardController.GetPastDeadlineIncidents().ToString();
             circleDiagramPastIncidents.Update();
+        }
+
+        private void PrepareDashboard()
+        {
+            if(User.TypeOfUser == "Employee")
+            {
+                //Show dashboard, only incidencts of the logged in user
+                lbDashboardHeader.Text = "Welcome" + User.FirstName + ", your personalize dashboard";
+            }
+            else
+            {
+                //Show dashboard with all the incidents
+                lbDashboardHeader.Text = "Dashboard";
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

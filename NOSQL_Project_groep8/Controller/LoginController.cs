@@ -1,4 +1,5 @@
 ﻿using NOSQL_Project_groep8.Model;
+using NOSQL_Project_groep8.View;
 using NOSQL_Project_groep8.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace NOSQL_Project_groep8.Controller
     class LoginController
     {
         private static UserRepository UserRepository = new UserRepository();
+        private static DashboardIncidentsView dashboard = new DashboardIncidentsView();
 
         /// <summary>
         /// Check if the user is the right user
@@ -19,7 +21,7 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="index"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void CheckLogin(Index index,string username, string password)
+        public void CheckLogin(Index index, string username, string password)
         {
             if (UserRepository.CheckUser(username, password))
             {
@@ -27,6 +29,7 @@ namespace NOSQL_Project_groep8.Controller
                 index.HideViews("UCdashboardIncidentsView");
                 index.SetCurrentUser(user);
                 index.EnableButtons();
+                dashboard.LoadDashboard(user);
             }
             else
             {
