@@ -29,9 +29,11 @@ namespace NOSQL_Project_groep8.Controller
             List<UserModel> users = new List<UserModel>();
             try
             {
+                //Get Auto Incredement from DB
                 int maxValueOfId = userRepository.AutoIncredement();
                 while (!sr.EndOfStream)
                 {
+                    //Make foreach row a new user
                     string line = sr.ReadLine();
                     string[] split = line.Split(',',';');
                     UserModel user = FillUser(maxValueOfId, split);
@@ -52,9 +54,11 @@ namespace NOSQL_Project_groep8.Controller
             List<IncidentModel> incidents = new List<IncidentModel>();
             try
             {
+                //Get Auto Incredement from DB
                 int maxValueOfId = incidentRepository.AutoIncredement();
                 while (!sr.EndOfStream)
                 {
+                    //Make foreach row a new incident
                     string line = sr.ReadLine();
                     string[] split = line.Split(',', ';');
                     IncidentModel incident = FillIncident(maxValueOfId, split);
@@ -70,6 +74,7 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
+        //Display exeptions
         private void ShowErrorLog(Exception e)
         {
             MessageBox.Show("An Error has shown up: " + e.Message + "\r\nStack and trace:\r\n" + e.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

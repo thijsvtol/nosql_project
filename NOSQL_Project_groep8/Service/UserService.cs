@@ -18,12 +18,15 @@ namespace NOSQL_Project_groep8.Service
             ConfigDB = new ConfigDB();
         }
 
+        //Insert single user
         public void InsertUser(UserModel user)
         {
+            //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             collection.InsertOne(user);
         }
 
+        //Insert many users
         public void InsertUserModelList(List<UserModel> list)
         {
             //Select collection
@@ -31,8 +34,10 @@ namespace NOSQL_Project_groep8.Service
             collection.InsertMany(list);
         }
         
+        //Change user his password
         public void ChangePassword(UserModel user)
         {
+            //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             var builder = Builders<UserModel>.Filter;
             var filter = builder.Eq(x => x.Email, user.Email);

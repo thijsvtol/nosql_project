@@ -21,8 +21,13 @@ namespace NOSQL_Project_groep8.View
             InitializeComponent();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///                                      EVENTS                                        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+
         private void btnSelectFile_Click(object sender, EventArgs e)
         {
+            //Set file in Stream Reader if file is selected
             if (fdImport.ShowDialog() == DialogResult.OK)
             {
                 file = fdImport.FileName;
@@ -33,8 +38,10 @@ namespace NOSQL_Project_groep8.View
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
+            //Check if file is selected
             if (file != null)
             {
+                //Check which RadioButton is selected
                 if (rbUser.Checked)
                 {
                     import.InsertUsers();

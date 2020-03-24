@@ -22,6 +22,7 @@ namespace NOSQL_Project_groep8.View
             InitializeComponent();
         }
 
+        //Load dashboard after login
         public void LoadDashboard(UserModel user)
         {
             User = user;
@@ -30,6 +31,7 @@ namespace NOSQL_Project_groep8.View
             UpdateCircleDiagrams();
         }
 
+        //Refresh dashboard
         public void UpdateDashboard()
         {
             LoadDashboard(User);

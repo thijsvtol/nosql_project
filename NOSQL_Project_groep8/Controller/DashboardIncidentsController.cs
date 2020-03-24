@@ -16,6 +16,7 @@ namespace NOSQL_Project_groep8.Controller
         private bool hasAdminRights = false;
         private int openIncidents;
 
+        //Get open incidents
         public int CalculatePercentOpenIncidents()
         {
             openIncidents = repository.CountOpenIncidents(User.UserId, hasAdminRights);
@@ -38,6 +39,7 @@ namespace NOSQL_Project_groep8.Controller
             return repository.CountPastDeadlineIncidents(User.UserId, hasAdminRights);
         }
 
+        //Get number of all incidents
         private int GetTotal()
         {
             int closedIncidents = repository.CountClosedIncidentsBeforeDealine(User.UserId, hasAdminRights);

@@ -19,11 +19,14 @@ namespace NOSQL_Project_groep8.Controller
         private LocationRepository locationRepository = new LocationRepository();
         private List<string> ErrorList = new List<string>();
 
+        //Add a new user from Create User
         public bool AddUser(bool checkBox, UserModel user)
         {
+            //Validate user by all the fields
             ValidateInput(user);
             if (ErrorList.Count == 0)
             {
+                //Try to insert user in DB
                 try
                 {
                     InsertUser(user, checkBox);
@@ -34,6 +37,7 @@ namespace NOSQL_Project_groep8.Controller
                 }
             }
 
+            //If there are errors, show them
             if (ErrorList.Count == 0)
             {
                 MessageBox.Show("User added to the database!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -55,14 +59,17 @@ namespace NOSQL_Project_groep8.Controller
             {
                 ErrorList.Add("Please fill in all fields.\r\n");
             }
+            //Check if user already excists
             if (userRepository.CountExcistingUsers(user.Username, user.Email) != 0)
             {
                 ErrorList.Add("Email or Username allready exists!");
             }
+            //Check password strength
             if (!IsValidPassword(user.Password))
             {
                 ErrorList.Add("Your password must contain:\r\n1. At least 1 upper case letter\r\n2. At least 1 number\r\n3. Password must be at least 8 characters long");
             }
+            //Check email
             if (!new EmailAddressAttribute().IsValid(user.Email))
             {
                 ErrorList.Add("Emailaddress has an invalid input.");
@@ -89,6 +96,7 @@ namespace NOSQL_Project_groep8.Controller
 
         private void DisplayErrors()
         {
+            //Dislplay all errors to a message box
             string errorOutput = "";
             foreach (string item in ErrorList)
             {
@@ -120,6 +128,7 @@ namespace NOSQL_Project_groep8.Controller
 
         public bool CheckComboboxes(ComboBox type, ComboBox location)
         {
+            //Check if all ComboBoxes are filled in
             if (type.SelectedItem == null || location.SelectedItem == null)
             {
                 ErrorList.Add("Please select an item in all comboboxes.\r\n");
