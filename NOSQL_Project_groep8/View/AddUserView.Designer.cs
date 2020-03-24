@@ -51,7 +51,7 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtFavColor = new System.Windows.Forms.TextBox();
+            this.tbFavColor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblAddUserHeader
@@ -87,7 +87,7 @@
             this.cbTypeEmployee.FormattingEnabled = true;
             this.cbTypeEmployee.Items.AddRange(new object[] {
             "Employee",
-            "Service desk employee"});
+            "Servicedesk"});
             this.cbTypeEmployee.Location = new System.Drawing.Point(378, 134);
             this.cbTypeEmployee.Name = "cbTypeEmployee";
             this.cbTypeEmployee.Size = new System.Drawing.Size(277, 28);
@@ -113,11 +113,6 @@
             // 
             this.cbLocation.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Items.AddRange(new object[] {
-            "Haarlem",
-            "Amsterdam",
-            "Knuppeldam",
-            "Headquarters (HQ)"});
             this.cbLocation.Location = new System.Drawing.Point(378, 254);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(277, 28);
@@ -278,14 +273,13 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Favorite color:";
             // 
-            // txtFavColor
+            // tbFavColor
             // 
-            this.txtFavColor.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFavColor.Location = new System.Drawing.Point(378, 381);
-            this.txtFavColor.Name = "txtFavColor";
-            this.txtFavColor.PasswordChar = '*';
-            this.txtFavColor.Size = new System.Drawing.Size(277, 25);
-            this.txtFavColor.TabIndex = 23;
+            this.tbFavColor.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFavColor.Location = new System.Drawing.Point(378, 381);
+            this.tbFavColor.Name = "tbFavColor";
+            this.tbFavColor.Size = new System.Drawing.Size(277, 25);
+            this.tbFavColor.TabIndex = 23;
             // 
             // AddUserView
             // 
@@ -293,7 +287,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtFavColor);
+            this.Controls.Add(this.tbFavColor);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
@@ -348,6 +342,6 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFavColor;
+        private System.Windows.Forms.TextBox tbFavColor;
     }
 }

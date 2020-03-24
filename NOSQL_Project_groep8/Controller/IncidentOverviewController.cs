@@ -18,10 +18,8 @@ namespace NOSQL_Project_groep8.Controller
 
 
         public List<IncidentModel> GetIncidents()
-        {
-            List<UserModel> users = UserRepository.GetAllUsers();
-            List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();
-
+        {           
+            List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();                    
             return incidents;
         }
     }

@@ -69,7 +69,7 @@ namespace NOSQL_Project_groep8.View
         private void btnShowListDashboard_Click(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
-            parent.HideViews("UCincidentManagementView");
+            parent.refreshLv("UCincidentManagementView");
         }
     }
 }
