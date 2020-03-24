@@ -13,35 +13,42 @@ namespace NOSQL_Project_groep8.View
 {
     public partial class ImportView : UserControl
     {
-        private ImportController import = new ImportController();
-        private string file;
+        private ImportController Import = new ImportController();
+        private string File;
 
         public ImportView()
         {
             InitializeComponent();
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///                                      EVENTS                                        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+
         private void btnSelectFile_Click(object sender, EventArgs e)
         {
+            //Set file in Stream Reader if file is selected
             if (fdImport.ShowDialog() == DialogResult.OK)
             {
-                file = fdImport.FileName;
-                import.SetFile(file);
-                lblSelectedFile.Text = "Selected file: " + file;
+                File = fdImport.FileName;
+                Import.SetFile(File);
+                lblSelectedFile.Text = "Selected file: " + File;
             }
         }
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            if (file != null)
+            //Check if file is selected
+            if (File != null)
             {
+                //Check which RadioButton is selected
                 if (rbUser.Checked)
                 {
-                    import.InsertUsers();
+                    Import.InsertUsers();
                 }
                 else if (rbIncident.Checked)
                 {
-                    import.InsertIncidents();
+                    Import.InsertIncidents();
                 }
                 else
                 {

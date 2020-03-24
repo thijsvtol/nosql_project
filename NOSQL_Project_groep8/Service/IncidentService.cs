@@ -11,6 +11,7 @@ namespace NOSQL_Project_groep8.Service
     class IncidentService
     {
         private ConfigDB ConfigDB;
+
         public IncidentService()
         {
             ConfigDB = new ConfigDB();
