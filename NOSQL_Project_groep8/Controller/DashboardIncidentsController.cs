@@ -12,11 +12,13 @@ namespace NOSQL_Project_groep8.Controller
     class DashboardIncidentsController
     {
         private static IncidentRepository repository = new IncidentRepository();
-        private int openIncidents = repository.CountOpenIncidents();
-        public UserModel User;
+        private UserModel User;
+        private bool hasAdminRights = false;
+        private int openIncidents;
 
         public int CalculatePercentOpenIncidents()
         {
+            openIncidents = repository.CountOpenIncidents(User.UserId, hasAdminRights);
             if (openIncidents > 0)
             {
                 int total = GetTotal();
@@ -33,14 +35,20 @@ namespace NOSQL_Project_groep8.Controller
 
         public int GetPastDeadlineIncidents()
         {
-            return repository.CountPastDeadlineIncidents();
+            return repository.CountPastDeadlineIncidents(User.UserId, hasAdminRights);
         }
 
         private int GetTotal()
         {
-            int openIncidents = repository.CountOpenIncidents();
-            int closedIncidents = repository.CountClosedIncidentsBeforeDealine();
+            int closedIncidents = repository.CountClosedIncidentsBeforeDealine(User.UserId, hasAdminRights);
             return openIncidents + closedIncidents;
+        }
+
+        public void SetCurrentUser(UserModel user)
+        {
+            User = user;
+            if (User.TypeOfUser == "Servicedesk")
+                hasAdminRights = true;
         }
     }
 }

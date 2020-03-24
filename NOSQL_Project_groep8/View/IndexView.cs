@@ -69,7 +69,7 @@ namespace NOSQL_Project_groep8
         private void menuDashboard_Click(object sender, EventArgs e)
         {
             HideViews("UCdashboardIncidentsView");
-            UCdashboardIncidentsView.UpdateCircleDiagrams();
+            UCdashboardIncidentsView.UpdateDashboard();
         }
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)

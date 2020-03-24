@@ -250,7 +250,7 @@
         private View.LoginView UCloginView;
         private View.AddUserView UCaddUserView;
         private View.CreateIncidenetView UCcreateIncidenetView;
-        private View.DashboardIncidentsView UCdashboardIncidentsView;
+        public View.DashboardIncidentsView UCdashboardIncidentsView;
         private View.IncidentManagementView UCincidentManagementView;
         private View.ResetPasswordView UCResetPasswordView;
 

@@ -24,14 +24,15 @@ namespace NOSQL_Project_groep8.View
 
         public void LoadDashboard(UserModel user)
         {
-            SetCurrentUser(user);
-            UpdateCircleDiagrams();
+            User = user;
+            dashboardController.SetCurrentUser(User);
             PrepareDashboard();
+            UpdateCircleDiagrams();
         }
 
-        private void SetCurrentUser(UserModel user)
+        public void UpdateDashboard()
         {
-            User = user;
+            LoadDashboard(User);
         }
 
         public void UpdateCircleDiagrams()
@@ -49,10 +50,10 @@ namespace NOSQL_Project_groep8.View
 
         private void PrepareDashboard()
         {
-            if(User.TypeOfUser == "Employee")
+            if (User.TypeOfUser == "Employee")
             {
                 //Show dashboard, only incidencts of the logged in user
-                lbDashboardHeader.Text = "Welcome" + User.FirstName + ", your personalize dashboard";
+                lbDashboardHeader.Text = "Welcome " + User.FirstName + ", your personal dashboard";
             }
             else
             {
