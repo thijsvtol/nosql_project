@@ -15,10 +15,12 @@ namespace NOSQL_Project_groep8.View
     public partial class AddUserView : UserControl
     {
         private AddUserController Controller = new AddUserController();
+        
 
         public AddUserView()
         {
             InitializeComponent();
+            btnUpdateUser.Hide();
             tbPassword.PasswordChar = '\u25CF';
             cbTypeEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -80,6 +82,51 @@ namespace NOSQL_Project_groep8.View
                     ClearFields();
                 }
             }
+        }
+
+        private void AddUserView_Load(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+
+            if (parent.GetCurrentUser().TypeOfUser == "Employee")
+            {
+                changeAddToProfile();
+            }
+        }
+
+        private void changeAddToProfile()
+        {
+            Index parent = (Index)this.Parent;
+            lblAddUserHeader.Text = "Your profile";
+            lblUsername.Hide();
+            lblPassword.Hide();
+            label1.Hide();
+            lblSendPassword.Hide();
+            lblEmployee.Hide();
+
+            tbUsername.Hide();
+            tbPassword.Hide();
+            txtFavColor.Hide();
+
+            checkBoxAccept.Hide();
+            cbTypeEmployee.Hide();
+
+
+            btnAddUser.Hide();
+            btnCancel.Hide();
+
+            btnUpdateUser.Show();
+
+            tbFirstName.Text = parent.GetCurrentUser().FirstName;
+            tbLastName.Text = parent.GetCurrentUser().LastName;
+            tbEmail.Text = parent.GetCurrentUser().Email;
+            tbPhonenumber.Text = parent.GetCurrentUser().Phonenumber;
+            cbLocation.Text = parent.GetCurrentUser().Location;
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

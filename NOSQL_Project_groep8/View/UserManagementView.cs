@@ -17,27 +17,34 @@ namespace NOSQL_Project_groep8.View
     {
 
         UserManagementController UserOverview = new UserManagementController();
-        private List<UserModel> GetAllUsers()
-        {
-
-            return UserOverview.GetAllUsers();
-
-        }
+        IncidentOverviewController IncidentOverview = new IncidentOverviewController();
 
 
         public void FillListView()
         {
-            listViewUser.Items.Clear();
-                List<UserModel> users = GetAllUsers();
-                foreach (UserModel user in users)
+                listViewUser.Items.Clear();
+                List<UserModel> users = UserOverview.GetAllUsers();
+                List<IncidentModel> incidents = IncidentOverview.GetIncidents();
+
+            foreach (UserModel user in users)
+            {
+                int NumberOfTickets = 0;
+                foreach (var incident in incidents)
                 {
-                    ListViewItem item = new ListViewItem(user.UserId.ToString());
-                    item.SubItems.Add(user.Email);
-                    item.SubItems.Add(user.FirstName);
-                    item.SubItems.Add(user.LastName);
-                    item.SubItems.Add(user.NumberOfTickets.ToString());
-                    listViewUser.Items.Add(item);
+                    if (user.UserId == incident.UserId)
+                    {
+                        NumberOfTickets++;
+                    }
                 }
+                ListViewItem item = new ListViewItem(user.UserId.ToString());
+                item.SubItems.Add(user.Email);
+                item.SubItems.Add(user.FirstName);
+                item.SubItems.Add(user.LastName);
+                item.SubItems.Add(NumberOfTickets.ToString());
+                item.SubItems.Add(user.TypeOfUser);
+
+                listViewUser.Items.Add(item);
+            }
         }
 
         public UserManagementView()
@@ -45,6 +52,7 @@ namespace NOSQL_Project_groep8.View
             InitializeComponent();
 
             FillListView();
+
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
@@ -75,20 +83,51 @@ namespace NOSQL_Project_groep8.View
 
         private void UserManagementView_Load(object sender, EventArgs e)
         {
+            btnRemove.Hide();
+            btnChangeRole.Hide();
+            btnChangeRole.Hide();
             Index parent = (Index)this.Parent;
 
             if (parent.GetCurrentUser().TypeOfUser == "Employee")
             {
-                btnAddNewUser.Hide();
-                txtFilterEmail.Hide();
-                foreach (ListViewItem item in listViewUser.Items)
-                {
-                    if (item.SubItems[0].Text.ToString() != parent.GetCurrentUser().UserId.ToString())
-                    {
-                        listViewUser.Items.Remove(item);
-                    }
-                }
+                parent.HideViews("UCaddUserView");
             }
+        }
+
+
+        private void listViewUser_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnChangeRole.Show();
+            btnRemove.Show();
+            if (listViewUser.SelectedItems[0].SubItems[5].Text == "Servicedesk")
+            {
+                btnChangeRole.Text = "CHANGE TO EMPLOYEE";
+            }
+            else
+            {
+                btnChangeRole.Text = "CHANGE TO SERVICEDESK";
+            }
+        }
+
+        private void btnChangeRole_Click(object sender, EventArgs e)
+        {
+            UserModel user = new UserModel()
+            {
+                UserId = Convert.ToInt32(listViewUser.SelectedItems[0].SubItems[0].Text),
+                TypeOfUser = listViewUser.SelectedItems[0].SubItems[5].Text,
+            };
+            UserOverview.ChangeRole(user);
+            FillListView();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            UserModel user = new UserModel()
+            {
+                UserId = Convert.ToInt32(listViewUser.SelectedItems[0].SubItems[0].Text),
+            };
+            UserOverview.DeleteUser(user);
+            FillListView();
         }
     }
 }

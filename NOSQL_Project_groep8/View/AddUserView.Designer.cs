@@ -52,6 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFavColor = new System.Windows.Forms.TextBox();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAddUserHeader
@@ -287,11 +288,27 @@
             this.txtFavColor.Size = new System.Drawing.Size(277, 25);
             this.txtFavColor.TabIndex = 23;
             // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnUpdateUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateUser.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateUser.Location = new System.Drawing.Point(378, 303);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(140, 43);
+            this.btnUpdateUser.TabIndex = 25;
+            this.btnUpdateUser.Text = "UPDATE";
+            this.btnUpdateUser.UseVisualStyleBackColor = false;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
+            // 
             // AddUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFavColor);
             this.Controls.Add(this.panel1);
@@ -318,6 +335,7 @@
             this.Controls.Add(this.lblAddUserHeader);
             this.Name = "AddUserView";
             this.Size = new System.Drawing.Size(968, 523);
+            this.Load += new System.EventHandler(this.AddUserView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,5 +367,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFavColor;
+        private System.Windows.Forms.Button btnUpdateUser;
     }
 }
