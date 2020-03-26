@@ -19,19 +19,28 @@ namespace NOSQL_Project_groep8.Controller
         public List<UserModel> GetAllUsers()
         {
             List<UserModel> users = UserRepository.GetAllUsers();
-            List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();
-
-            foreach (var incident in incidents)
-            {
-                foreach (var user in users)
-                {
-                    if(user.UserId == incident.UserId)
-                    {
-                        user.NumberOfTickets++;
-                    }
-                }
-            }
             return users;
+        }
+
+
+        public void ChangeRole(UserModel user)
+        {
+            if (user.TypeOfUser == "Servicedesk")
+            {
+                user.TypeOfUser = "Employee";
+                UserRepository.ChangeRole(user);
+            }
+            else if (user.TypeOfUser == "Employee")
+            {
+                user.TypeOfUser = "Servicedesk";
+                UserRepository.ChangeRole(user);
+            }
+
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            UserRepository.DeleteUser(user);
         }
     }
 }

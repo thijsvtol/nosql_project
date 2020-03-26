@@ -71,7 +71,22 @@ namespace NOSQL_Project_groep8.Repositories
 
             return user;
         }
-        
+
+        public void ChangeRole(UserModel user)
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            var update = Builders<UserModel>.Update.Set(x => x.TypeOfUser, user.TypeOfUser);
+            collection.UpdateOne(x => x.UserId == user.UserId, update);
+
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            collection.DeleteOne(x => x.UserId == user.UserId);
+
+        }
+
         /// <summary>
         /// Get all users
         /// </summary>

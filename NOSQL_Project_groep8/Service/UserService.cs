@@ -43,5 +43,14 @@ namespace NOSQL_Project_groep8.Service
             var filter = builder.Eq(x => x.Email, user.Email);
             collection.ReplaceOne(filter, user);
         }
+
+        public void UpdateUser(UserModel user)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            var builder = Builders<UserModel>.Filter;
+            var filter = builder.Eq(x => x.Email, user.Email);
+            collection.ReplaceOne(filter, user);
+        }
     }
 }

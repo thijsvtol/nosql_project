@@ -145,5 +145,17 @@ namespace NOSQL_Project_groep8.Controller
         {
             return LocationRepository.GetAllLocations();
         }
+
+        public UserModel GetUser(string username)
+        {
+            UserModel user = UserRepository.GetUser(username);
+
+            return user;
+        }
+
+        public void UpdateUser(UserModel user)
+        {
+            UserService.UpdateUser(user);
+        }
     }
 }
