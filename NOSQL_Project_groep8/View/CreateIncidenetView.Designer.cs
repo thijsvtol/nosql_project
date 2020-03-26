@@ -39,7 +39,7 @@
             this.btnAddIncident = new System.Windows.Forms.Button();
             this.Btn_cancelCreationIncident = new System.Windows.Forms.Button();
             this.txt_description = new System.Windows.Forms.RichTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_dateTimeReported = new System.Windows.Forms.DateTimePicker();
             this.Lbl_description = new System.Windows.Forms.Label();
             this.Lbl_deadlineFollowup = new System.Windows.Forms.Label();
             this.Lbl_priority = new System.Windows.Forms.Label();
@@ -130,7 +130,7 @@
             this.btnAddIncident.TabIndex = 45;
             this.btnAddIncident.Text = "SUBMIT TICKET";
             this.btnAddIncident.UseVisualStyleBackColor = false;
-            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click_1);
+            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
             // 
             // Btn_cancelCreationIncident
             // 
@@ -152,12 +152,12 @@
             this.txt_description.TabIndex = 43;
             this.txt_description.Text = "";
             // 
-            // dateTimePicker1
+            // dtp_dateTimeReported
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(208, 70);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 37;
+            this.dtp_dateTimeReported.Location = new System.Drawing.Point(208, 70);
+            this.dtp_dateTimeReported.Name = "dtp_dateTimeReported";
+            this.dtp_dateTimeReported.Size = new System.Drawing.Size(200, 20);
+            this.dtp_dateTimeReported.TabIndex = 37;
             // 
             // Lbl_description
             // 
@@ -225,11 +225,6 @@
             // cb_deadlineFollowUp
             // 
             this.cb_deadlineFollowUp.FormattingEnabled = true;
-            this.cb_deadlineFollowUp.Items.AddRange(new object[] {
-            "7 days",
-            "14 days",
-            "28 days",
-            "6 months"});
             this.cb_deadlineFollowUp.Location = new System.Drawing.Point(208, 238);
             this.cb_deadlineFollowUp.Name = "cb_deadlineFollowUp";
             this.cb_deadlineFollowUp.Size = new System.Drawing.Size(200, 21);
@@ -253,7 +248,7 @@
             this.Controls.Add(this.btnAddIncident);
             this.Controls.Add(this.Btn_cancelCreationIncident);
             this.Controls.Add(this.txt_description);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtp_dateTimeReported);
             this.Controls.Add(this.Lbl_description);
             this.Controls.Add(this.Lbl_deadlineFollowup);
             this.Controls.Add(this.Lbl_priority);
@@ -289,7 +284,7 @@
         private System.Windows.Forms.Button btnAddIncident;
         private System.Windows.Forms.Button Btn_cancelCreationIncident;
         private System.Windows.Forms.RichTextBox txt_description;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_dateTimeReported;
         private System.Windows.Forms.Label Lbl_description;
         private System.Windows.Forms.Label Lbl_deadlineFollowup;
         private System.Windows.Forms.Label Lbl_priority;

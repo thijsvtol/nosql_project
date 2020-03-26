@@ -16,6 +16,12 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
         
+        /// <summary>
+        /// get keymodel bij Key and Email
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public KeyModel GetKey(string key, string email)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
@@ -24,7 +30,12 @@ namespace NOSQL_Project_groep8.Repositories
             return collection.Find(filter).FirstOrDefault();
         }
 
-        public KeyModel GetKeyByEmail(string email)
+        /// <summary>
+        /// checks if a key exist with an Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public KeyModel CheckKeyExistByEmail(string email)
         {
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
             var builder = Builders<KeyModel>.Filter;

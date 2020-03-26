@@ -10,6 +10,12 @@ namespace NOSQL_Project_groep8.Controller
 {
     class EmailController
     {
+        /// <summary>
+        /// Send email by SMTP Client
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <param name="toMail"></param>
+        /// <param name="body"></param>
         public void SendMail(string subject, string toMail, string body)
         {
             MailMessage mail = new MailMessage();

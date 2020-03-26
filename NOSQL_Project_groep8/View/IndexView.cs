@@ -15,8 +15,8 @@ namespace NOSQL_Project_groep8
 {
     public partial class Index : Form
     {
-        IndexController indexController = new IndexController();
-        UserManagementView user = new UserManagementView();
+        IndexController IndexController = new IndexController();
+        UserManagementView User = new UserManagementView();
 
         public Index()
         {
@@ -24,6 +24,7 @@ namespace NOSQL_Project_groep8
             menuDashboard.Enabled = false;
             menuIncidentManagement.Enabled = false;
             menuUserManagement.Enabled = false;
+            menuImport.Enabled = false;
         }
 
         //Hide all panels exept the header
@@ -47,12 +48,17 @@ namespace NOSQL_Project_groep8
 
         public void SetCurrentUser(UserModel user)
         {
-            indexController.CurrentUser = user;
+            IndexController.CurrentUser = user;
         }
 
         public UserModel GetCurrentUser()
         {
-            return indexController.CurrentUser;
+            return IndexController.CurrentUser;
+        }
+
+        public DashboardIncidentsView GetDashboard()
+        {
+            return UCdashboardIncidentsView;
         }
 
         public void EnableButtons()
@@ -60,6 +66,20 @@ namespace NOSQL_Project_groep8
             menuDashboard.Enabled = true;
             menuIncidentManagement.Enabled = true;
             menuUserManagement.Enabled = true;
+            menuImport.Enabled = true;
+        }
+
+        public void refreshLv(string whichView)
+        {
+            HideViews(whichView);
+            if (whichView == "UCincidentManagementView")
+            {
+                UCincidentManagementView.refreshingLv();
+            }
+            else if (whichView == "UCuserManagementView")
+            {
+                //update iets
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
@@ -69,17 +89,23 @@ namespace NOSQL_Project_groep8
         private void menuDashboard_Click(object sender, EventArgs e)
         {
             HideViews("UCdashboardIncidentsView");
-            UCdashboardIncidentsView.UpdateCircleDiagrams();
+            UCdashboardIncidentsView.UpdateDashboard();
         }
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCincidentManagementView");
+            UCincidentManagementView.refreshingLv();
         }
 
         private void menuUserManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCuserManagementView");
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            HideViews("UCimportView");
         }
     }
 }

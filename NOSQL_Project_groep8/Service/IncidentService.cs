@@ -11,19 +11,30 @@ namespace NOSQL_Project_groep8.Service
     class IncidentService
     {
         private ConfigDB ConfigDB;
+
         public IncidentService()
         {
             ConfigDB = new ConfigDB();
         }
 
+        /// <summary>
+        /// Creates new incident
+        /// </summary>
+        /// <param name="incident"></param>
+        /// <returns></returns>
         public Boolean SetNewIncident(IncidentModel incident)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
-
             collection.InsertOne(incident);
-
             return true;
+        }
+
+        public void InsertIncidentModelList(List<IncidentModel> list)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            collection.InsertMany(list);
         }
     }
 }

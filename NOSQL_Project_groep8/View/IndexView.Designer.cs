@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.menuImport = new System.Windows.Forms.Button();
             this.menuUserManagement = new System.Windows.Forms.Button();
             this.lblHeader2 = new System.Windows.Forms.Label();
             this.menuIncidentManagement = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.UCaddUserView = new NOSQL_Project_groep8.View.AddUserView();
             this.UCloginView = new NOSQL_Project_groep8.View.LoginView();
             this.UCuserManagementView = new NOSQL_Project_groep8.View.UserManagementView();
+            this.UCimportView = new NOSQL_Project_groep8.View.ImportView();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderLogo)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.menuImport);
             this.pnlHeader.Controls.Add(this.menuUserManagement);
             this.pnlHeader.Controls.Add(this.lblHeader2);
             this.pnlHeader.Controls.Add(this.menuIncidentManagement);
@@ -62,6 +65,24 @@
             this.pnlHeader.Size = new System.Drawing.Size(968, 112);
             this.pnlHeader.TabIndex = 1;
             // 
+            // menuImport
+            // 
+            this.menuImport.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.menuImport.BackColor = System.Drawing.SystemColors.Window;
+            this.menuImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuImport.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.menuImport.FlatAppearance.BorderSize = 2;
+            this.menuImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuImport.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.menuImport.Location = new System.Drawing.Point(725, 79);
+            this.menuImport.Margin = new System.Windows.Forms.Padding(2);
+            this.menuImport.Name = "menuImport";
+            this.menuImport.Size = new System.Drawing.Size(242, 32);
+            this.menuImport.TabIndex = 5;
+            this.menuImport.Text = "Import";
+            this.menuImport.UseVisualStyleBackColor = false;
+            this.menuImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
             // menuUserManagement
             // 
             this.menuUserManagement.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
@@ -71,10 +92,10 @@
             this.menuUserManagement.FlatAppearance.BorderSize = 2;
             this.menuUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.menuUserManagement.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuUserManagement.Location = new System.Drawing.Point(646, 79);
+            this.menuUserManagement.Location = new System.Drawing.Point(483, 79);
             this.menuUserManagement.Margin = new System.Windows.Forms.Padding(2);
             this.menuUserManagement.Name = "menuUserManagement";
-            this.menuUserManagement.Size = new System.Drawing.Size(322, 32);
+            this.menuUserManagement.Size = new System.Drawing.Size(242, 32);
             this.menuUserManagement.TabIndex = 4;
             this.menuUserManagement.Text = "User Management";
             this.menuUserManagement.UseVisualStyleBackColor = false;
@@ -101,10 +122,10 @@
             this.menuIncidentManagement.FlatAppearance.BorderSize = 2;
             this.menuIncidentManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.menuIncidentManagement.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuIncidentManagement.Location = new System.Drawing.Point(320, 79);
+            this.menuIncidentManagement.Location = new System.Drawing.Point(241, 79);
             this.menuIncidentManagement.Margin = new System.Windows.Forms.Padding(2);
             this.menuIncidentManagement.Name = "menuIncidentManagement";
-            this.menuIncidentManagement.Size = new System.Drawing.Size(327, 32);
+            this.menuIncidentManagement.Size = new System.Drawing.Size(242, 32);
             this.menuIncidentManagement.TabIndex = 3;
             this.menuIncidentManagement.Text = "Incident Management";
             this.menuIncidentManagement.UseVisualStyleBackColor = false;
@@ -122,7 +143,7 @@
             this.menuDashboard.Location = new System.Drawing.Point(-1, 79);
             this.menuDashboard.Margin = new System.Windows.Forms.Padding(2);
             this.menuDashboard.Name = "menuDashboard";
-            this.menuDashboard.Size = new System.Drawing.Size(322, 32);
+            this.menuDashboard.Size = new System.Drawing.Size(242, 32);
             this.menuDashboard.TabIndex = 2;
             this.menuDashboard.Text = "Dashboard";
             this.menuDashboard.UseVisualStyleBackColor = false;
@@ -195,24 +216,13 @@
             this.UCloginView.Size = new System.Drawing.Size(327, 437);
             this.UCloginView.TabIndex = 3;
             // 
-            // UCuserManagementView
+            // UCimportView
             // 
-            this.UCuserManagementView.BackColor = System.Drawing.SystemColors.Window;
-            this.UCuserManagementView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.UCuserManagementView.Location = new System.Drawing.Point(0, 118);
-            this.UCuserManagementView.Name = "UCuserManagementView";
-            this.UCuserManagementView.Size = new System.Drawing.Size(968, 523);
-            this.UCuserManagementView.TabIndex = 2;
-            this.UCuserManagementView.Visible = false;
-            // 
-            // UCResetPasswordView
-            // 
-            this.UCResetPasswordView.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.UCResetPasswordView.Location = new System.Drawing.Point(308, 176);
-            this.UCResetPasswordView.Name = "UCResetPasswordView";
-            this.UCResetPasswordView.Size = new System.Drawing.Size(327, 437);
-            this.UCResetPasswordView.TabIndex = 3;
-            this.UCResetPasswordView.Visible = false;
+            this.UCimportView.Location = new System.Drawing.Point(2, 117);
+            this.UCimportView.Name = "UCimportView";
+            this.UCimportView.Size = new System.Drawing.Size(968, 523);
+            this.UCimportView.TabIndex = 4;
+            this.UCimportView.Visible = false;
             // 
             // Index
             // 
@@ -225,6 +235,7 @@
             this.Controls.Add(this.UCdashboardIncidentsView);
             this.Controls.Add(this.UCResetPasswordView);
             this.Controls.Add(this.UCaddUserView);
+            this.Controls.Add(this.UCimportView);
             this.Controls.Add(this.UCloginView);
             this.Controls.Add(this.UCuserManagementView);
             this.Controls.Add(this.pnlHeader);
@@ -235,7 +246,25 @@
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderLogo)).EndInit();
             this.ResumeLayout(false);
-
+            //
+            // UCResetPasswordView
+            // 
+            this.UCResetPasswordView.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.UCResetPasswordView.Location = new System.Drawing.Point(308, 176);
+            this.UCResetPasswordView.Name = "UCResetPasswordView";
+            this.UCResetPasswordView.Size = new System.Drawing.Size(327, 437);
+            this.UCResetPasswordView.TabIndex = 3;
+            this.UCResetPasswordView.Visible = false;
+            // 
+            // UCuserManagementView
+            // 
+            this.UCuserManagementView.BackColor = System.Drawing.SystemColors.Window;
+            this.UCuserManagementView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.UCuserManagementView.Location = new System.Drawing.Point(0, 118);
+            this.UCuserManagementView.Name = "UCuserManagementView";
+            this.UCuserManagementView.Size = new System.Drawing.Size(968, 523);
+            this.UCuserManagementView.TabIndex = 2;
+            this.UCuserManagementView.Visible = false;
         }
 
         #endregion
@@ -250,10 +279,11 @@
         private View.LoginView UCloginView;
         private View.AddUserView UCaddUserView;
         private View.CreateIncidenetView UCcreateIncidenetView;
-        private View.DashboardIncidentsView UCdashboardIncidentsView;
+        public View.DashboardIncidentsView UCdashboardIncidentsView;
         private View.IncidentManagementView UCincidentManagementView;
         private View.ResetPasswordView UCResetPasswordView;
-
+        private System.Windows.Forms.Button menuImport;
+        private View.ImportView UCimportView;
     }
 }
 
