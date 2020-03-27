@@ -45,7 +45,11 @@ namespace NOSQL_Project_groep8.View
             circleDiagramUnresolvedIncidents.Update();
 
             //Circle2
-            circleDiagramPastIncidents.Value = DashboardController.GetPastDeadlineIncidents()*20;
+            int pastDeadlines = DashboardController.GetPastDeadlineIncidents();
+            if (pastDeadlines <= 10)
+                circleDiagramPastIncidents.Value = pastDeadlines * 10;
+            else
+                circleDiagramPastIncidents.Value = 100;
             circleDiagramPastIncidents.Text = DashboardController.GetPastDeadlineIncidents().ToString();
             circleDiagramPastIncidents.Update();
         }
