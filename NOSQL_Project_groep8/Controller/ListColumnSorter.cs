@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 public class ListViewColumnSorter : IComparer
 {
-
     private int ColumnToSort;
 
     private SortOrder OrderOfSort;

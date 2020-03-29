@@ -32,6 +32,13 @@ namespace NOSQL_Project_groep8.View
             lv_incidents.Hide();
             //laad de LV in.
             ListViewLoad();
+            //kijk of er incidenten bestaan, zoja dan doe het volgende.
+            if (lv_incidents.Items.Count > 0)
+            {
+                lv_incidents.Items[0].Focused = true;
+                lv_incidents.Items[0].Selected = true;
+                lv_incidents.FullRowSelect = true;
+            }
             //show de LV.
             lv_incidents.Show();
         }
@@ -110,13 +117,6 @@ namespace NOSQL_Project_groep8.View
         {
             ListViewLoad();
             EmployeeOrService();
-            //kijk of er incidenten bestaan, zoja dan doe het volgende.
-            if (lv_incidents.Items.Count > 0)
-            {
-                lv_incidents.Items[0].Focused = true;
-                lv_incidents.Items[0].Selected = true;
-                lv_incidents.FullRowSelect = true;
-            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////

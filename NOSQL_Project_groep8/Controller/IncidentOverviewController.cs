@@ -11,14 +11,13 @@ namespace NOSQL_Project_groep8.Controller
 {
     public class IncidentOverviewController
     {
-
         private static IncidentRepository IncidentRepository = new IncidentRepository();
         private static IncidentService IncidentService = new IncidentService();
         private static ArchiveService ArchiveService = new ArchiveService();
 
         public List<IncidentModel> GetIncidents()
-        {           
-            List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();                    
+        {
+            List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();
             return incidents;
         }
 
@@ -35,4 +34,3 @@ namespace NOSQL_Project_groep8.Controller
         }
     }
 }
-
