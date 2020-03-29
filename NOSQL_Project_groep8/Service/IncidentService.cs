@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
 namespace NOSQL_Project_groep8.Service
 {
@@ -34,6 +35,21 @@ namespace NOSQL_Project_groep8.Service
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             collection.InsertMany(list);
+        }
+
+        public void DeleteIncident(IncidentModel incident)
+        {
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            collection.DeleteOne(x => x.IncidentId == incident.IncidentId);
+
+        }
+
+        public Boolean ArchiveIncident(IncidentModel incident)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Archive");
+            collection.InsertOne(incident);
+            return true;
         }
     }
 }

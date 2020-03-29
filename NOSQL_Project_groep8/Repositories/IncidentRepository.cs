@@ -88,5 +88,16 @@ namespace NOSQL_Project_groep8.Repositories
             IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
             return (incident != null)? incident.IncidentId + 1: 1;
         }
+
+        public IncidentModel GetIncidentByID(int UserId)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            //Count documents (select)
+            var filter = Builders<IncidentModel>.Filter.Eq(x => x.IncidentId, UserId);
+            IncidentModel incident = collection.Find(filter).FirstOrDefault();
+
+            return incident;
+        }
     }
 }
