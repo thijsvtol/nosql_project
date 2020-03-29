@@ -19,7 +19,7 @@ namespace NOSQL_Project_groep8.View
         UserManagementController UserOverview = new UserManagementController();
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
         AddUserView AddView = new AddUserView();
-        UserModel currentUser;
+        UserModel CurrentUser;
 
         public UserManagementView()
         {
@@ -68,7 +68,7 @@ namespace NOSQL_Project_groep8.View
             Index parent = (Index)this.Parent;
 
 
-            if (currentUser.TypeOfUser == "Employee")
+            if (CurrentUser.TypeOfUser == "Employee")
             {
                 parent.HideViews("UCaddUserView");
             }
@@ -110,7 +110,7 @@ namespace NOSQL_Project_groep8.View
         private void UserManagementView_Load(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
-            currentUser = parent.GetCurrentUser();
+            CurrentUser = parent.GetCurrentUser();
         }
 
 

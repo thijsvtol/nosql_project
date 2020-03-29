@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using NOSQL_Project_groep8.Model;
 using System;
