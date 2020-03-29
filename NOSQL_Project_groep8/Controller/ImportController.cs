@@ -13,15 +13,15 @@ namespace NOSQL_Project_groep8.Controller
 {
     class ImportController
     {
-        private UserService userService = new UserService();
-        private UserRepository userRepository = new UserRepository();
-        private IncidentService incidentService = new IncidentService();
-        private IncidentRepository incidentRepository = new IncidentRepository();
-        private StreamReader sr;
+        private UserService UserService = new UserService();
+        private UserRepository UserRepository = new UserRepository();
+        private IncidentService IncidentService = new IncidentService();
+        private IncidentRepository IncidentRepository = new IncidentRepository();
+        private StreamReader Sr;
 
         public void SetFile(string file)
         {
-            sr = new StreamReader(file);
+            Sr = new StreamReader(file);
         }
 
         public void InsertUsers()
@@ -29,16 +29,18 @@ namespace NOSQL_Project_groep8.Controller
             List<UserModel> users = new List<UserModel>();
             try
             {
-                int maxValueOfId = userRepository.AutoIncredement();
-                while (!sr.EndOfStream)
+                //Get Auto Incredement from DB
+                int maxValueOfId = UserRepository.AutoIncredement();
+                while (!Sr.EndOfStream)
                 {
-                    string line = sr.ReadLine();
+                    //Make foreach row a new user
+                    string line = Sr.ReadLine();
                     string[] split = line.Split(',',';');
                     UserModel user = FillUser(maxValueOfId, split);
                     users.Add(user);
                     maxValueOfId++;
                 }
-                userService.InsertUserModelList(users);
+                UserService.InsertUserModelList(users);
                 MessageBox.Show("inserted: " + users.Count + " rows succesfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception e)
@@ -52,16 +54,18 @@ namespace NOSQL_Project_groep8.Controller
             List<IncidentModel> incidents = new List<IncidentModel>();
             try
             {
-                int maxValueOfId = incidentRepository.AutoIncredement();
-                while (!sr.EndOfStream)
+                //Get Auto Incredement from DB
+                int maxValueOfId = IncidentRepository.AutoIncredement();
+                while (!Sr.EndOfStream)
                 {
-                    string line = sr.ReadLine();
+                    //Make foreach row a new incident
+                    string line = Sr.ReadLine();
                     string[] split = line.Split(',', ';');
                     IncidentModel incident = FillIncident(maxValueOfId, split);
                     incidents.Add(incident);
                     maxValueOfId++;
                 }
-                incidentService.InsertIncidentModelList(incidents);
+                IncidentService.InsertIncidentModelList(incidents);
                 MessageBox.Show("inserted: " + incidents.Count + " rows succesfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
@@ -70,6 +74,7 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
+        //Display exeptions
         private void ShowErrorLog(Exception e)
         {
             MessageBox.Show("An Error has shown up: " + e.Message + "\r\nStack and trace:\r\n" + e.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -15,8 +15,8 @@ namespace NOSQL_Project_groep8
 {
     public partial class Index : Form
     {
-        IndexController indexController = new IndexController();
-        UserManagementView user = new UserManagementView();
+        IndexController IndexController = new IndexController();
+        UserManagementView User = new UserManagementView();
 
         public Index()
         {
@@ -48,12 +48,17 @@ namespace NOSQL_Project_groep8
 
         public void SetCurrentUser(UserModel user)
         {
-            indexController.CurrentUser = user;
+            IndexController.CurrentUser = user;
         }
 
         public UserModel GetCurrentUser()
         {
-            return indexController.CurrentUser;
+            return IndexController.CurrentUser;
+        }
+
+        public DashboardIncidentsView GetDashboard()
+        {
+            return UCdashboardIncidentsView;
         }
 
         public void EnableButtons()
@@ -84,7 +89,7 @@ namespace NOSQL_Project_groep8
         private void menuDashboard_Click(object sender, EventArgs e)
         {
             HideViews("UCdashboardIncidentsView");
-            UCdashboardIncidentsView.UpdateCircleDiagrams();
+            UCdashboardIncidentsView.UpdateDashboard();
         }
 
         private void menuIncidentManagement_Click(object sender, EventArgs e)

@@ -22,6 +22,20 @@ namespace NOSQL_Project_groep8.Controller
             List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();                    
             return incidents;
         }
+
+        public IncidentModel GetIncidentById(int incidentID)
+        {
+            IncidentModel archive = IncidentRepository.GetIncidentByID(incidentID);
+
+            return archive;
+        }
+
+        public void DeleteIncident(IncidentModel incident)
+        {
+            IncidentService.ArchiveIncident(incident);
+            IncidentService.DeleteIncident(incident);
+
+        }
     }
 }
 

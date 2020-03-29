@@ -12,6 +12,8 @@ namespace NOSQL_Project_groep8.Repositories
     class IncidentRepository
     {
         private ConfigDB ConfigDB;
+        private FilterDefinitionBuilder<IncidentModel> Builder = Builders<IncidentModel>.Filter;
+
         public IncidentRepository()
         {
             ConfigDB = new ConfigDB();
@@ -21,13 +23,18 @@ namespace NOSQL_Project_groep8.Repositories
         /// Count the open incidents
         /// </summary>
         /// <returns></returns>
-        public int CountOpenIncidents()
+        public int CountOpenIncidents(int userId, bool adminRights)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var filter = Builders<IncidentModel>.Filter.Eq(x => x.Status, "open");
-            double count = collection.CountDocuments(filter);
+            var filter1 = Builder.Eq(x => x.Status, "open");
+            var filter2 = Builder.Eq(x => x.Status, "open") & Builder.Eq(x => x.UserId, userId);
+            double count;
+            if (adminRights)
+                count = collection.CountDocuments(filter1);
+            else
+                count = collection.CountDocuments(filter2);
             return Convert.ToInt32(count);
         }
 
@@ -35,15 +42,19 @@ namespace NOSQL_Project_groep8.Repositories
         /// Count the closed incidents
         /// </summary>
         /// <returns></returns>
-        public int CountClosedIncidentsBeforeDealine()
+        public int CountClosedIncidentsBeforeDealine(int userId, bool adminRights)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var builder = Builders<IncidentModel>.Filter;
             DateTime dateTime = DateTime.Now;
-            var filter = builder.Eq(x => x.Status, "closed") & builder.Gte(x => x.DateDeadline, dateTime);
-            double count = collection.CountDocuments(filter);
+            var filter1 = Builder.Eq(x => x.Status, "closed") & Builder.Gte(x => x.DateDeadline, dateTime);
+            var filter2 = Builder.Eq(x => x.Status, "closed") & Builder.Gte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.UserId, userId);
+            double count;
+            if (adminRights)
+                count = collection.CountDocuments(filter1);
+            else
+                count = collection.CountDocuments(filter2);
             return Convert.ToInt32(count);
         }
 
@@ -51,15 +62,19 @@ namespace NOSQL_Project_groep8.Repositories
         /// Count the past deadline incidents
         /// </summary>
         /// <returns></returns>
-        public int CountPastDeadlineIncidents()
+        public int CountPastDeadlineIncidents(int userId, bool adminRights)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             //Count documents (select)
-            var builder = Builders<IncidentModel>.Filter;
             DateTime dateTime = DateTime.Now;
-            var filter = builder.Lte(x => x.DateDeadline, dateTime) & builder.Eq(x => x.Status, "open");
-            double count = collection.CountDocuments(filter);
+            var filter1 = Builder.Lte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.Status, "open");
+            var filter2 = Builder.Lte(x => x.DateDeadline, dateTime) & Builder.Eq(x => x.Status, "open") & Builder.Eq(x => x.UserId, userId);
+            double count;
+            if (adminRights)
+                count = collection.CountDocuments(filter1);
+            else
+                count = collection.CountDocuments(filter2);
             return Convert.ToInt32(count);
         }
 
@@ -87,6 +102,17 @@ namespace NOSQL_Project_groep8.Repositories
             var filter = Builders<IncidentModel>.Filter.Empty;
             IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
             return (incident != null)? incident.IncidentId + 1: 1;
+        }
+
+        public IncidentModel GetIncidentByID(int UserId)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            //Count documents (select)
+            var filter = Builders<IncidentModel>.Filter.Eq(x => x.IncidentId, UserId);
+            IncidentModel incident = collection.Find(filter).FirstOrDefault();
+
+            return incident;
         }
     }
 }

@@ -38,8 +38,8 @@ namespace NOSQL_Project_groep8.View
                 Properties.Settings.Default.Password = txtPassword.Text;
                 Properties.Settings.Default.Save();
             }
-
-            loginController.CheckLogin((Index)this.Parent, username, password);
+            var index = (Index)this.Parent;
+            loginController.CheckLogin(index, index.GetDashboard(), username, password);
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
