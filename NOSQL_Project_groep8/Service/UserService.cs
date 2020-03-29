@@ -49,7 +49,7 @@ namespace NOSQL_Project_groep8.Service
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             var builder = Builders<UserModel>.Filter;
-            var filter = builder.Eq(x => x.Email, user.Email);
+            var filter = builder.Eq(x => x.UserId, user.UserId);
             collection.ReplaceOne(filter, user);
         }
 
