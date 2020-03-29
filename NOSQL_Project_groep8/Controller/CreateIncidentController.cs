@@ -17,11 +17,20 @@ namespace NOSQL_Project_groep8.Controller
         private static IncidentService IncidentService = new IncidentService();
         private static LocationRepository LocationRepository = new LocationRepository();
 
+        /// <summary>
+        ///  Get all users
+        /// </summary>
+        /// <returns></returns>
         public List<UserModel> GetUsers()
         {
             return UserRepository.GetAllUsers();
         }
 
+        /// <summary>
+        /// Saves the incident
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="incident"></param>
         public bool SaveIncident(Index index, IncidentModel incident)
         {
             //checks if the required fields are filled in
@@ -41,6 +50,10 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
+        /// <summary>
+        ///  Get status
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetStatus()
         {
             var dataSource = new List<string>();
@@ -49,6 +62,10 @@ namespace NOSQL_Project_groep8.Controller
             return dataSource;
         }
 
+        /// <summary>
+        /// Get the Types
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetType()
         {
             var type = new List<string>();
@@ -58,6 +75,10 @@ namespace NOSQL_Project_groep8.Controller
             return type;
         }
 
+        /// <summary>
+        /// Get the priorities
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetPriority()
         {
             var priority = new List<string>();
@@ -67,6 +88,10 @@ namespace NOSQL_Project_groep8.Controller
             return priority;
         }
 
+        /// <summary>
+        /// Get the Dealine Dates
+        /// </summary>
+        /// <returns></returns>
         public List<ComboboxItem> GetDeadlineDates()
         {
             var deadlineDays = new List<ComboboxItem>();
@@ -77,6 +102,10 @@ namespace NOSQL_Project_groep8.Controller
             return deadlineDays;
         }
 
+        /// <summary>
+        /// Get the locations
+        /// </summary>
+        /// <returns></returns>
         public List<LocationModel> GetLocation()
         {
             return LocationRepository.GetAllLocations();

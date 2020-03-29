@@ -19,7 +19,11 @@ namespace NOSQL_Project_groep8.Repositories
             ConfigDB = new ConfigDB();
         }
 
+        /// <summary>
         // Count the open incidents
+        /// Count the open incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountOpenIncidents(int userId, bool adminRights)
         {
             //Select collection
@@ -35,7 +39,11 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
         // Count the closed incidents
+        /// Count the closed incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountClosedIncidentsBeforeDealine(int userId, bool adminRights)
         {
             //Select collection
@@ -52,7 +60,11 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
         // Count the past deadline incidents
+        /// Count the past deadline incidents
+        /// </summary>
+        /// <returns></returns>
         public int CountPastDeadlineIncidents(int userId, bool adminRights)
         {
             //Select collection
@@ -69,7 +81,11 @@ namespace NOSQL_Project_groep8.Repositories
             return Convert.ToInt32(count);
         }
 
+        /// <summary>
         // Get all incidents
+        /// Get all incidents
+        /// </summary>
+        /// <returns></returns>
         public List<IncidentModel> GetAllIncidents()
         {
             //Select collection
@@ -79,7 +95,11 @@ namespace NOSQL_Project_groep8.Repositories
             return incidents;
         }
 
+        /// <summary>
         // Gets the last incidents Id for the next Incident
+        /// Gets the last incidents Id for the next Incident
+        /// </summary>
+        /// <returns></returns>
         public int AutoIncredement()
         {
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
@@ -88,6 +108,7 @@ namespace NOSQL_Project_groep8.Repositories
             IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
             return (incident != null) ? incident.IncidentId + 1 : 1;
         }
+
         // Gets incident by ID
         public IncidentModel GetIncidentByID(int UserId)
         {
