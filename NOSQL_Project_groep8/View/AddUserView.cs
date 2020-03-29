@@ -93,10 +93,10 @@ namespace NOSQL_Project_groep8.View
             cbLocation.Text = parent.GetCurrentUser().Location;
         }
 
-        private void checkIfChanged(TextBox changedTextbox)
+        private void CheckIfChanged(TextBox ChangedTextbox)
         {
             Index parent = (Index)this.Parent;
-            if (changedTextbox.Name == "tbFirstName")
+            if (ChangedTextbox.Name == "tbFirstName")
             {
                 if (parent.GetCurrentUser().FirstName != tbFirstName.Text)
                 {
@@ -107,7 +107,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (changedTextbox.Name == "tbLastName")
+            else if (ChangedTextbox.Name == "tbLastName")
             {
                 if (parent.GetCurrentUser().LastName != tbLastName.Text)
                 {
@@ -118,7 +118,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (changedTextbox.Name == "tbEmail")
+            else if (ChangedTextbox.Name == "tbEmail")
             {
                 if (parent.GetCurrentUser().Email != tbEmail.Text)
                 {
@@ -129,7 +129,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (changedTextbox.Name == "tbPhonenumber")
+            else if (ChangedTextbox.Name == "tbPhonenumber")
             {
                 if (parent.GetCurrentUser().Phonenumber != tbPhonenumber.Text)
                 {
@@ -142,10 +142,10 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
-        private void checkIfChanged(ComboBox changedCombobox)
+        private void CheckIfChanged(ComboBox ChangedTextbox)
         {
             Index parent = (Index)this.Parent;
-            if (changedCombobox.Name == "cbLocation")
+            if (ChangedTextbox.Name == "cbLocation")
             {
                 if (parent.GetCurrentUser().Location != cbLocation.SelectedText)
                 {
@@ -242,28 +242,28 @@ namespace NOSQL_Project_groep8.View
 
         private void tbFirstName_TextChanged(object sender, EventArgs e)
         {
-            checkIfChanged(tbFirstName);
+            CheckIfChanged(tbFirstName);
         }
 
         private void tbLastName_TextChanged(object sender, EventArgs e)
         {
-            checkIfChanged(tbLastName);
+            CheckIfChanged(tbLastName);
         }
 
         private void tbEmail_TextChanged(object sender, EventArgs e)
         {
-            checkIfChanged(tbEmail);
+            CheckIfChanged(tbEmail);
         }
 
         private void tbPhonenumber_TextChanged(object sender, EventArgs e)
         {
-            checkIfChanged(tbPhonenumber);
+            CheckIfChanged(tbPhonenumber);
 
         }
 
         private void cbLocation_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            checkIfChanged(cbLocation);
+            CheckIfChanged(cbLocation);
         }
 
         private void btnBack_Click(object sender, EventArgs e)

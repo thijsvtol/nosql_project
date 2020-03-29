@@ -158,9 +158,9 @@ namespace NOSQL_Project_groep8.Controller
             return LocationRepository.GetAllLocations();
         }
 
-        public UserModel GetUserById(int UserId)
+        public UserModel GetUserById(int userId)
         {
-            UserModel user = UserRepository.GetUserByID(UserId);
+            UserModel user = UserRepository.GetUserByID(userId);
 
             return user;
         }

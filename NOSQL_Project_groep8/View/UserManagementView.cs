@@ -23,16 +23,13 @@ namespace NOSQL_Project_groep8.View
 
         public UserManagementView()
         {
-
             InitializeComponent();
             FillListView();
         }
 
         private List<UserModel> GetAllUsers()
         {
-
             return UserOverview.GetAllUsers();
-
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using NOSQL_Project_groep8.Model;
 using System;
@@ -17,7 +18,6 @@ namespace NOSQL_Project_groep8.Repositories
         {
             ConfigDB = new ConfigDB();
         }
-
         /// <summary>
         /// Get user by Username
         /// </summary>
@@ -34,13 +34,12 @@ namespace NOSQL_Project_groep8.Repositories
 
             return user;
         }
-
-        public UserModel GetUserByID(int UserId)
+        public UserModel GetUserByID(int userId)
         {
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
             //Count documents (select)
-            var filter = Builders<UserModel>.Filter.Eq(x => x.UserId, UserId);
+            var filter = Builders<UserModel>.Filter.Eq(x => x.UserId, userId);
             var select = Builders<UserModel>.Projection.Include(x => x.Password);
             UserModel user = collection.Find(filter).FirstOrDefault();
 
@@ -66,7 +65,6 @@ namespace NOSQL_Project_groep8.Repositories
             }
             return false;
         }
-
         /// <summary>
         /// Get user by an Email
         /// </summary>
@@ -82,9 +80,6 @@ namespace NOSQL_Project_groep8.Repositories
 
             return user;
         }
-
-
-
         /// <summary>
         /// Get all users
         /// </summary>
@@ -97,7 +92,6 @@ namespace NOSQL_Project_groep8.Repositories
 
             return users;
         }
-
         /// <summary>
         /// Gets the last Id of the Userlist
         /// </summary>
@@ -110,7 +104,6 @@ namespace NOSQL_Project_groep8.Repositories
             UserModel user = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
             return user.UserId + 1;
         }
-
         /// <summary>
         /// Get the count of al the users in the DB
         /// </summary>
@@ -126,7 +119,6 @@ namespace NOSQL_Project_groep8.Repositories
             double count = collection.CountDocuments(filter);
             return Convert.ToInt32(count);
         }
-
         /// <summary>
         /// Checks if a user exists with the email and favorite Color
         /// </summary>
