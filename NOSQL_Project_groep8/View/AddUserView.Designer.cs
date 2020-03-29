@@ -53,6 +53,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbFavColor = new System.Windows.Forms.TextBox();
             this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAddUserHeader
@@ -303,11 +304,28 @@
             this.btnUpdateUser.UseVisualStyleBackColor = false;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Enabled = false;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(22, 71);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(140, 43);
+            this.btnBack.TabIndex = 27;
+            this.btnBack.Text = "USER MANAGEMENT";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // AddUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbFavColor);
@@ -368,5 +386,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFavColor;
         private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnBack;
     }
 }
