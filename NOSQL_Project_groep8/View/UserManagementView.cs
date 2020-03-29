@@ -18,6 +18,16 @@ namespace NOSQL_Project_groep8.View
 
         UserManagementController UserOverview = new UserManagementController();
         IncidentOverviewController IncidentOverview = new IncidentOverviewController();
+        AddUserView AddView = new AddUserView();
+        UserModel currentUser;
+
+        public UserManagementView()
+        {
+
+            InitializeComponent();
+            FillListView();
+        }
+
         private List<UserModel> GetAllUsers()
         {
 
@@ -25,11 +35,6 @@ namespace NOSQL_Project_groep8.View
 
         }
 
-        public UserManagementView()
-        {
-            InitializeComponent();
-            FillListView();
-        }
 
         public void FillListView()
         {
@@ -87,12 +92,19 @@ namespace NOSQL_Project_groep8.View
 
         private void UserManagementView_Load(object sender, EventArgs e)
         {
+            Index parent = (Index)this.Parent;
+            currentUser = parent.GetCurrentUser();
+        }
+
+        public void checkRole()
+        {
             btnRemove.Hide();
             btnChangeRole.Hide();
             btnChangeRole.Hide();
             Index parent = (Index)this.Parent;
 
-            if (parent.GetCurrentUser().TypeOfUser == "Employee")
+
+            if (currentUser.TypeOfUser == "Employee")
             {
                 parent.HideViews("UCaddUserView");
             }
@@ -131,6 +143,18 @@ namespace NOSQL_Project_groep8.View
             };
             UserOverview.DeleteUser(user);
             FillListView();
+        }
+
+        public void refreshingLv()
+        {
+            FillListView();
+            checkRole();
+        }
+
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+            parent.HideViews("UCaddUserView");
         }
     }
 }
