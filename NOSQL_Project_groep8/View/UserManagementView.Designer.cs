@@ -36,7 +36,10 @@
             this.userFName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserLName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tickets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.typeOfUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtFilterEmail = new System.Windows.Forms.TextBox();
+            this.btnChangeRole = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             UserID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
@@ -78,7 +81,9 @@
             this.email,
             this.userFName,
             this.UserLName,
-            this.tickets});
+            this.tickets,
+            this.typeOfUser});
+            this.listViewUser.FullRowSelect = true;
             this.listViewUser.HideSelection = false;
             this.listViewUser.Location = new System.Drawing.Point(22, 125);
             this.listViewUser.Name = "listViewUser";
@@ -86,6 +91,7 @@
             this.listViewUser.TabIndex = 8;
             this.listViewUser.UseCompatibleStateImageBehavior = false;
             this.listViewUser.View = System.Windows.Forms.View.Details;
+            this.listViewUser.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewUser_MouseClick);
             // 
             // email
             // 
@@ -95,17 +101,22 @@
             // userFName
             // 
             this.userFName.Text = "First Name";
-            this.userFName.Width = 213;
+            this.userFName.Width = 112;
             // 
             // UserLName
             // 
             this.UserLName.Text = "Last Name";
-            this.UserLName.Width = 147;
+            this.UserLName.Width = 111;
             // 
             // tickets
             // 
             this.tickets.Text = "# tickets";
-            this.tickets.Width = 132;
+            this.tickets.Width = 140;
+            // 
+            // typeOfUser
+            // 
+            this.typeOfUser.Text = "Type of user";
+            this.typeOfUser.Width = 127;
             // 
             // txtFilterEmail
             // 
@@ -117,11 +128,45 @@
             this.txtFilterEmail.Tag = "";
             this.txtFilterEmail.TextChanged += new System.EventHandler(this.txtFilterEmail_TextChanged);
             // 
+            // btnChangeRole
+            // 
+            this.btnChangeRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(242)))), ((int)(((byte)(4)))));
+            this.btnChangeRole.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangeRole.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnChangeRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeRole.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeRole.Location = new System.Drawing.Point(785, 5);
+            this.btnChangeRole.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChangeRole.Name = "btnChangeRole";
+            this.btnChangeRole.Size = new System.Drawing.Size(118, 46);
+            this.btnChangeRole.TabIndex = 10;
+            this.btnChangeRole.Text = "CHANGE TO SERVICEDESK";
+            this.btnChangeRole.UseVisualStyleBackColor = false;
+            this.btnChangeRole.Click += new System.EventHandler(this.btnChangeRole_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.Red;
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Location = new System.Drawing.Point(911, 5);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(26, 46);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "X";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // UserManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnChangeRole);
             this.Controls.Add(this.listViewUser);
             this.Controls.Add(this.txtFilterEmail);
             this.Controls.Add(this.btnAddNewUser);
@@ -144,5 +189,8 @@
         private System.Windows.Forms.ColumnHeader UserLName;
         private System.Windows.Forms.ColumnHeader tickets;
         private System.Windows.Forms.TextBox txtFilterEmail;
+        private System.Windows.Forms.Button btnChangeRole;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.ColumnHeader typeOfUser;
     }
 }

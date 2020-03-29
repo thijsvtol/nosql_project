@@ -52,6 +52,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tbFavColor = new System.Windows.Forms.TextBox();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAddUserHeader
@@ -72,6 +74,7 @@
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(277, 25);
             this.tbFirstName.TabIndex = 2;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // tbLastName
             // 
@@ -80,6 +83,7 @@
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(277, 25);
             this.tbLastName.TabIndex = 3;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // cbTypeEmployee
             // 
@@ -100,6 +104,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(277, 25);
             this.tbEmail.TabIndex = 5;
+            this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
             // tbPhonenumber
             // 
@@ -108,6 +113,7 @@
             this.tbPhonenumber.Name = "tbPhonenumber";
             this.tbPhonenumber.Size = new System.Drawing.Size(277, 25);
             this.tbPhonenumber.TabIndex = 6;
+            this.tbPhonenumber.TextChanged += new System.EventHandler(this.tbPhonenumber_TextChanged);
             // 
             // cbLocation
             // 
@@ -117,6 +123,7 @@
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(277, 28);
             this.cbLocation.TabIndex = 7;
+            this.cbLocation.SelectionChangeCommitted += new System.EventHandler(this.cbLocation_SelectionChangeCommitted);
             // 
             // checkBoxAccept
             // 
@@ -281,11 +288,45 @@
             this.tbFavColor.Size = new System.Drawing.Size(277, 25);
             this.tbFavColor.TabIndex = 23;
             // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnUpdateUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateUser.Enabled = false;
+            this.btnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateUser.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateUser.Location = new System.Drawing.Point(378, 303);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(140, 43);
+            this.btnUpdateUser.TabIndex = 26;
+            this.btnUpdateUser.Text = "UPDATE";
+            this.btnUpdateUser.UseVisualStyleBackColor = false;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(155)))), ((int)(((byte)(213)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Enabled = false;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(22, 71);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(140, 43);
+            this.btnBack.TabIndex = 27;
+            this.btnBack.Text = "USER MANAGEMENT";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // AddUserView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbFavColor);
             this.Controls.Add(this.panel1);
@@ -312,6 +353,7 @@
             this.Controls.Add(this.lblAddUserHeader);
             this.Name = "AddUserView";
             this.Size = new System.Drawing.Size(968, 523);
+            this.Load += new System.EventHandler(this.AddUserView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,5 +385,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFavColor;
+        private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.Button btnBack;
     }
 }

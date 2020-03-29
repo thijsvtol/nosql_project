@@ -76,6 +76,18 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
+        public bool ValidateEmail(string email)
+        {
+            if (!new EmailAddressAttribute().IsValid(email))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void InsertUser(UserModel user, bool sendEmail)
         {
             //Add user by service
@@ -144,6 +156,18 @@ namespace NOSQL_Project_groep8.Controller
         public List<LocationModel> GetLocations()
         {
             return LocationRepository.GetAllLocations();
+        }
+
+        public UserModel GetUserById(int userId)
+        {
+            UserModel user = UserRepository.GetUserByID(userId);
+
+            return user;
+        }
+
+        public void UpdateUser(UserModel user)
+        {
+            UserService.UpdateUser(user);
         }
     }
 }

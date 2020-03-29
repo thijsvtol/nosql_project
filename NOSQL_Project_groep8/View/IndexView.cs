@@ -101,6 +101,7 @@ namespace NOSQL_Project_groep8
         private void menuUserManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCuserManagementView");
+            UCuserManagementView.RefreshingLv();
         }
 
         private void btnImport_Click(object sender, EventArgs e)
