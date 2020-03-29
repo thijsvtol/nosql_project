@@ -1,11 +1,7 @@
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NOSQL_Project_groep8.Controller
@@ -45,7 +41,7 @@ namespace NOSQL_Project_groep8.Controller
                 IncidentService.SetNewIncident(incident);
                 index.HideViews("UCincidentManagementView");
                 MessageBox.Show("Incident was saved! You are being redirected to the overview.");
-                index.refreshLv("UCincidentManagementView");
+                index.RefreshLv("UCincidentManagementView");
                 return true;
             }
         }
@@ -56,9 +52,11 @@ namespace NOSQL_Project_groep8.Controller
         /// <returns></returns>
         public List<string> GetStatus()
         {
-            var dataSource = new List<string>();
-            dataSource.Add("open");
-            dataSource.Add("close");
+            var dataSource = new List<string>
+            {
+                "open",
+                "close"
+            };
             return dataSource;
         }
 
@@ -68,10 +66,12 @@ namespace NOSQL_Project_groep8.Controller
         /// <returns></returns>
         public List<string> GetType()
         {
-            var type = new List<string>();
-            type.Add("Software");
-            type.Add("Hardware");
-            type.Add("Service");
+            var type = new List<string>
+            {
+                "Software",
+                "Hardware",
+                "Service"
+            };
             return type;
         }
 
@@ -81,10 +81,12 @@ namespace NOSQL_Project_groep8.Controller
         /// <returns></returns>
         public List<string> GetPriority()
         {
-            var priority = new List<string>();
-            priority.Add("Low");
-            priority.Add("Normal");
-            priority.Add("High");
+            var priority = new List<string>
+            {
+                "Low",
+                "Normal",
+                "High"
+            };
             return priority;
         }
 
@@ -94,11 +96,13 @@ namespace NOSQL_Project_groep8.Controller
         /// <returns></returns>
         public List<ComboboxItem> GetDeadlineDates()
         {
-            var deadlineDays = new List<ComboboxItem>();
-            deadlineDays.Add(new ComboboxItem() { Text = "7 days", Value = 7, Type = "day" });
-            deadlineDays.Add(new ComboboxItem() { Text = "14 days", Value = 14, Type = "day" });
-            deadlineDays.Add(new ComboboxItem() { Text = "26 days", Value = 26, Type = "day" });
-            deadlineDays.Add(new ComboboxItem() { Text = "6 months", Value = 6, Type = "month" });
+            var deadlineDays = new List<ComboboxItem>
+            {
+                new ComboboxItem() { Text = "7 days", Value = 7, Type = "day" },
+                new ComboboxItem() { Text = "14 days", Value = 14, Type = "day" },
+                new ComboboxItem() { Text = "26 days", Value = 26, Type = "day" },
+                new ComboboxItem() { Text = "6 months", Value = 6, Type = "month" }
+            };
             return deadlineDays;
         }
 

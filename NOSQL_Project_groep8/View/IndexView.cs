@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
 using NOSQL_Project_groep8.View;
@@ -69,7 +62,7 @@ namespace NOSQL_Project_groep8
             menuImport.Enabled = true;
         }
 
-        public void refreshLv(string whichView)
+        public void RefreshLv(string whichView)
         {
             HideViews(whichView);
             if (whichView == "UCincidentManagementView")

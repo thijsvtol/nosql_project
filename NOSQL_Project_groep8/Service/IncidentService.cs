@@ -2,9 +2,6 @@
 using NOSQL_Project_groep8.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Driver;
 
 namespace NOSQL_Project_groep8.Service
@@ -38,7 +35,6 @@ namespace NOSQL_Project_groep8.Service
         {
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             collection.DeleteOne(x => x.IncidentId == incident.IncidentId);
-
         }
     }
 }

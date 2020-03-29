@@ -3,12 +3,9 @@ using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.View;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NOSQL_Project_groep8.Controller
@@ -60,7 +57,7 @@ namespace NOSQL_Project_groep8.Controller
         {
             try
             {
-                if (validdate(email, favColor))
+                if (Validdate(email, favColor))
                 {
                     string key = GenerateKey();
                     //check email for existing;;
@@ -92,7 +89,7 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="email"></param>
         /// <param name="favColor"></param>
         /// <returns></returns>
-        public bool validdate(string email, string favColor)
+        public bool Validdate(string email, string favColor)
         {
             if (!email.Contains('@'))
             {

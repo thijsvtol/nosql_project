@@ -40,6 +40,10 @@ namespace NOSQL_Project_groep8.View
             index.HideViews("UCloginView");
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///                                      EVENTS                                        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
             //checks user info and send mail if the info is correct

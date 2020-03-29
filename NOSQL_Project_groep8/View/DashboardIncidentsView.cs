@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
 using NOSQL_Project_groep8.Model;
@@ -75,7 +68,7 @@ namespace NOSQL_Project_groep8.View
         private void btnShowListDashboard_Click(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
-            parent.refreshLv("UCincidentManagementView");
+            parent.RefreshLv("UCincidentManagementView");
         }
     }
 }
