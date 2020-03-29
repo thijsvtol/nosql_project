@@ -17,6 +17,16 @@ namespace NOSQL_Project_groep8.View
     {
 
         UserManagementController UserOverview = new UserManagementController();
+        IncidentOverviewController IncidentOverview = new IncidentOverviewController();
+        UserModel currentUser;
+
+        public UserManagementView()
+        {
+
+            InitializeComponent();
+            FillListView();
+        }
+
         private List<UserModel> GetAllUsers()
         {
 
@@ -76,6 +86,16 @@ namespace NOSQL_Project_groep8.View
         private void UserManagementView_Load(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
+            currentUser = parent.GetCurrentUser();
+        }
+
+        public void checkRole()
+        {
+            btnRemove.Hide();
+            btnChangeRole.Hide();
+            btnChangeRole.Hide();
+            Index parent = (Index)this.Parent;
+
 
             if (parent.GetCurrentUser().TypeOfUser == "Employee")
             {
@@ -89,6 +109,32 @@ namespace NOSQL_Project_groep8.View
                     }
                 }
             }
+        }
+
+        private void btnChangeRole_Click(object sender, EventArgs e)
+        {
+            UserModel user = new UserModel()
+            {
+                UserId = Convert.ToInt32(listViewUser.SelectedItems[0].SubItems[0].Text),
+                TypeOfUser = listViewUser.SelectedItems[0].SubItems[5].Text,
+            };
+            UserOverview.ChangeRole(user);
+            FillListView();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            UserModel user = new UserModel()
+            {
+                UserId = Convert.ToInt32(listViewUser.SelectedItems[0].SubItems[0].Text),
+            };
+            UserOverview.DeleteUser(user);
+            FillListView();
+        }
+        public void refreshingLv()
+        {
+            FillListView();
+            checkRole();
         }
     }
 }

@@ -19,11 +19,11 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="index"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void CheckLogin(Index index,string username, string password)
+        public void CheckLogin(Index index, DashboardIncidentsView dashboard, string UserId, string password)
         {
-            if (UserRepository.CheckUser(username, password))
+            if (UserRepository.CheckUser(UserId, password))
             {
-                UserModel user = UserRepository.GetUser(username);
+                UserModel user = UserRepository.GetUser(UserId);
                 index.HideViews("UCdashboardIncidentsView");
                 index.SetCurrentUser(user);
                 index.EnableButtons();

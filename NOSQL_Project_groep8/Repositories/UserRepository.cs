@@ -30,10 +30,21 @@ namespace NOSQL_Project_groep8.Repositories
             var filter = Builders<UserModel>.Filter.Eq(x => x.Username, username);
             var select = Builders<UserModel>.Projection.Include(x => x.Password);
             UserModel user = collection.Find(filter).FirstOrDefault();
-           
+
             return user;
         }
 
+        public UserModel GetUserByID(int UserId)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<UserModel>("Users");
+            //Count documents (select)
+            var filter = Builders<UserModel>.Filter.Eq(x => x.UserId, UserId);
+            var select = Builders<UserModel>.Projection.Include(x => x.Password);
+            UserModel user = collection.Find(filter).FirstOrDefault();
+
+            return user;
+        }
         /// <summary>
         /// Checks if user exists with the right username and password
         /// </summary>

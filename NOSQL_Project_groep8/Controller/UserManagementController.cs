@@ -14,24 +14,32 @@ namespace NOSQL_Project_groep8.Controller
         private static UserRepository UserRepository = new UserRepository();
         private static IncidentRepository IncidentRepository = new IncidentRepository();
         private static IncidentService IncidentService = new IncidentService();
+        private static UserService UserService = new UserService();
 
 
         public List<UserModel> GetAllUsers()
         {
             List<UserModel> users = UserRepository.GetAllUsers();
             List<IncidentModel> incidents = IncidentRepository.GetAllIncidents();
-
-            foreach (var incident in incidents)
+        }
+        public void ChangeRole(UserModel user)
+        {
+            if (user.TypeOfUser == "Servicedesk")
             {
-                foreach (var user in users)
-                {
-                    if(user.UserId == incident.UserId)
-                    {
-                        user.NumberOfTickets++;
-                    }
-                }
+                user.TypeOfUser = "Employee";
+                UserService.ChangeRole(user);
             }
-            return users;
+            else if (user.TypeOfUser == "Employee")
+            {
+                user.TypeOfUser = "Servicedesk";
+                UserService.ChangeRole(user);
+            }
+
+        }
+
+        public void DeleteUser(UserModel user)
+        {
+            UserService.DeleteUser(user);
         }
     }
 }
