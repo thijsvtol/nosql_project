@@ -20,7 +20,6 @@ namespace NOSQL_Project_groep8.Repositories
         }
 
         /// <summary>
-        // Count the open incidents
         /// Count the open incidents
         /// </summary>
         /// <returns></returns>
@@ -40,7 +39,6 @@ namespace NOSQL_Project_groep8.Repositories
         }
 
         /// <summary>
-        // Count the closed incidents
         /// Count the closed incidents
         /// </summary>
         /// <returns></returns>
@@ -61,7 +59,6 @@ namespace NOSQL_Project_groep8.Repositories
         }
 
         /// <summary>
-        // Count the past deadline incidents
         /// Count the past deadline incidents
         /// </summary>
         /// <returns></returns>
@@ -82,7 +79,6 @@ namespace NOSQL_Project_groep8.Repositories
         }
 
         /// <summary>
-        // Get all incidents
         /// Get all incidents
         /// </summary>
         /// <returns></returns>
@@ -96,7 +92,6 @@ namespace NOSQL_Project_groep8.Repositories
         }
 
         /// <summary>
-        // Gets the last incidents Id for the next Incident
         /// Gets the last incidents Id for the next Incident
         /// </summary>
         /// <returns></returns>
