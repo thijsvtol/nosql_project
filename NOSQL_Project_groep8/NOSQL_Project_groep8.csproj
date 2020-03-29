@@ -126,6 +126,7 @@
     <Compile Include="Repositories\IncidentRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Service\ArchiveService.cs" />
     <Compile Include="Service\IncidentService.cs" />
     <Compile Include="Service\KeyService.cs" />
     <Compile Include="Service\UserService.cs" />

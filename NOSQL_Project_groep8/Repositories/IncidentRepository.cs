@@ -18,7 +18,7 @@ namespace NOSQL_Project_groep8.Repositories
         {
             ConfigDB = new ConfigDB();
         }
-        
+
         /// <summary>
         /// Count the open incidents
         /// </summary>
@@ -101,7 +101,19 @@ namespace NOSQL_Project_groep8.Repositories
             var sort = Builders<IncidentModel>.Sort.Descending(x => x.IncidentId);
             var filter = Builders<IncidentModel>.Filter.Empty;
             IncidentModel incident = collection.Find(filter).Sort(sort).Limit(1).FirstOrDefault();
-            return (incident != null)? incident.IncidentId + 1: 1;
+            return (incident != null) ? incident.IncidentId + 1 : 1;
+        }
+
+        // Gets incident by ID
+        public IncidentModel GetIncidentByID(int UserId)
+        {
+            //Select collection
+            var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
+            //Count documents (select)
+            var filter = Builders<IncidentModel>.Filter.Eq(x => x.IncidentId, UserId);
+            IncidentModel incident = collection.Find(filter).FirstOrDefault();
+
+            return incident;
         }
     }
 }

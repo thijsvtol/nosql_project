@@ -37,8 +37,9 @@
             this.User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UserID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txt_filterTickets = new System.Windows.Forms.TextBox();
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txt_filterTickets = new System.Windows.Forms.TextBox();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCreateIncident
@@ -49,7 +50,7 @@
             this.btnCreateIncident.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateIncident.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateIncident.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCreateIncident.Location = new System.Drawing.Point(785, 55);
+            this.btnCreateIncident.Location = new System.Drawing.Point(611, 55);
             this.btnCreateIncident.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateIncident.Name = "btnCreateIncident";
             this.btnCreateIncident.Size = new System.Drawing.Size(152, 46);
@@ -87,7 +88,6 @@
             this.lv_incidents.UseCompatibleStateImageBehavior = false;
             this.lv_incidents.View = System.Windows.Forms.View.Details;
             this.lv_incidents.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lv_incidents_ColumnClick);
-            this.lv_incidents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lv_incidents_MouseDoubleClick);
             // 
             // ID
             // 
@@ -115,6 +115,10 @@
             // 
             this.Date.Text = "Date";
             // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            // 
             // txt_filterTickets
             // 
             this.txt_filterTickets.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,15 +128,29 @@
             this.txt_filterTickets.TabIndex = 24;
             this.txt_filterTickets.TextChanged += new System.EventHandler(this.txt_filterTickets_TextChanged);
             // 
-            // Status
+            // btn_delete
             // 
-            this.Status.Text = "Status";
+            this.btn_delete.BackColor = System.Drawing.Color.Red;
+            this.btn_delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_delete.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_delete.Location = new System.Drawing.Point(785, 55);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(152, 46);
+            this.btn_delete.TabIndex = 27;
+            this.btn_delete.Text = "DELETE";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // IncidentManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.txt_filterTickets);
             this.Controls.Add(this.lv_incidents);
             this.Controls.Add(this.btnCreateIncident);
@@ -158,5 +176,6 @@
         private System.Windows.Forms.TextBox txt_filterTickets;
         private System.Windows.Forms.ColumnHeader Subject;
         private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.Button btn_delete;
     }
 }

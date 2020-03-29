@@ -74,7 +74,7 @@ namespace NOSQL_Project_groep8
             HideViews(whichView);
             if (whichView == "UCincidentManagementView")
             {
-                UCincidentManagementView.refreshingLv();
+                UCincidentManagementView.RefreshingLv();
             }
             else if (whichView == "UCuserManagementView")
             {
@@ -95,7 +95,7 @@ namespace NOSQL_Project_groep8
         private void menuIncidentManagement_Click(object sender, EventArgs e)
         {
             HideViews("UCincidentManagementView");
-            UCincidentManagementView.refreshingLv();
+            UCincidentManagementView.RefreshingLv();
         }
 
         private void menuUserManagement_Click(object sender, EventArgs e)

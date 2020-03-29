@@ -142,7 +142,7 @@
             this.Btn_cancelCreationIncident.TabIndex = 44;
             this.Btn_cancelCreationIncident.Text = "CANCEL";
             this.Btn_cancelCreationIncident.UseVisualStyleBackColor = false;
-            this.Btn_cancelCreationIncident.Click += new System.EventHandler(this.Btn_cancelCreationIncident_Click);
+            this.Btn_cancelCreationIncident.Click += new System.EventHandler(this.btn_CancelCreationIncident_Click);
             // 
             // txt_description
             // 
