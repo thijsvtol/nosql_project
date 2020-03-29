@@ -58,7 +58,7 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
-        public void changeAddToProfile()
+        public void ChangeAddToProfile()
         {
             Index parent = (Index)this.Parent;
             lblAddUserHeader.Text = "Your profile";
@@ -203,7 +203,7 @@ namespace NOSQL_Project_groep8.View
 
             if (parent.GetCurrentUser().TypeOfUser == "Employee")
             {
-                changeAddToProfile();
+                ChangeAddToProfile();
                 btnBack.Hide();
             }
         }
@@ -213,7 +213,7 @@ namespace NOSQL_Project_groep8.View
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
-            if (Controller.validateEmail(tbEmail.Text)){
+            if (Controller.ValidateEmail(tbEmail.Text)){
                 MessageBox.Show("Emailaddress has an invalid input.");
             }
             else

@@ -76,7 +76,7 @@ namespace NOSQL_Project_groep8.Controller
             }
         }
 
-        public bool validateEmail(string email)
+        public bool ValidateEmail(string email)
         {
             if (!new EmailAddressAttribute().IsValid(email))
             {

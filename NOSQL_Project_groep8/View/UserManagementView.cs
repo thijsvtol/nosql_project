@@ -63,6 +63,26 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
+        public void CheckRole()
+        {
+            btnRemove.Hide();
+            btnChangeRole.Hide();
+            btnChangeRole.Hide();
+            Index parent = (Index)this.Parent;
+
+
+            if (currentUser.TypeOfUser == "Employee")
+            {
+                parent.HideViews("UCaddUserView");
+            }
+        }
+
+        public void RefreshingLv()
+        {
+            FillListView();
+            CheckRole();
+        }
+
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
@@ -96,19 +116,6 @@ namespace NOSQL_Project_groep8.View
             currentUser = parent.GetCurrentUser();
         }
 
-        public void checkRole()
-        {
-            btnRemove.Hide();
-            btnChangeRole.Hide();
-            btnChangeRole.Hide();
-            Index parent = (Index)this.Parent;
-
-
-            if (currentUser.TypeOfUser == "Employee")
-            {
-                parent.HideViews("UCaddUserView");
-            }
-        }
 
         private void listViewUser_MouseClick(object sender, MouseEventArgs e)
         {
@@ -145,11 +152,7 @@ namespace NOSQL_Project_groep8.View
             FillListView();
         }
 
-        public void refreshingLv()
-        {
-            FillListView();
-            checkRole();
-        }
+
 
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
