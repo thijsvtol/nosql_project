@@ -17,6 +17,7 @@ namespace NOSQL_Project_groep8.View
         public LoginView()
         {
             InitializeComponent();
+            //if rememberme is checked set username and password in view
             if (Properties.Settings.Default.Username != string.Empty)
             {
                 txtUsername.Text = Properties.Settings.Default.Username;
@@ -32,6 +33,7 @@ namespace NOSQL_Project_groep8.View
             String username = txtUsername.Text;
             string password = txtPassword.Text;
 
+            // if rememberme is checked set the username and password in the cach
             if (cbRememberMe.Checked)
             {
                 Properties.Settings.Default.Username = txtUsername.Text;
@@ -39,6 +41,7 @@ namespace NOSQL_Project_groep8.View
                 Properties.Settings.Default.Save();
             }
             var index = (Index)this.Parent;
+            //check if username and password correct is
             loginController.CheckLogin(index, index.GetDashboard(), username, password);
         }
 

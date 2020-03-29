@@ -41,6 +41,7 @@ namespace NOSQL_Project_groep8.Controller
 
             char letter;
 
+            //makes a random key of 24 letters
             for (int i = 0; i < length; i++)
             {
                 double flt = random.NextDouble();
@@ -60,6 +61,7 @@ namespace NOSQL_Project_groep8.Controller
         {
             try
             {
+                //if email and favcolor is correct
                 if (validdate(email, favColor))
                 {
                     string key = GenerateKey();
@@ -74,6 +76,7 @@ namespace NOSQL_Project_groep8.Controller
                     {
                         keyService.SetKey(key, email);
                     }
+                    //send mail to the given email
                     EmailController emailController = new EmailController();
                     emailController.SendMail("ResetKey", email, "Your reset key is: " + key);
                     MessageBox.Show("Email send");
@@ -94,6 +97,7 @@ namespace NOSQL_Project_groep8.Controller
         /// <returns></returns>
         public bool validdate(string email, string favColor)
         {
+            //validate on email and check if fav color was correct
             if (!email.Contains('@'))
             {
                 MessageBox.Show("'" + email + "' is not an valid Email address");
@@ -118,6 +122,7 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="key"></param>
         public void CheckKey(string key, string email)
         {
+            //checks if key exist for the user and if correct for the username
             KeyModel keyModel = KeyRepository.GetKey(key, email);
             if (keyModel != null)
             {
@@ -138,12 +143,15 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="email"></param>
         public void ChangePassword(string password, string rePassword, string email)
         {
+            //if password is equal to the other
             if (rePassword == password && IsValidPassword(password))
             {
+                //get the user that needs to be edited
                 UserModel user = UserRepository.GetUserPasswordByEmail(email);
                 user.Password = password;
                 UserService.ChangePassword(user);
 
+                //delete the used key
                 keyService.DeleteKey(Key);
                 UC.HidePanels("pCheckKey");
                 UC.GoToLogin();
