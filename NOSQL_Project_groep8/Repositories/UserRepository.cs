@@ -12,6 +12,7 @@ namespace NOSQL_Project_groep8.Repositories
     class UserRepository
     {
         private ConfigDB ConfigDB;
+
         public UserRepository()
         {
             ConfigDB = new ConfigDB();

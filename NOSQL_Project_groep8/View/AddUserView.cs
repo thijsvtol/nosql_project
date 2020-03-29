@@ -45,6 +45,7 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
+        //Fill the location's combobox with all locations from the DB
         private void FillLocationCB()
         {
             List<LocationModel> locations = Controller.GetLocations();
@@ -52,7 +53,6 @@ namespace NOSQL_Project_groep8.View
             {
                 cbLocation.Items.Add(item.Location);
             }
-
         }
 
 
