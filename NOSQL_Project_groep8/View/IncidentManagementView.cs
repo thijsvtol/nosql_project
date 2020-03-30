@@ -71,8 +71,8 @@ namespace NOSQL_Project_groep8.View
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
-                lv_incidents.Refresh();
             }
+            lv_incidents.Refresh();
             //maak de LV kopjes groot genoeg.
             foreach (ColumnHeader ch in this.lv_incidents.Columns)
             {

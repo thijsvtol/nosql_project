@@ -27,8 +27,7 @@ namespace NOSQL_Project_groep8.View
             //Go back to UMV
             Index parent = (Index)this.Parent;
             parent.HideViews("UCuserManagementView");
-            UserManagementView userView = new UserManagementView();
-            userView.RefreshingLv();
+            parent.RefreshLv("UCuserManagementView");
         }
 
         private void ClearFields()
