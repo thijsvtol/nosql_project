@@ -23,8 +23,6 @@ namespace NOSQL_Project_groep8.View
         public IncidentManagementView()
         {
             InitializeComponent();
-            //verstop de LV voor alles word ingeladen.
-            lv_incidents.Hide();
             //laad de LV in.
             ListViewLoad();
             //kijk of er incidenten bestaan, zoja dan doe het volgende.
@@ -34,8 +32,6 @@ namespace NOSQL_Project_groep8.View
                 lv_incidents.Items[0].Selected = true;
                 lv_incidents.FullRowSelect = true;
             }
-            //show de LV.
-            lv_incidents.Show();
         }
 
         //vul de LV.
@@ -106,9 +102,13 @@ namespace NOSQL_Project_groep8.View
 
         //refresh LV.
         public void RefreshingLv()
-        {
+        {   
+            //verstop de LV voor alles word ingeladen.
+            lv_incidents.Hide();
             ListViewLoad();
             EmployeeOrService();
+            //show de LV.
+            lv_incidents.Show();
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
