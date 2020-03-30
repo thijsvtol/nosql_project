@@ -28,7 +28,7 @@ namespace NOSQL_Project_groep8.View
             Index parent = (Index)this.Parent;
             parent.HideViews("UCuserManagementView");
             UserManagementView userView = new UserManagementView();
-            userView.FillListView();
+            userView.RefreshingLv();
         }
 
         private void ClearFields()
@@ -167,7 +167,6 @@ namespace NOSQL_Project_groep8.View
             if (parent.GetCurrentUser().TypeOfUser == "Employee")
             {
                 ChangeAddToProfile();
-                btnBack.Hide();
             }
         }
 

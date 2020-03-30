@@ -55,7 +55,7 @@ namespace NOSQL_Project_groep8.Controller
             var dataSource = new List<string>
             {
                 "open",
-                "close"
+                "closed"
             };
             return dataSource;
         }
