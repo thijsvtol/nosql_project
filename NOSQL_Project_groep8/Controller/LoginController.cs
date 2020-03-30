@@ -17,8 +17,10 @@ namespace NOSQL_Project_groep8.Controller
         /// <param name="password"></param>
         public void CheckLogin(Index index, DashboardIncidentsView dashboard, string username, string password)
         {
+            //if there is a user with the username ande password
             if (UserRepository.CheckUser(username, password))
             {
+                //set user as CurrentUser and go to the dashboard
                 UserModel user = UserRepository.GetUser(username);
                 index.HideViews("UCdashboardIncidentsView");
                 index.SetCurrentUser(user);

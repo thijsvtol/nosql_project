@@ -106,7 +106,16 @@ namespace NOSQL_Project_groep8.View
         private void listViewUser_MouseClick(object sender, MouseEventArgs e)
         {
             btnChangeRole.Show();
-            btnRemove.Show();
+
+            if(listViewUser.SelectedItems[0].SubItems[0].Text == CurrentUser.UserId.ToString())
+            {
+                btnRemove.Hide();
+            }
+            else
+            {
+                btnRemove.Show();
+            }
+            
             if (listViewUser.SelectedItems[0].SubItems[5].Text == "Servicedesk")
             {
                 btnChangeRole.Text = "CHANGE TO EMPLOYEE";

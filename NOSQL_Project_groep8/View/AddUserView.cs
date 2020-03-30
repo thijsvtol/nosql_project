@@ -215,9 +215,9 @@ namespace NOSQL_Project_groep8.View
                 UserModel user = Controller.GetUserById(parent.GetCurrentUser().UserId);
                 user.FirstName = tbFirstName.Text;
                 user.LastName = tbLastName.Text;
-                user.Email =
+                user.Email = tbEmail.Text;
                 user.Phonenumber = tbPhonenumber.Text;
-                user.Location = cbLocation.SelectedText;
+                user.Location = cbLocation.Text;
                 try
                 {
                     Controller.UpdateUser(user);
