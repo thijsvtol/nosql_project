@@ -59,7 +59,7 @@ namespace NOSQL_Project_groep8.Controller
             try
             {
                 //if email and favcolor is correct
-                if (validdate(email, favColor))
+                if (Validdate(email, favColor))
                 {
                     string key = GenerateKey();
                     //check email for existing;;
