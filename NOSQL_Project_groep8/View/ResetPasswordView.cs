@@ -64,15 +64,15 @@ namespace NOSQL_Project_groep8.View
             resetPasswordController.ChangePassword(txtPassword.Text, txtReEnterPassword.Text, txtKeyEmail.Text);
         }
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            txtKeyEmail.Text = txtEmail.Text;
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             // go back to login
             GoToLogin();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            txtKeyEmail.Text = txtEmail.Text;
         }
     }
 }
