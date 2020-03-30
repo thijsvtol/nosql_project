@@ -64,7 +64,7 @@ namespace NOSQL_Project_groep8.View
                         break;
                     }
                 }
-                item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
+                item.SubItems.Add(incident.DateCreated.ToString("dd/MM/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
             }
