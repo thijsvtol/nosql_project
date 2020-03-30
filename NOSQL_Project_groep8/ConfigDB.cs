@@ -7,7 +7,6 @@ namespace NOSQL_Project_groep8.Repositories
     {
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
         private MongoClient dbClient = new MongoClient(_connectionString);
-
         public IMongoDatabase GetDatabase() { return dbClient.GetDatabase("GardenGroup");}
     }
 }
