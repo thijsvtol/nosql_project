@@ -148,6 +148,8 @@ namespace NOSQL_Project_groep8.Controller
                 user.Password = password;
                 UserService.ChangePassword(user);
 
+                MessageBox.Show("your password has been changed.");
+
                 //delete the used key
                 keyService.DeleteKey(Key);
                 UC.HidePanels("pCheckKey");

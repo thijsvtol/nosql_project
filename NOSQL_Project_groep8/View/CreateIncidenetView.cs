@@ -22,6 +22,14 @@ namespace NOSQL_Project_groep8.View
             cbType.DataSource = CreateIncidentController.GetType();
             cbPriority.DataSource = CreateIncidentController.GetPriority();
             cb_deadlineFollowUp.DataSource = CreateIncidentController.GetDeadlineDates();
+
+            // you can not type in the boxes
+            cbLocation.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbUsers.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_deadlineFollowUp.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         //clean form.
