@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Model;
-using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Controller;
 
 namespace NOSQL_Project_groep8.View
@@ -26,12 +19,6 @@ namespace NOSQL_Project_groep8.View
             InitializeComponent();
             FillListView();
         }
-
-        private List<UserModel> GetAllUsers()
-        {
-            return UserOverview.GetAllUsers();
-        }
-
 
         public void FillListView()
         {
@@ -80,7 +67,10 @@ namespace NOSQL_Project_groep8.View
             CheckRole();
         }
 
-
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///                                      EVENTS                                        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
+        
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
@@ -112,7 +102,6 @@ namespace NOSQL_Project_groep8.View
             Index parent = (Index)this.Parent;
             CurrentUser = parent.GetCurrentUser();
         }
-
 
         private void listViewUser_MouseClick(object sender, MouseEventArgs e)
         {
@@ -156,14 +145,6 @@ namespace NOSQL_Project_groep8.View
             };
             UserOverview.DeleteUser(user);
             FillListView();
-        }
-
-
-
-        private void btnEditProfile_Click(object sender, EventArgs e)
-        {
-            Index parent = (Index)this.Parent;
-            parent.HideViews("UCaddUserView");
         }
     }
 }

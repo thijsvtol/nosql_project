@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
 using NOSQL_Project_groep8.Model;
@@ -32,8 +27,7 @@ namespace NOSQL_Project_groep8.View
             //Go back to UMV
             Index parent = (Index)this.Parent;
             parent.HideViews("UCuserManagementView");
-            UserManagementView userView = new UserManagementView();
-            userView.FillListView();
+            parent.RefreshLv("UCuserManagementView");
         }
 
         private void ClearFields()
@@ -58,6 +52,7 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
+        //Change Add user to Edit User
         public void ChangeAddToProfile()
         {
             Index parent = (Index)this.Parent;
@@ -80,10 +75,11 @@ namespace NOSQL_Project_groep8.View
             btnCancel.Hide();
 
             btnUpdateUser.Show();
-            fillTextBoxesWithUser();
+            FillTextBoxesWithUser();
         }
 
-        private void fillTextBoxesWithUser()
+        //Edit user fill panel
+        private void FillTextBoxesWithUser()
         {
             Index parent = (Index)this.Parent;
             tbFirstName.Text = parent.GetCurrentUser().FirstName;
@@ -93,10 +89,11 @@ namespace NOSQL_Project_groep8.View
             cbLocation.Text = parent.GetCurrentUser().Location;
         }
 
-        private void CheckIfChanged(TextBox ChangedTextbox)
+        //Edit user validation
+        private void CheckIfChanged(TextBox changedTextbox)
         {
             Index parent = (Index)this.Parent;
-            if (ChangedTextbox.Name == "tbFirstName")
+            if (changedTextbox.Name == "tbFirstName")
             {
                 if (parent.GetCurrentUser().FirstName != tbFirstName.Text)
                 {
@@ -107,7 +104,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (ChangedTextbox.Name == "tbLastName")
+            else if (changedTextbox.Name == "tbLastName")
             {
                 if (parent.GetCurrentUser().LastName != tbLastName.Text)
                 {
@@ -118,7 +115,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (ChangedTextbox.Name == "tbEmail")
+            else if (changedTextbox.Name == "tbEmail")
             {
                 if (parent.GetCurrentUser().Email != tbEmail.Text)
                 {
@@ -129,7 +126,7 @@ namespace NOSQL_Project_groep8.View
                     btnUpdateUser.Enabled = false;
                 }
             }
-            else if (ChangedTextbox.Name == "tbPhonenumber")
+            else if (changedTextbox.Name == "tbPhonenumber")
             {
                 if (parent.GetCurrentUser().Phonenumber != tbPhonenumber.Text)
                 {
@@ -142,10 +139,10 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
-        private void CheckIfChanged(ComboBox ChangedTextbox)
+        private void CheckIfChanged(ComboBox changedTextbox)
         {
             Index parent = (Index)this.Parent;
-            if (ChangedTextbox.Name == "cbLocation")
+            if (changedTextbox.Name == "cbLocation")
             {
                 if (parent.GetCurrentUser().Location != cbLocation.SelectedText)
                 {
@@ -158,11 +155,19 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
-
         //////////////////////////////////////////////////////////////////////////////////////////
         ///                                      EVENTS                                        ///
         //////////////////////////////////////////////////////////////////////////////////////////
 
+        private void AddUserView_Load(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+
+            if (parent.GetCurrentUser().TypeOfUser == "Employee")
+            {
+                ChangeAddToProfile();
+            }
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -197,20 +202,6 @@ namespace NOSQL_Project_groep8.View
             }
         }
 
-        private void AddUserView_Load(object sender, EventArgs e)
-        {
-            Index parent = (Index)this.Parent;
-
-            if (parent.GetCurrentUser().TypeOfUser == "Employee")
-            {
-                ChangeAddToProfile();
-                btnBack.Hide();
-            }
-        }
-
-
-
-
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
             if (Controller.ValidateEmail(tbEmail.Text)){
@@ -238,7 +229,6 @@ namespace NOSQL_Project_groep8.View
             }
 
         }
-
 
         private void tbFirstName_TextChanged(object sender, EventArgs e)
         {

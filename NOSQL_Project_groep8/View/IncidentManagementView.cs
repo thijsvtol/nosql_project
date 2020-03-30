@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Controller;
@@ -24,6 +18,7 @@ namespace NOSQL_Project_groep8.View
         //lijsten die worden ingevuld.
         List<IncidentModel> Incidents = new List<IncidentModel>();
         List<UserModel> Users = new List<UserModel>();
+
         //constructor
         public IncidentManagementView()
         {
@@ -42,6 +37,7 @@ namespace NOSQL_Project_groep8.View
             //show de LV.
             lv_incidents.Show();
         }
+
         //vul de LV.
         public void ListViewLoad()
         {
@@ -75,20 +71,15 @@ namespace NOSQL_Project_groep8.View
                 item.SubItems.Add(incident.DateCreated.ToString("MM/dd/yyyy H:mm"));
                 item.SubItems.Add(incident.Status);
                 lv_incidents.Items.Add(item);
-                lv_incidents.Refresh();
             }
+            lv_incidents.Refresh();
             //maak de LV kopjes groot genoeg.
             foreach (ColumnHeader ch in this.lv_incidents.Columns)
             {
                 ch.Width = -2;
             }
         }
-        //vul this.user met de ingelogde user.
-        private void IncidentManagementView_Load(object sender, EventArgs e)
-        {
-            Index parent = (Index)this.Parent;
-            CurrentUser = parent.GetCurrentUser();
-        }
+
         //kijk of de ingelogde user een Employee is of ServiceDesk medewerker.
         private void EmployeeOrService()
         {
@@ -112,6 +103,7 @@ namespace NOSQL_Project_groep8.View
                 }
             }
         }
+
         //refresh LV.
         public void RefreshingLv()
         {
@@ -123,12 +115,20 @@ namespace NOSQL_Project_groep8.View
         ///                                      EVENTS                                        ///
         //////////////////////////////////////////////////////////////////////////////////////////
 
+        //vul this.user met de ingelogde user.
+        private void IncidentManagementView_Load(object sender, EventArgs e)
+        {
+            Index parent = (Index)this.Parent;
+            CurrentUser = parent.GetCurrentUser();
+        }
+
         //maak een nieuw incident aan.
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
             Index parent = (Index)this.Parent;
             parent.HideViews("UCcreateIncidenetView");
         }
+
         //verander de lijst aan de hand van de input (gebaseerd op e-mail)
         private void txt_filterTickets_TextChanged(object sender, EventArgs e)
         {
@@ -149,6 +149,7 @@ namespace NOSQL_Project_groep8.View
                 }
             }
         }
+
         //sorteer colom.
         private void lv_incidents_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -174,6 +175,7 @@ namespace NOSQL_Project_groep8.View
             //sorteer.
             this.lv_incidents.Sort();
         }
+
         //verwijder incident.
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -201,6 +203,5 @@ namespace NOSQL_Project_groep8.View
             //hoe dan ook word het LV vernieuwd.
             RefreshingLv();
         }
-
     }
 }

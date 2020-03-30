@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;

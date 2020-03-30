@@ -1,17 +1,12 @@
 ﻿using MongoDB.Driver;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace NOSQL_Project_groep8.Service
 {
     class KeyService
     {
         private ConfigDB ConfigDB;
+
         public KeyService()
         {
             ConfigDB = new ConfigDB();
@@ -26,7 +21,6 @@ namespace NOSQL_Project_groep8.Service
         {
             KeyModel keyModel = new KeyModel() { Email = email, Key = key };
             var collection = ConfigDB.GetDatabase().GetCollection<KeyModel>("ResetKey");
-
             collection.InsertOne(keyModel);
         }
 

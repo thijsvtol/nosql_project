@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Controller;
-using NOSQL_Project_groep8.Model;
 
 namespace NOSQL_Project_groep8.View
 {
@@ -25,6 +17,10 @@ namespace NOSQL_Project_groep8.View
                 cbRememberMe.Checked = true;
             }
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        ///                                      EVENTS                                        ///
+        //////////////////////////////////////////////////////////////////////////////////////////
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

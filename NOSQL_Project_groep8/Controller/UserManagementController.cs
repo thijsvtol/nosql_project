@@ -1,11 +1,7 @@
 ﻿using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Repositories;
 using NOSQL_Project_groep8.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NOSQL_Project_groep8.Controller
 {
@@ -16,13 +12,11 @@ namespace NOSQL_Project_groep8.Controller
         private static IncidentService IncidentService = new IncidentService();
         private static UserService UserService = new UserService();
 
-
         public List<UserModel> GetAllUsers()
         {
             List<UserModel> users = UserRepository.GetAllUsers();
             return users;
         }
-
 
         public void ChangeRole(UserModel user)
         {
@@ -36,7 +30,6 @@ namespace NOSQL_Project_groep8.Controller
                 user.TypeOfUser = "Servicedesk";
                 UserService.ChangeRole(user);
             }
-
         }
 
         public void DeleteUser(UserModel user)

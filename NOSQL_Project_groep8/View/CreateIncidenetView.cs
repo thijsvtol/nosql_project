@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Controller;
@@ -30,6 +23,7 @@ namespace NOSQL_Project_groep8.View
             cbPriority.DataSource = CreateIncidentController.GetPriority();
             cb_deadlineFollowUp.DataSource = CreateIncidentController.GetDeadlineDates();
         }
+
         //clean form.
         public void CleanForm()
         {

@@ -122,6 +122,8 @@
             // btnAddIncident
             // 
             this.btnAddIncident.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAddIncident.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddIncident.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddIncident.ForeColor = System.Drawing.Color.White;
             this.btnAddIncident.Location = new System.Drawing.Point(507, 432);
@@ -135,6 +137,8 @@
             // Btn_cancelCreationIncident
             // 
             this.Btn_cancelCreationIncident.BackColor = System.Drawing.Color.White;
+            this.Btn_cancelCreationIncident.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_cancelCreationIncident.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_cancelCreationIncident.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_cancelCreationIncident.Location = new System.Drawing.Point(347, 432);
             this.Btn_cancelCreationIncident.Name = "Btn_cancelCreationIncident";

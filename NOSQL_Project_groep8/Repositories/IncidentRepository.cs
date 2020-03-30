@@ -1,11 +1,8 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using NOSQL_Project_groep8.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NOSQL_Project_groep8.Repositories
 {
@@ -87,7 +84,6 @@ namespace NOSQL_Project_groep8.Repositories
             //Select collection
             var collection = ConfigDB.GetDatabase().GetCollection<IncidentModel>("Incidents");
             List<IncidentModel> incidents = collection.Find(Builders<IncidentModel>.Filter.Empty).ToList();
-
             return incidents;
         }
 
@@ -112,7 +108,6 @@ namespace NOSQL_Project_groep8.Repositories
             //Count documents (select)
             var filter = Builders<IncidentModel>.Filter.Eq(x => x.IncidentId, UserId);
             IncidentModel incident = collection.Find(filter).FirstOrDefault();
-
             return incident;
         }
     }

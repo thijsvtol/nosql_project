@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NOSQL_Project_groep8.Model;
 using NOSQL_Project_groep8.Service;
 using NOSQL_Project_groep8.Repositories;
@@ -70,7 +68,7 @@ namespace NOSQL_Project_groep8.Controller
                 ErrorList.Add("Your password must contain:\r\n1. At least 1 upper case letter\r\n2. At least 1 number\r\n3. Password must be at least 8 characters long");
             }
             //Check email
-            if (!new EmailAddressAttribute().IsValid(user.Email))
+            if (ValidateEmail(user.Email))
             {
                 ErrorList.Add("Emailaddress has an invalid input.");
             }
@@ -79,13 +77,9 @@ namespace NOSQL_Project_groep8.Controller
         public bool ValidateEmail(string email)
         {
             if (!new EmailAddressAttribute().IsValid(email))
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         private void InsertUser(UserModel user, bool sendEmail)
@@ -127,13 +121,15 @@ namespace NOSQL_Project_groep8.Controller
 
         private bool ValidateInputFields(UserModel user)
         {
-            List<bool> ls = new List<bool>();
-            ls.Add(string.IsNullOrEmpty(user.FirstName));
-            ls.Add(string.IsNullOrEmpty(user.LastName));
-            ls.Add(string.IsNullOrEmpty(user.Email));
-            ls.Add(string.IsNullOrEmpty(user.Phonenumber));
-            ls.Add(string.IsNullOrEmpty(user.Username));
-            ls.Add(string.IsNullOrEmpty(user.Password));
+            List<bool> ls = new List<bool>
+            {
+                string.IsNullOrEmpty(user.FirstName),
+                string.IsNullOrEmpty(user.LastName),
+                string.IsNullOrEmpty(user.Email),
+                string.IsNullOrEmpty(user.Phonenumber),
+                string.IsNullOrEmpty(user.Username),
+                string.IsNullOrEmpty(user.Password)
+            };
 
             return ls.Any(a => a.Equals(true));
         }
@@ -161,7 +157,6 @@ namespace NOSQL_Project_groep8.Controller
         public UserModel GetUserById(int userId)
         {
             UserModel user = UserRepository.GetUserByID(userId);
-
             return user;
         }
 
