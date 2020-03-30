@@ -84,6 +84,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(193, 34);
             this.txtEmail.TabIndex = 5;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label6
             // 
@@ -287,8 +288,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pSendEmail);
-            this.Controls.Add(this.pResetKey);
             this.Controls.Add(this.pCheckKey);
+            this.Controls.Add(this.pResetKey);
             this.Name = "ResetPasswordView";
             this.Size = new System.Drawing.Size(328, 477);
             this.pSendEmail.ResumeLayout(false);
